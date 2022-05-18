@@ -6,6 +6,7 @@ import { EditPostComponent } from './post/edit/edit-post.component';
 import { ListComponent } from './post/list/list.component';
 import { AddComponent } from './category/add/add.component';
 import { EditComponent } from './category/edit/edit.component';
+import {ForumRoutingModule} from "./forum-routing.module";
 
 
 
@@ -19,7 +20,8 @@ import { EditComponent } from './category/edit/edit.component';
     EditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ForumRoutingModule
   ]
 })
 export class ForumModule { }

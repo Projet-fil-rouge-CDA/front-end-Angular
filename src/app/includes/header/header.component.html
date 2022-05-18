@@ -1,1 +1,11 @@
-<p>header works!</p>
+<nav class="navbar navbar-light bg-transparent">
+  <div class="d-flex align-items-center">
+    <a class="navbar-brand" routerLink="/">
+      <img src="../../../assets/img/logo/logo.png" class="rounded-circle ms-3" width="35" height="35" alt="">
+      <span class="text-white mb-0 ms-3">Univ'Air</span>
+    </a>
+  </div>
+  <div>
+    <a [routerLink]="['/forum']" class="btn btn-outline-light me-3">Forum</a>
+  </div>
+</nav>
