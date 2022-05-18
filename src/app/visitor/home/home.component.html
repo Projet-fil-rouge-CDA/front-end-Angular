@@ -1,13 +1,13 @@
 <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 80vh;">
-  <div class="row">
+  <div class="row ms-5">
     <div class="col-md-7 d-flex flex-column justify-content-center align-items-center">
-      <h1 class="text-white align-self-baseline">{{applicationName.toLocaleUpperCase()}},</h1>
-      <h3 class="text-white h3 align-self-baseline">Votre application de qualité d'air et de météo favorite</h3>
-      <p class="text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ducimus nemo optio
+      <h1 class="text-white align-self-baseline title-show">{{applicationName.toLocaleUpperCase()}},</h1>
+      <h3 class="text-white h3 align-self-baseline subtitle-show">Votre application de qualité d'air et de météo favorite</h3>
+      <p class="text-white-50 paragraph-show">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ducimus nemo optio
         placeat porro quasi sint unde. Assumenda cupiditate earum eligendi, est eveniet harum laudantium maiores
         officiis similique, unde voluptatum.</p>
     </div>
-    <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
+    <div class="col-md-5 d-flex flex-column justify-content-center align-items-center show-panel-right">
       <img alt="Responsive image" class="img-fluid img--sun" src="assets/img/weather.png">
       <div class="d-flex flex-column w-50">
         <a [routerLink]="['user/register']" class="btn btn-warning btn-lg text-white me-3 mt-3">S'inscrire</a>

@@ -3,3 +3,36 @@
   height: 100%;
   object-fit: cover;
 }
+
+.title-show{
+  animation: showAnimation 1s ease-in-out;
+}
+
+.subtitle-show{
+  opacity: 0;
+  animation: showAnimation 2s ease 500ms;
+  animation-fill-mode:forwards;
+}
+
+.paragraph-show{
+  opacity: 0;
+  animation: showAnimation 2s ease 700ms;
+  animation-fill-mode:forwards;
+}
+
+.show-panel-right{
+  opacity: 0;
+  animation: showAnimation 2s ease 900ms;
+  animation-fill-mode:forwards;
+}
+
+@keyframes showAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
