@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* MODIFICATION DES VARIABLES BOOTSTRAP */
+
+$primary: #285185;
+$secondary: #ccd9e2;
+$warning: #f19a03;
+$success: #075b48;
+$danger: #8f1629;
+$btn-close-color: #ccc;
+$btn-border-radius: 15px;
+$btn-border-radius-lg: 13px;
+
+@import "node_modules/bootstrap/scss/bootstrap";
