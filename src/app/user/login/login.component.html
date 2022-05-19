@@ -1,0 +1,41 @@
+<main class="d-flex align-items-center">
+
+  <div class="d-flex title align-self-start align-items-center justify-content-center">
+    <a href="/">
+      <h1>Univer'Air</h1>
+    </a>
+  </div>
+
+  <section class="text-center bg-white">
+    <h2>Se connecter</h2>
+    <form [formGroup]="loginForm" (submit)="login()" class="d-flex flex-column align-items-center">
+      <input
+        type="text"
+        name="emailOrPhone"
+        placeholder="Adresse mail ou téléphone"
+        required
+        formControlName="emailOrPhone"
+        id="emailOrPhone"
+        class="form-control"
+      />
+      <control-messages [control]="loginForm.get('emailOrPhone')"></control-messages>
+      <input
+        type="password"
+        name="password"
+        placeholder="Mot de passe"
+        required
+        formControlName="password"
+        id="password"
+        class="form-control"
+      />
+      <control-messages [control]="loginForm.get('password')"></control-messages>
+      <button [disabled]="!loginForm.valid" type="submit" class="bg-success">Confirmer</button>
+    </form>
+    <div class="register">
+      <p>Pas inscrit ? <a routerLink="/user/register">S'inscrire</a></p>
+    </div>
+  </section>
+
+  <div class="blue">
+  </div>
+</main>

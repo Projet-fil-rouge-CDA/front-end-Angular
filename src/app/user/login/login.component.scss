@@ -1,0 +1,55 @@
+main{
+  background-image: url('../../../assets/img/map.png');
+  background-size: cover;
+  min-height: 1000px;
+  .title{
+    position: absolute;
+    width: 20%;
+    height: 130px;
+    margin: 40px 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 300px solid #0c5ec7;
+    a{
+      text-decoration: none;
+      h1{
+        position: relative;
+        left: -200px;
+        color: white;
+      }
+    }
+  }
+  section{
+    margin-top: 230px;
+    min-height: 370px;
+    min-width: 500px;
+    margin: 0 15% 0 35%;
+    h2{
+      padding: 50px 0 25px 0;
+    }
+    input{
+      margin: 20px 0;
+      width: 75%;
+    }
+    button{
+      width: 30%;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      margin: 10px 0;
+      padding: 5px;
+    }
+  }
+  .register{
+    margin-top: 15px;
+    border-top: 1px solid black;
+    padding-top: 10px;
+  }
+  .blue{
+    width: 500px;
+    height: 1080px;
+    display: inline-block;
+    border-bottom: 1080px solid #0c5ec7;
+    border-left: 300px solid transparent;
+  }
+}

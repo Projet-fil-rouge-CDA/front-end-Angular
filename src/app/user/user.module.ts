@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule} from '@angular/common/http';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ListComponent } from './likes/list/list.component';
@@ -10,6 +12,8 @@ import { MapComponent } from './home/map/map.component';
 import { WeatherComponent } from './home/map/weather/weather.component';
 import { StationComponent } from './home/map/station/station.component';
 import {UserRoutingModule} from "./user-routing.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ControlMessagesComponent } from './register/control-messages.component';
 
 
 
@@ -23,11 +27,16 @@ import {UserRoutingModule} from "./user-routing.module";
     HomeComponent,
     MapComponent,
     WeatherComponent,
-    StationComponent
+    StationComponent,
+    ControlMessagesComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ]
 })
 export class UserModule { }
