@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule} from '@angular/common/http';
-
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ListComponent } from './likes/list/list.component';
@@ -41,11 +40,11 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ]
     FormsModule,
     LeafletModule
   ],
   providers: [SearchAddressService]
 })
-export class UserModule { }
+export class UserModule {
+}
