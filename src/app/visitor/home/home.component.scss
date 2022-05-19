@@ -5,24 +5,24 @@
 }
 
 .title-show{
-  animation: showAnimation 1s ease-in-out;
+  animation: showAnimation 1s cubic-bezier(.57,1.66,.17,.85);
 }
 
 .subtitle-show{
   opacity: 0;
-  animation: showAnimation 2s ease 500ms;
+  animation: showAnimation 2s cubic-bezier(.57,1.66,.17,.85) 500ms;
   animation-fill-mode:forwards;
 }
 
 .paragraph-show{
   opacity: 0;
-  animation: showAnimation 2s ease 700ms;
+  animation: showAnimation 2s cubic-bezier(.57,1.66,.17,.85) 700ms;
   animation-fill-mode:forwards;
 }
 
 .show-panel-right{
   opacity: 0;
-  animation: showAnimation 2s ease 900ms;
+  animation: showAnimation 2s cubic-bezier(.57,1.66,.17,.85) 900ms;
   animation-fill-mode:forwards;
 }
 

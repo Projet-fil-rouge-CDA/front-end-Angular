@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import {VisitorRoutingModule} from "./visitor-routing.module";
 
-
-
 @NgModule({
   declarations: [
     HomeComponent
   ],
-  imports: [
-    CommonModule,
-    VisitorRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        VisitorRoutingModule
+    ]
 })
 export class VisitorModule { }
