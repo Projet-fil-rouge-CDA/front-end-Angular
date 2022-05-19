@@ -10,6 +10,10 @@ import { MapComponent } from './home/map/map.component';
 import { WeatherComponent } from './home/map/weather/weather.component';
 import { StationComponent } from './home/map/station/station.component';
 import {UserRoutingModule} from "./user-routing.module";
+import { SearchComponent } from './home/map/search/search.component';
+import {SearchAddressService} from "../shared/services/search-address.service";
+import {FormsModule} from "@angular/forms";
+import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 
 
 
@@ -21,13 +25,17 @@ import {UserRoutingModule} from "./user-routing.module";
     AddComponent,
     SettingsComponent,
     HomeComponent,
-    MapComponent,
     WeatherComponent,
-    StationComponent
+    StationComponent,
+    SearchComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
-  ]
+    UserRoutingModule,
+    FormsModule,
+    LeafletModule
+  ],
+  providers: [SearchAddressService]
 })
 export class UserModule { }
