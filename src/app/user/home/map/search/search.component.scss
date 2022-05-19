@@ -1,0 +1,21 @@
+.search-box{
+  height: 200px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.36);
+  z-index: 999;
+  position: absolute;
+  width: 40%;
+  left: 10%;
+  border: 1px solid #000000;
+}
+
+.search-box p {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #cccccc;
+  &:hover {
+    background: #ddd;
+  }
+}

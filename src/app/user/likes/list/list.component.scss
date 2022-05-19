@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+//Variables
+$small-font-size: 10px;
+$danger: #8f1629;
+
+//Color-parameters
+.text-red {
+  color: $danger;
+}
+
+//font-parameters
+.basic-font {
+  font-family: 'Inter', sans-serif;
+}
+
+//name-page
+.page-title {
+  font-weight: 200;
+}
+
+//image-card
+.img-weather {
+  width: 286px;
+  height: 156px;
+  object-fit: cover;
+
+}
+
+//full-card
+.card {
+  border-radius: 3%;
+}
+
+//background-card
+.blue-gradient-background {
+  background: linear-gradient(#206bcc, #82ccff);
+}
+
+.grey-gradient-background {
+  background: rgb(40, 40, 41);
+  background: linear-gradient(180deg, rgba(40, 40, 41, 1) 0%, rgba(122, 122, 122, 1) 100%);
+}
+
+.white-gradient-background {
+  background: rgb(226, 226, 226);
+  background: linear-gradient(180deg, rgba(226, 226, 226, 1) 0%, rgba(166, 166, 166, 1) 62%);
+}
+
+//body-card
+.body-card-position {
+  margin-top: -35px;
+
+  .cityInformations {
+    .card-title {
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    p {
+      font-size: $small-font-size;
+      font-weight: 100;
+    }
+  }
+
+  .degree, .airQualityAppreciation {
+    font-size: 20px;
+  }
+
+  .degreeAppreciation, .numberAirQuality {
+    font-weight: 100;
+  }
+
+  .actionBtn {
+    a {
+      font-size: 10px;
+    }
+  }
+
+}
+
+//carousel
+.indicator-bottom{
+  bottom: -40px;
+}
+
+
+
+
+
+
+
+
+
+
+

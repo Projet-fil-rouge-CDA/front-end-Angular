@@ -1,1 +1,31 @@
-<p>weather works!</p>
+<div class="card m-2" style="width: 18rem; height: 100%" *ngIf="weather && w" [ngClass]='getWeatherClass(w.weather_state_name)'>
+  <!--  //Image-->
+  <img class="card-img-top img-weather" src="assets/img/sun.png" alt="Sun image" *ngIf="w.weather_state_name === 'Clear'">
+  <img class="card-img-top img-weather" src="assets/img/cloud.png" alt="Cloud image" *ngIf="w.weather_state_name === 'Clouds'">
+  <img class="card-img-top img-weather" src="assets/img/rain.png" alt="Cloud image" *ngIf="w.weather_state_name === 'Rain'">
+  <div class="card-body  body-card-position text-light">
+    <!--    //Ville informations-->
+    <div class="cityInformations ">
+      <p class="card-title m-0 text-center ">{{weather.address.city || weather.displayName.split(',')[0]}}</p>
+      <p class="region m-0 text-center">{{weather.address.county || weather.displayName.split(',')[1]}} (1 426 000 hab.)</p>
+      <p class="WeatherStation m-0 text-center ">Station LA CHAUVINIERE</p>
+    </div>
+    <!--    //Météo-->
+    <div class="detailsWeather row mt-4 ">
+      <p class="degree m-0 text-center ">{{w.temperature | number : '1.0-0'}}°C</p>
+      <p class="degreeAppreciation m-0 text-center ">{{translateWeatherToFrench(w.weather_state_name)}}</p>
+    </div>
+    <!--    //Qualité de l'air-->
+    <div class="detailsAirQuality mt-4">
+
+      <span class="airQualityAppreciation m-0 text-center"> <p class="m-0">Air</p> <p class="m-0">Correct</p></span>
+      <p class="numberAirQuality m-0 text-center"> 20µg/m³</p>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <div class="actionBtn me-4">
+        <a href="#" class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Go
+          somewhere</a></div>
+      <a href=""> <i class="bi bi-heart-fill text-red"></i></a>
+    </div>
+  </div>
+</div>
