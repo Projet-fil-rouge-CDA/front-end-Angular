@@ -14,6 +14,10 @@ import { StationComponent } from './home/map/station/station.component';
 import {UserRoutingModule} from "./user-routing.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlMessagesComponent } from './register/control-messages.component';
+import { SearchComponent } from './home/map/search/search.component';
+import {SearchAddressService} from "../shared/services/search-address.service";
+import {LeafletModule} from "@asymmetrik/ngx-leaflet";
+
 
 
 
@@ -25,10 +29,11 @@ import { ControlMessagesComponent } from './register/control-messages.component'
     AddComponent,
     SettingsComponent,
     HomeComponent,
-    MapComponent,
     WeatherComponent,
     StationComponent,
     ControlMessagesComponent
+    SearchComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,
@@ -38,5 +43,9 @@ import { ControlMessagesComponent } from './register/control-messages.component'
     ReactiveFormsModule,
 
   ]
+    FormsModule,
+    LeafletModule
+  ],
+  providers: [SearchAddressService]
 })
 export class UserModule { }
