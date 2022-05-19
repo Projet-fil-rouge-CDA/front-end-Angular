@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NominatimResponse} from "../../shared/models/nominatim-response.model";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  city: NominatimResponse;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onCityChange(city: NominatimResponse) {
+    console.log(city);
+    this.city = city;
   }
 
 }
