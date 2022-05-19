@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './includes/header/header.component';
 import { FooterComponent } from './includes/footer/footer.component';
 import { CookiesComponent } from './includes/cookies/cookies.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        CookiesComponent
+        CookiesComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
+      HttpClientModule
     ],
     providers: [],
   exports: [
