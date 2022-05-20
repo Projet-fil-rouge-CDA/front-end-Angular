@@ -10,6 +10,7 @@
     <h2>S'inscrire</h2>
     <form [formGroup]="registerForm" (submit)="saveUser()" class="d-flex flex-column align-items-center">
       <div class="d-flex justify-content-between name">
+        <div class="column">
         <input
           type="text"
           id="lastname"
@@ -19,7 +20,9 @@
           required
           class="form-control"
         />
-        <control-messages [control]="registerForm.get('lastname')"></control-messages>
+        <control-messages [control]="registerForm.get('lastname')" class="control"></control-messages>
+        </div>
+        <div class="column">
         <input
           type="text"
           id="firstname"
@@ -29,7 +32,8 @@
           required
           class="form-control"
         />
-        <control-messages [control]="registerForm.get('firstname')"></control-messages>
+        <control-messages [control]="registerForm.get('firstname')" class="control firstnameControl"></control-messages>
+        </div>
       </div>
       <input
         type="text"
@@ -41,7 +45,7 @@
         maxlength="10"
         class="form-control"
       />
-      <control-messages [control]="registerForm.get('phone')"></control-messages>
+      <control-messages [control]="registerForm.get('phone')" class="control"></control-messages>
       <input
         type="text"
         name="email"
@@ -51,7 +55,7 @@
         id="email"
         class="form-control"
       />
-      <control-messages [control]="registerForm.get('email')"></control-messages>
+      <control-messages [control]="registerForm.get('email')" class="control"></control-messages>
       <input
         type="password"
         name="password"
@@ -61,7 +65,7 @@
         id="password"
         class="form-control"
       />
-      <control-messages [control]="registerForm.get('password')"></control-messages>
+      <control-messages [control]="registerForm.get('password')" class="control"></control-messages>
       <input
         type="password"
         name="confirmPassword"
@@ -71,8 +75,9 @@
         id="confirmPassword"
         class="form-control"
       />
-      <control-messages [control]="registerForm.get('confirmPassword')"></control-messages>
+      <control-messages [control]="registerForm.get('confirmPassword')" class="control"></control-messages>
       <div class="terms d-flex">
+        <div class="column check">
         <input
         type="checkbox"
         name="terms"
@@ -81,13 +86,17 @@
         id="terms"
         class="check-control"
         />
+        <div class="none"></div>
+        </div>
+        <div class="column">
         <p>J'accepte les <a href="#" class="text-warning text-decoration-none">conditions générales</a> d'utilisation</p>
-        <control-messages [control]="registerForm.get('terms')"></control-messages>
+        <control-messages [control]="registerForm.get('terms')" class="controlTerms"></control-messages>
+        </div>
       </div>
       <button [disabled]="!registerForm.valid" type="submit" class="bg-success">Confirmer</button>
     </form>
     <div class="login">
-      <p>Déjà inscrit ? <a routerLink="/user/login">Se connecter</a></p>
+      <p>Déjà inscrit ? <a routerLink="/login">Se connecter</a></p>
     </div>
   </section>
 

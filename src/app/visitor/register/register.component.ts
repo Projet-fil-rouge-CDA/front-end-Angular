@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
-import { Register } from 'src/app/shared/models/register';
-import { RegisterService } from './register.service';
-import { ValidationService } from './validation.service';
+import { Users } from 'src/app/shared/models/users';
+import { LogsService } from '../../shared/services/logs.service';
+import { ValidationService } from '../../shared/services/validation.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent{
+export class RegisterComponent implements OnInit{
 
   registerForm: any;
-  users$: BehaviorSubject<Register[]> = this.registerService.users$
+  users$: BehaviorSubject<Users[]> = this.logsService.users$
 
   constructor(
-    private registerService: RegisterService,
+    private logsService: LogsService,
     private formBuilder: FormBuilder,
+    private titleService: Title
   ) {
     this.registerForm = this.formBuilder.group({
       lastname: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,10 +31,13 @@ export class RegisterComponent{
       terms: ['', [Validators.required]]
     })
   }
+  ngOnInit(): void {
+    this.titleService.setTitle('Univ\'Air | S\'enregistrer');
+  }
 
   saveUser() {
     if (this.registerForm.dirty && this.registerForm.valid) {
-      this.registerService.register(this.registerForm.value)
+      this.logsService.register(this.registerForm.value)
     }
   }
 }
