@@ -8,7 +8,7 @@
     <div class="cityInformations ">
       <p class="card-title m-0 text-center ">{{weather.address.city || weather.displayName.split(',')[0]}}</p>
       <p class="region m-0 text-center">{{weather.address.county || weather.displayName.split(',')[1]}} (1 426 000 hab.)</p>
-      <p class="WeatherStation m-0 text-center ">Station LA CHAUVINIERE</p>
+      <p class="WeatherStation m-0 text-center" *ngIf="stationName">Station {{stationName.nom_station}}</p>
     </div>
     <!--    //Météo-->
     <div class="detailsWeather row mt-4 ">

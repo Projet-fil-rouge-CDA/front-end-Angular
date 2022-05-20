@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   onCityChange(city: NominatimResponse) {
-    console.log(city);
     this.city = city;
   }
 

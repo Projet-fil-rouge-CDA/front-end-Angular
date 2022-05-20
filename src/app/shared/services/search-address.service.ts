@@ -15,8 +15,8 @@ export class SearchAddressService {
 
   constructor(private http: HttpClient) { }
 
-  addressLookup(req?: any): Observable<NominatimResponse[]> {
-    let url = `https://${SearchAddressService.BASE_NOMINATIM_URL}/search?format=json&q=${req}&${SearchAddressService.DEFAULT_VIEW_BOX}&bounded=1&countrycodes=fr&addressdetails=1`;
+  addressLookup(address: string): Observable<NominatimResponse[]> {
+    let url = `https://${SearchAddressService.BASE_NOMINATIM_URL}/search?format=json&q=${address}&${SearchAddressService.DEFAULT_VIEW_BOX}&bounded=1&countrycodes=fr&addressdetails=1`;
     return this.http
       .get(url).pipe(
         map((data: any) => data.map((item: any) => new NominatimResponse(
