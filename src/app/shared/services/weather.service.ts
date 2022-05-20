@@ -23,7 +23,38 @@ export class WeatherService {
         item.wind.speed,
         item.clouds.all,
         item.main.humidity,
-        item.main.humidity);
+        item.main.humidity,
+        item.liked);
     }));
   }
+
+  getWeatherClass(weather: string): string {
+    switch (weather) {
+      case 'Clear':
+        return 'blue-gradient-background';
+      case 'Clouds':
+        return 'grey-gradient-background';
+      case 'Snow':
+        return 'white-gradient-background';
+      case 'Rain':
+        return 'grey-gradient-background';
+      default:
+        return 'white-gradient-background';
+    }
+  }
+  translateWeatherToFrench(weather: string): string {
+    switch (weather) {
+      case 'Clear':
+        return 'Ciel dégagé';
+      case 'Clouds':
+        return 'Nuageux';
+      case 'Snow':
+        return 'Neige';
+      case 'Rain':
+        return 'Pluvieux';
+      default:
+        return 'Inconnu';
+    }
+  }
+
 }

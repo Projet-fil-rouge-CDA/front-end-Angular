@@ -1,3 +1,5 @@
+import {NominatimAddress} from "./nominatim-response.model";
+
 export class Weather {
   constructor(
     public id: number,
@@ -8,5 +10,9 @@ export class Weather {
     public cloud_cover: number,
     public rain: number,
     public snow: number,
-  ) {}
+    public liked: boolean,
+    public city?: NominatimAddress
+  ) {
+    this.liked = false
+  }
 }
