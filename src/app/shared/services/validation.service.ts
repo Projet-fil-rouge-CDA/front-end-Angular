@@ -2,15 +2,15 @@ export class ValidationService {
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
     switch (validatorName){
       case 'required':
-        return 'Requis'
+        return 'Ce champs est requis'
       case 'invalidEmailAddress':
-        return 'Mail invalide'
+        return 'L\'adresse email est invalide'
       case 'invalidPassword':
-        return '1 majuscule, 1 caratère spécial et 1 chiffre'
+        return 'Vous devez renseigner un mot de passe avec au minimum une majuscule, un chiffre et un caractère spécial'
       case 'minlength':
         return `${validatorValue.requiredLength} lettres minimum`
       default:
-        return 'Problème input'
+        return 'Ce champs n\'est pas valide'
     }
   }
 

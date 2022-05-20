@@ -11,7 +11,8 @@ import {map} from 'rxjs/operators';
 export class SearchAddressService {
 
   private static BASE_NOMINATIM_URL: string = 'nominatim.openstreetmap.org';
-  private static DEFAULT_VIEW_BOX: string = 'viewbox=-25.0000%2C70.0000%2C50.0000%2C40.0000';
+  // Cette viewbox permet de limiter les résultats de la recherche à la région Pays de la Loire
+  private static DEFAULT_VIEW_BOX: string = 'viewbox=-4.180298,45.924409,3.400269,48.654686';
 
   constructor(private http: HttpClient) { }
 

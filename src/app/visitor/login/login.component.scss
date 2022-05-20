@@ -3,7 +3,7 @@ main{
   background-size: cover;
   display: flex;
   justify-content: center;
-  min-height: max-content;
+  max-height: 100vh;
   position: relative;
   .title{
     position: absolute;

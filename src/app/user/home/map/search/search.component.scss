@@ -20,5 +20,36 @@
   }
 }
 
-.address-lookup{
+input#search-bar{
+  margin: 0 auto;
+  width: 50%;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 1rem;
+  outline: none;
+  -webkit-box-shadow: 7px 6px 22px -12px #000000;
+  box-shadow: 7px 6px 22px -12px #000000;
+  &:focus{
+    border: 1px solid #008ABF;
+    width: 75%;
+    transition: 200ms ease;
+    color: #262626;
+    &::-webkit-input-placeholder{
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+    &::-moz-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+  }
+}
+
+.search-icon{
+  position: relative;
+  float: right;
+  width: 75px;
+  height: 75px;
+  top: -52px;
+  right: 130px;
 }

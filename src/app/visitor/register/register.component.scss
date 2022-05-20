@@ -3,7 +3,7 @@ main{
   background-size: cover;
   display: flex;
   justify-content: center;
-  min-height: max-content;
+  max-height: 100vh;
   position: relative;
   .title{
     position: absolute;
@@ -23,7 +23,7 @@ main{
     }
   }
   section{
-    margin: 20vh 0 10vh 0;
+    margin: 20vh 0 20vh 0;
     max-width: 60vh;
     min-width: 50vh;
     h2{
