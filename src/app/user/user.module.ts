@@ -30,7 +30,7 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
     HomeComponent,
     WeatherComponent,
     StationComponent,
-    ControlMessagesComponent
+    ControlMessagesComponent,
     SearchComponent,
     MapComponent
   ],
@@ -39,11 +39,10 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
     UserRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-  ]
-    FormsModule,
-    LeafletModule
+    LeafletModule,
+    ReactiveFormsModule
   ],
+  exports: [],
   providers: [SearchAddressService]
 })
 export class UserModule {
