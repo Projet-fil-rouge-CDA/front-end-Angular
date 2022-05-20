@@ -1,1 +1,26 @@
-<p>map works!</p>
+<!--<div class="d-flex flex-column justify-content-center align-items-center mt-5">-->
+<!---->
+<div (leafletClick)="onMapClick($event)"
+     (leafletMapReady)="initializeMap($event)"
+     [leafletLayers]="layer"
+     [leafletOptions]="options"
+     id="map"
+     leaflet style="position:relative;">
+
+
+  <div class="leaflet-right leaflet-bottom" style="position: absolute; z-index: 999999">
+    <app-weather [station]="stationSelected" [weather]="citySelected"></app-weather>
+  </div>
+</div>
+<app-search (onSearch)="refreshSearchList($event)" style="
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  bottom: 90%;
+  width: 50%;
+  z-index: 1000;"></app-search>
+
+
+
+<!--</div>-->
+
