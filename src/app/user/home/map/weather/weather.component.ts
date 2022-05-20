@@ -12,55 +12,42 @@ import {StationService} from "../../../../shared/services/station.service";
 export class WeatherComponent implements OnInit {
 
   @Input() weather: NominatimResponse;
-  constructor(private weatherService: WeatherService, private stationService: StationService) { }
+
+  constructor(private weatherService: WeatherService, private stationService: StationService) {
+  }
+
   w: Weather;
   stationName: any;
 
   ngOnInit(): void {
+
+  }
+  getWeatherClass(weather:string){
+    return this.weatherService.getWeatherClass(weather)
+  }
+  translateWeatherToFrench(weather:string){
+    return this.weatherService.translateWeatherToFrench(weather)
   }
 
   ngOnChanges(): void {
-    if(this.weather)
-    this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe(
-      (data: any) => {
-        this.w = data;
-        this.stationService.getStations().subscribe((stations: any) => {
-          let station = Array.from(stations.results)
-          console.log(stations)
-          this.stationName = station.find((s: any) => s.nom_commune === this.weather.address.city);
-        });
-      }
-    );
+    if (this.weather)
+      this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe(
+        (data: any) => {
+          this.w = data;
+          this.stationService.getStations().subscribe((stations: any) => {
+            let station = Array.from(stations.results)
+            console.log(stations)
+            this.stationName = station.find((s: any) => s.nom_commune === this.weather.address.city);
+          });
+        }
+      );
   }
 
-  getWeatherClass(weather: string): string {
-    switch (weather) {
-      case 'Clear':
-        return 'blue-gradient-background';
-      case 'Clouds':
-        return 'grey-gradient-background';
-      case 'Snow':
-        return 'white-gradient-background';
-      case 'Rain':
-        return 'grey-gradient-background';
-      default:
-        return 'white-gradient-background';
-    }
-  }
 
-  translateWeatherToFrench(weather: string): string {
-    switch (weather) {
-      case 'Clear':
-        return 'Ciel dégagé';
-      case 'Clouds':
-        return 'Nuageux';
-      case 'Snow':
-        return 'Neige';
-      case 'Rain':
-        return 'Pluvieux';
-      default:
-        return 'Inconnu';
-    }
-  }
 
+  addFavorite() {
+this.w.liked = !this.w.liked
+
+
+  }
 }
