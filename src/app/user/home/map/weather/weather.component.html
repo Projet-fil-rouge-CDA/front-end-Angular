@@ -1,4 +1,4 @@
-<div class="card m-2" style="width: 18rem; height: 100%" *ngIf="weather && w" [ngClass]='getWeatherClass(w.weather_state_name)'>
+<div class="card m-2" style="width: 18rem; height: 100%; z-index: 999999;" *ngIf="weather && w && station" [ngClass]='getWeatherClass(w.weather_state_name)'>
   <!--  //Image-->
   <img class="card-img-top img-weather" src="assets/img/sun.png" alt="Sun image" *ngIf="w.weather_state_name === 'Clear'">
   <img class="card-img-top img-weather" src="assets/img/cloud.png" alt="Cloud image" *ngIf="w.weather_state_name === 'Clouds'">
@@ -8,7 +8,7 @@
     <div class="cityInformations ">
       <p class="card-title m-0 text-center ">{{weather.address.city || weather.displayName.split(',')[0]}}</p>
       <p class="region m-0 text-center">{{weather.address.county || weather.displayName.split(',')[1]}} (1 426 000 hab.)</p>
-      <p class="WeatherStation m-0 text-center" *ngIf="stationName">Station {{stationName.nom_station}}</p>
+      <p class="WeatherStation m-0 text-center">Station {{station}}</p>
     </div>
     <!--    //Météo-->
     <div class="detailsWeather row mt-4 ">
