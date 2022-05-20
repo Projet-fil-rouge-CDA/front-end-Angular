@@ -8,8 +8,6 @@ import { AddComponent } from './category/add/add.component';
 import { EditComponent } from './category/edit/edit.component';
 import {ForumRoutingModule} from "./forum-routing.module";
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
