@@ -1,0 +1,49 @@
+<main class="d-flex align-items-center">
+
+  <div class="d-flex title align-self-start align-items-center justify-content-center">
+    <a href="/">
+      <h1>Univer'Air</h1>
+    </a>
+  </div>
+
+  <section class="text-center bg-white">
+    <h2>Ajout de votre adresse postale</h2>
+    <form [formGroup]="addAddressForm" (submit)="addAddress()" class="d-flex flex-column align-items-center">
+      <input
+        type="text"
+        name="Rue"
+        placeholder="Nom de votre rue / avenue / impasse"
+        required
+        formControlName="street"
+        id="Rue"
+        class="form-control"
+      />
+      <control-messages [control]="addAddressForm.get('street')" class="control"></control-messages>
+      <input
+        type="text"
+        name="CodePostal"
+        placeholder="Code Postal"
+        required
+        formControlName="zipCode"
+        id="zipCode"
+        class="form-control"
+        maxlength="5"
+      />
+      <control-messages [control]="addAddressForm.get('zipCode')" class="control"></control-messages>
+      <input
+        type="text"
+        name="Ville"
+        placeholder="Ville"
+        required
+        formControlName="city"
+        id="city"
+        class="form-control"
+      />
+      <control-messages [control]="addAddressForm.get('city')" class="control"></control-messages>
+      <button [disabled]="!addAddressForm.valid" type="submit" class="bg-success">Accéder à Univer'Air</button>
+    </form>
+  </section>
+
+  <div class="blue">
+  </div>
+</main>
