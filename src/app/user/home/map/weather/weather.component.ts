@@ -13,11 +13,10 @@ export class WeatherComponent implements OnInit {
 
   @Input() weather: NominatimResponse;
 
-  constructor(private weatherService: WeatherService, private stationService: StationService) {
-  }
-
+  @Input() station: string;
+  constructor(private weatherService: WeatherService, private stationService: StationService) { }
   w: Weather;
-  stationName: any;
+
 
   ngOnInit(): void {
 
@@ -30,17 +29,14 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    if (this.weather)
-      this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe(
-        (data: any) => {
-          this.w = data;
-          this.stationService.getStations().subscribe((stations: any) => {
-            let station = Array.from(stations.results)
-            console.log(stations)
-            this.stationName = station.find((s: any) => s.nom_commune === this.weather.address.city);
-          });
-        }
-      );
+
+    if(this.weather)
+    this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe(
+      (data: any) => {
+        this.w = data;
+      }
+    );
+
   }
 
 
