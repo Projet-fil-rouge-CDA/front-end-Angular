@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {NominatimResponse} from "../../shared/models/nominatim-response.model";
+import {Component, OnInit} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,12 @@ import {NominatimResponse} from "../../shared/models/nominatim-response.model";
 })
 export class HomeComponent implements OnInit {
 
-  city: NominatimResponse;
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private titleService: Title) {
   }
 
-  onCityChange(city: NominatimResponse) {
-    this.city = city;
+
+  ngOnInit(): void {
+    this.titleService.setTitle("Univ'Air | Carte");
   }
 
 }

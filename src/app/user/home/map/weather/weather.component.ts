@@ -12,9 +12,10 @@ import {StationService} from "../../../../shared/services/station.service";
 export class WeatherComponent implements OnInit {
 
   @Input() weather: NominatimResponse;
+  @Input() station: string;
   constructor(private weatherService: WeatherService, private stationService: StationService) { }
   w: Weather;
-  stationName: any;
+
 
   ngOnInit(): void {
   }
@@ -24,11 +25,6 @@ export class WeatherComponent implements OnInit {
     this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe(
       (data: any) => {
         this.w = data;
-        this.stationService.getStations().subscribe((stations: any) => {
-          let station = Array.from(stations.results)
-          console.log(stations)
-          this.stationName = station.find((s: any) => s.nom_commune === this.weather.address.city);
-        });
       }
     );
   }
