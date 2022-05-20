@@ -55,7 +55,7 @@ export class MapComponent implements OnInit {
           color: 'rgba(148,148,152,0.41)',
           fillOpacity: 0.7,
           weight: 2
-        }
+        },
       }));
     });
   }
@@ -74,9 +74,13 @@ export class MapComponent implements OnInit {
           radius: 10,
           color: '#5d9f07',
           fillColor: 'rgba(36,152,5,0.32)',
-          fillOpacity: 0.5
-        }).bindPopup(item.nom).addTo(this.map);
+          fillOpacity: 0.5,
+        }).bindPopup('Station '+item.nom).addTo(this.map).on('click', (e: LeafletMouseEvent) => {
+          this.map.setView(e.latlng, 16);
+          this.stationSelected = item;
+        });
       });
+
     });
   }
 

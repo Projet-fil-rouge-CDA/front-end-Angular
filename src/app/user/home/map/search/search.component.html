@@ -1,9 +1,12 @@
 <div class="address-lookup">
 
+  <div class="search-container">
 
-  <input #InputSearch (click)="$event.stopPropagation()" (keyup)="changed(InputSearch.value)" autofocus
-         class="form-control mb-3"
-         placeholder="Rechercher une adresse..." type="text"/>
+    <input #InputSearch (click)="$event.stopPropagation()" (keyup)="changed(InputSearch.value)" autofocus
+           class="form-control mb-3"
+           placeholder="Rechercher une adresse..." type="text" id="search-bar" />
+    <i class="bi bi-search search-icon" ></i>
+  </div>
 
   <div class="row w-50">
     <div *ngIf="isSearching && InputSearch.value.length > 3" class="search-box ms-3">
