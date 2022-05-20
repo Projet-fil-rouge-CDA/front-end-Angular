@@ -7,5 +7,4 @@ export interface Register {
   password: string,
   confirmPassword?: string,
   isActif?: boolean,
-
 }
