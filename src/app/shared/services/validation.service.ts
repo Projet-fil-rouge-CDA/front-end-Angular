@@ -1,12 +1,17 @@
 export class ValidationService {
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-    let config = {
-      'required': 'Requis',
-      'invalidEmailAddress': 'Votre addresse mail est invalide',
-      'invalidPassword': 'Mot de passe invalide, veuillez y mettre une majuscule, un caratère spécial et 1 chiffre',
-      'minlength': `Minimum de lettre requise ${validatorValue.requiredLength}`
-    };
-    return config?[validatorName] : Array
+    switch (validatorName){
+      case 'required':
+        return 'Requis'
+      case 'invalidEmailAddress':
+        return 'Mail invalide'
+      case 'invalidPassword':
+        return '1 majuscule, 1 caratère spécial et 1 chiffre'
+      case 'minlength':
+        return `${validatorValue.requiredLength} lettres minimum`
+      default:
+        return 'Problème input'
+    }
   }
 
   static emailValidator(control : {value: string}) {
@@ -14,7 +19,7 @@ export class ValidationService {
     if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
       return null;
     } else {
-      return { 'invalidEmailAddress': true };
+      return { invalidEmailAddress : true };
     }
   }
 
@@ -24,7 +29,7 @@ export class ValidationService {
     if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
       return null;
     } else {
-      return { 'invalidPassword': true };
+      return { invalidPassword : true };
     }
   }
 
@@ -37,7 +42,7 @@ export class ValidationService {
     } else if(control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){
       return null
     } else {
-      return { 'invalidEmailOrPhone': true};
+      return { invalidEmailOrPhone : true};
     }
   }
 }
