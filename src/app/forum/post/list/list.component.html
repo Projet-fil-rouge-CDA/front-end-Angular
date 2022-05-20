@@ -46,47 +46,58 @@
                     <button type="button" class="btn  btn-sm"><i class="bi bi-hand-thumbs-up"></i> J'aime</button>
                     <button type="button" class="btn  btn-sm me-3"><i class="bi bi-chat-left-text"></i> Commenter</button>
                 </div>
-                <!-- Button pour faire un commentaire -->
-                <div class="list-group-item border-0 text-light">
-                    <div class="d-flex justify-content-between">
-                        <div class="profil">
+                <!-- Ajout des éléments une fois cliquer le botton Commenter -->
+                <div class="d-none">
+                    <!-- Button pour faire un commentaire -->
+                    <div class="list-group-item border-0 text-light">
+                        <div class="d-flex justify-content-between">
+                            <div class="profil">
+                                <a href="" class="text-decoration-none">
+                                    <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
+                                </a>
+                            </div>
+                            <div class="d-grid gap-2 btn-post rounded-pill mx-2">
+                                <button class="btn btn-secondary rounded-pill text-start text-black" type="button">  Ajouter un commentaire </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin du button -->
+
+                    <!-- Ajout d'un button pertinent -->
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                      Les plus pertinents </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item active" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <!-- Fin du button Pertinent -->
+
+                    <!-- Ajout de commentaire -->
+                    <div class="d-flex">
+                        <div class="profil ms-3 mt-2">
                             <a href="" class="text-decoration-none">
                                 <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
                             </a>
                         </div>
-                        <div class="d-grid gap-2 btn-post rounded-pill mx-2">
-                            <button class="btn btn-secondary rounded-pill text-start text-black" type="button">  Ajouter un commentaire </button>
+                        <div>
+                            <p class="border rounded mx-3 p-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas perspiciatis dignissimos molestias recusandae beatae! Aliquid quisquam quos, soluta in, amet ad consequatur, eos libero iste illum obcaecati mollitia! Animi,
+                                quam?
+                            </p>
+                            <ul class="list-unstyled d-flex">
+                                <li>J'aime <i class="bi bi-hand-thumbs-up"></i></li>
+                                <li>Répondre</li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-    Les plus pertinents
-  </button>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item active" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                    </ul>
-                </div>
-                <div class="d-flex">
-                    <div class="profil ms-3 mt-2">
-                        <a href="" class="text-decoration-none">
-                            <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="border rounded mx-3 p-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas perspiciatis dignissimos molestias recusandae beatae! Aliquid quisquam quos, soluta in, amet ad consequatur, eos libero iste illum obcaecati mollitia! Animi, quam?</p>
-                        <ul class="list-unstyled d-flex">
-                            <li>J'aime <i class="bi bi-hand-thumbs-up"></i></li>
-                            <li>Répondre</li>
-                        </ul>
-                    </div>
 
+                    </div>
+                    <!-- Fin de l'ajout de commentaire -->
                 </div>
             </div>
         </div>
