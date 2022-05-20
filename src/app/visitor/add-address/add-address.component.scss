@@ -1,0 +1,60 @@
+main{
+  background-image: url('../../../assets/img/map.png');
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  min-height: max-content;
+  position: relative;
+  .title{
+    position: absolute;
+    left: 0;
+    height: 12vh;
+    margin-top: 3vh;
+    border-top: 1vh solid transparent;
+    border-bottom: 1vh solid transparent;
+    border-left: 30vh solid #0c5ec7;
+    a{
+      text-decoration: none;
+      h1{
+        position: relative;
+        left: -25vh;
+        color: white;
+      }
+    }
+  }
+  section{
+    z-index: 5;
+    margin: 30vh 35vh 23.9vh 0;
+    max-width: 60vh;
+    min-width: 50vh;
+    h2{
+      width: max-content;
+      padding: 5vh 8vh;
+    }
+    input{
+      width: 75%;
+    }
+    button{
+      width: 25vh;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      margin: 1vh 0 3vh 0;
+      padding: 0.5vh;
+    }
+    .control{
+      display: block;
+      height: 20px;
+      margin: 1vh 0;
+    }
+  }
+  .blue{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 75%;
+    display: inline-block;
+    border-bottom: 100vh solid #0c5ec7;
+    border-left: 30vh solid transparent;
+  }
+}
