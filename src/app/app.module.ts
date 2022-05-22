@@ -20,7 +20,7 @@ import { CookiesComponent } from './includes/cookies/cookies.component';
         AppRoutingModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [ ],
   exports: [
     HeaderComponent,
     FooterComponent,
