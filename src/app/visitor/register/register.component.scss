@@ -97,7 +97,9 @@ main{
     }
     .check{
       width: 15%;
-      height: 6.5vh;
+      height: 1.5vh;
+      margin-bottom: 0.5vh;
+      align-self: flex-end;
       #terms{
         height: 3vh;
         width: 25%;
