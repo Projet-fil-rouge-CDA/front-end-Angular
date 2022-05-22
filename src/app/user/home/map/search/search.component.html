@@ -1,16 +1,20 @@
 <div class="address-lookup">
-  <div class="row">
-    <div class="col-md-12">
-      <input #InputSearch (keyup)="changed(InputSearch.value)" (click)="$event.stopPropagation()" class="form-control mb-3" placeholder="Rechercher une adresse..."
-             type="text"/>
-    </div>
-    <div class="row w-50">
-      <div *ngIf="isSearching && InputSearch.value.length > 3" class="search-box ms-3">
-        <div *ngFor="let result of searchResults" class="search-result">
-          <p (click)="onClickResult(result)">{{result.displayName}}</p>
-        </div>
+
+  <div class="search-container">
+
+    <input #InputSearch (click)="$event.stopPropagation()" (keyup)="changed(InputSearch.value)" autofocus
+           class="form-control mb-3"
+           placeholder="Rechercher une adresse..." type="text" id="search-bar" />
+    <i class="bi bi-search search-icon" ></i>
+  </div>
+
+  <div class="row w-50">
+    <div *ngIf="isSearching && InputSearch.value.length > 3" class="search-box ms-3">
+      <div *ngFor="let result of searchResults" class="search-result">
+        <p (click)="onClickResult(result)">{{result.displayName}}</p>
       </div>
     </div>
   </div>
 </div>
+
 

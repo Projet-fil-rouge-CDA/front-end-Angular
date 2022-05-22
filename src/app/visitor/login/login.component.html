@@ -9,6 +9,7 @@
   <section class="text-center bg-white">
     <h2>Se connecter</h2>
     <form [formGroup]="loginForm" (submit)="login()" class="d-flex flex-column align-items-center">
+      <control-messages [control]="loginForm.get('emailOrPhone')" class="control"></control-messages>
       <input
         type="text"
         name="emailOrPhone"
@@ -18,7 +19,7 @@
         id="emailOrPhone"
         class="form-control"
       />
-      <control-messages [control]="loginForm.get('emailOrPhone')" class="control"></control-messages>
+      <control-messages [control]="loginForm.get('password')" class="control"></control-messages>
       <input
         type="password"
         name="password"
@@ -28,8 +29,7 @@
         id="password"
         class="form-control"
       />
-      <control-messages [control]="loginForm.get('password')" class="control"></control-messages>
-      <button [disabled]="!loginForm.valid" type="submit" class="bg-success">Confirmer</button>
+      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success">Confirmer</button>
     </form>
     <div class="register">
       <p>Pas inscrit ? <a routerLink="/register">S'inscrire</a></p>

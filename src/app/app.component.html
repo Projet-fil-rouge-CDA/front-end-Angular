@@ -1,3 +1,5 @@
-<app-header *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address'"></app-header>
+<div [ngClass]="router.url === '/' ? 'bg-primary bg-gradient' : 'bg-white'">
+  <app-header *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address'"></app-header>
 <router-outlet></router-outlet>
 <app-footer *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address'"></app-footer>
+</div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-transparent">
+<nav [ngClass]="router.url === '/' ? 'navbar bg-transparent navbar-light' : 'navbar bg-primary navbar-light'">
   <div class="d-flex align-items-center">
     <a class="navbar-brand" routerLink="/">
       <img src="../../../assets/img/logo/logo.png" class="rounded-circle ms-3" width="35" height="35" alt="">
