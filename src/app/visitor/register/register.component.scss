@@ -1,3 +1,5 @@
+@import "../../breakpoint";
+
 main{
   background-image: url('../../../assets/img/map.png');
   background-size: cover;
@@ -5,6 +7,10 @@ main{
   justify-content: center;
   min-height: max-content;
   position: relative;
+  height: 100vh;
+  @include ecranHD{
+    justify-content: left;
+  }
   .title{
     position: absolute;
     left: 0;
@@ -19,13 +25,23 @@ main{
         position: relative;
         left: -25vh;
         color: white;
+        @include ecranHD{
+          left: -28vh;
+        }
       }
     }
   }
   section{
     margin: 20vh 0 10vh 0;
-    max-width: 60vh;
     min-width: 50vh;
+    @include ecranHD{
+      min-width: 70vh;
+      margin-left: 45vh;
+    }
+    @include Slide43{
+      min-width: 60vh;
+      margin-left: 32vh;
+    }
     h2{
       padding: 5vh 0 2vh 0;
     }
@@ -105,5 +121,8 @@ main{
     display: inline-block;
     border-bottom: 100vh solid #0c5ec7;
     border-left: 30vh solid transparent;
+    @include desktop{
+      width: 30%;
+    }
   }
 }
