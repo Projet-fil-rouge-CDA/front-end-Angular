@@ -1,3 +1,5 @@
+@import "../../breakpoint";
+
 main{
   background-image: url('../../../assets/img/map.png');
   background-size: cover;
@@ -5,6 +7,7 @@ main{
   justify-content: flex-end;
   min-height: max-content;
   position: relative;
+  height: 100vh;
   .title{
     position: absolute;
     left: 0;
@@ -24,9 +27,17 @@ main{
   }
   section{
     z-index: 5;
-    margin: 30vh 35vh 23.9vh 0;
-    max-width: 60vh;
+    margin: 30vh 35vh 25vh 0;
     min-width: 50vh;
+    @include macBookPro16{
+      margin: 30vh 20vh 25vh 0;
+    }
+    @include desktop{
+      margin: 30vh 15vh 25vh 0;
+    }
+    @include Slide43{
+      margin: 30vh 10vh 25vh 0;
+    }
     h2{
       width: max-content;
       padding: 5vh 8vh;
@@ -56,5 +67,8 @@ main{
     display: inline-block;
     border-bottom: 100vh solid #0c5ec7;
     border-left: 30vh solid transparent;
+    @include iMac{
+      width: 85%;
+    }
   }
 }

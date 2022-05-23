@@ -30,6 +30,9 @@ $danger: #8f1629;
 //full-card
 .card {
   border-radius: 3%;
+  width: 18rem;
+  height: 100%;
+  overflow: hidden;
 }
 
 //background-card
@@ -49,7 +52,7 @@ $danger: #8f1629;
 
 //body-card
 .body-card-position {
-  margin-top: -35px;
+  margin-top: 0px;
 
   .cityInformations {
     .card-title {
@@ -73,10 +76,14 @@ $danger: #8f1629;
 
   .actionBtn {
     a {
-      font-size: 10px;
+      font-size: 15px;
+    }
+
+    .btnMoreInformations:hover {
+      background: rgba(128, 128, 128, 0.36);
+
     }
   }
-
 }
 
 //carousel
