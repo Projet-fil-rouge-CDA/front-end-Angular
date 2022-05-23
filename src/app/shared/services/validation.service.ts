@@ -6,7 +6,7 @@ export class ValidationService {
       case 'invalidEmailAddress':
         return 'L\'adresse email est invalide'
       case 'invalidPassword':
-        return 'Vous devez renseigner un mot de passe avec au minimum une majuscule, un chiffre et un caractère spécial'
+        return '1 majuscule, 1 chiffre et 1 caractère spécial minimum'
       case 'minlength':
         return `${validatorValue.requiredLength} lettres minimum`
       default:
@@ -15,8 +15,8 @@ export class ValidationService {
   }
 
   static emailValidator(control : {value: string}) {
-    // RFC 2822 compliant regex
-    if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+    // Vérifie que le mail est une forme valide
+    if (control.value.match(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)) {
       return null;
     } else {
       return { invalidEmailAddress : true };
@@ -24,9 +24,8 @@ export class ValidationService {
   }
 
   static passwordValidator(control : {value: string}) {
-    // {6,100}           - Mot de passe entre 6 et 100 caractères
-    // (?=.*[0-9])       - Possède au moins un nombre
-    if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
+    // Mot de passe de 8 caractère minimum possedant au moins un nombre / une majuscule / un caractère spécial
+    if (control.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z0-9\d@$!%*?&]{8,}$/)) {
       return null;
     } else {
       return { invalidPassword : true };
@@ -34,11 +33,10 @@ export class ValidationService {
   }
 
   static emailOrPhoneValidator(control : {value: string}){
-    // RFC 2822 compliant regex
-    // {6,100}           - Mot de passe entre 6 et 100 caractères
-    // (?=.*[0-9])       - Possède au moins un nombre
-    if(control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)){
+    // Vérifie que le numéro de téléphone commence bien par 05 / 06 / 07 / 08 ou 09 et contient 10 chiffres
+    if(control.value.match(/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[5-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/)){
       return null
+      // Vérifie que le mail est une forme valide
     } else if(control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){
       return null
     } else {
