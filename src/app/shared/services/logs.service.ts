@@ -24,28 +24,60 @@ export class LogsService {
     })
   }
 
+  // Permet de s'enregistrer sur l'appli
   register(register : Users){
     console.log(register);
     if(register.password === register.confirmPassword){
-      const data : Users = {firstname: register.firstname, lastname: register.lastname, phone: register.phone, email: register.email, password: register.password}
-      return this.http.post<Users>(this._urlApi, data, this.httpHeaders)
+      const data : Users = {firstname: register.firstname, lastname: register.lastname, phone: register.phone, email: register.email, password: register.password, isActif: true}
+      this.http.post<Users>(this._urlApi, data, this.httpHeaders).subscribe(res => {
+        if(res == null){
+          // problème lors de l'enregistrement
+          return 'ProbRegister'
+        } else {
+          this.login(data)
+          return console.log('Regisgood');
+        }
+      })
     }
-    return null
   }
 
-  login(register : Users){
-    if(register){
-      console.log(register);
-      return this.http.post<Users>(this._urlApi, register, this.httpHeaders)
+  // Permet de se connecter
+  login(login : Users){
+    let data;
+    // Permet de savoir si un phone ou un email a été placé comme identifiant
+    if(login.email.valueOf().match(/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[5-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/)){
+      data = {phone: login.email, password: login.password}
+    } else {
+      data = {email: login.email, password: login.password}
     }
-    return null
+    console.log(data);
+    if(!data){
+      return console.log('ProbLogIdent');
+    } else{
+      this.http.post<Users>(this._urlApi, data, this.httpHeaders).subscribe(res => {
+        if(res == null){
+          // problème lors de la connection
+          return console.log('ProbLogin');
+        } else{
+          return console.log("logGood");
+          // cookie + redirect add-address
+        }
+      })
+    }
   }
 
+  // Ajout de l'adresse principale pour un nouveau compte
   addAddress(address : Address){
-    if(address){
-      console.log(address);
-      return this.http.post<Address>(this._urlApi, address, this.httpHeaders)
-    }
-    return null
+    // prendre cookie + envoyer dans le post avec l'adresse
+    console.log(address);
+    this.http.post<Address>(this._urlApi, address, this.httpHeaders).subscribe(res => {
+      if(res == null){
+        // problème lors de l'enregistrement de l'adresse
+        return console.log('ProbAddress');
+      } else {
+        //redirect /user
+        return console.log('addressGood');
+      }
+    })
   }
 }

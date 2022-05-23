@@ -1,17 +1,17 @@
-<main class="d-flex align-items-center">
+<main class="d-flex align-items-center justify-content-center vh-100 position-relative">
 
-  <div class="d-flex title align-self-start align-items-center justify-content-center">
-    <a href="/">
-      <h1>Univer'Air</h1>
+  <div class="d-flex title align-self-start align-items-center justify-content-center position-absolute start-0 mt-4">
+    <a href="/" class="text-decoration-none">
+      <h1 class="position-relative text-white">Univer'Air</h1>
     </a>
   </div>
 
-  <section class="text-center bg-white">
-    <h2>S'inscrire</h2>
-    <form (submit)="saveUser()" [formGroup]="registerForm" class="d-flex flex-column align-items-center">
-      <div class="d-flex justify-content-between name">
-        <div class="column">
-          <control-messages [control]="registerForm.get('lastname')" class="control"></control-messages>
+  <section class="bg-white col-4 d-flex justify-content-center flex-column align-items-center">
+    <h2 class="pt-5 pb-2">S'inscrire</h2>
+    <form (submit)="saveUser()" [formGroup]="registerForm" class="d-flex flex-column align-items-center col-9">
+      <div class="d-flex justify-content-between col-12">
+        <div class="d-flex flex-column col-5">
+          <control-messages [control]="registerForm.get('lastname')" class="control d-flex justify-content-center col-12"></control-messages>
           <input
             class="form-control"
             formControlName="lastname"
@@ -22,11 +22,10 @@
             type="text"
           />
         </div>
-        <div class="column">
-          <control-messages [control]="registerForm.get('firstname')"
-                            class="control firstnameControl"></control-messages>
+        <div class="d-flex flex-column col-5">
+          <control-messages [control]="registerForm.get('firstname')" class="control d-flex justify-content-center col-12"></control-messages>
           <input
-            class="form-control"
+            class="form-control align-self-end"
             formControlName="firstname"
             id="firstname"
             name="firstname"
@@ -36,7 +35,7 @@
           />
         </div>
       </div>
-      <control-messages [control]="registerForm.get('phone')" class="control"></control-messages>
+      <control-messages [control]="registerForm.get('phone')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         class="form-control"
         formControlName="phone"
@@ -47,7 +46,7 @@
         required
         type="text"
       />
-      <control-messages [control]="registerForm.get('email')" class="control"></control-messages>
+      <control-messages [control]="registerForm.get('email')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         class="form-control"
         formControlName="email"
@@ -57,7 +56,7 @@
         required
         type="text"
       />
-      <control-messages [control]="registerForm.get('password')" class="control"></control-messages>
+      <control-messages [control]="registerForm.get('password')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         class="form-control"
         formControlName="password"
@@ -67,7 +66,7 @@
         required
         type="password"
       />
-      <control-messages [control]="registerForm.get('confirmPassword')" class="control"></control-messages>
+      <control-messages [control]="registerForm.get('confirmPassword')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         class="form-control"
         formControlName="confirmPassword"
@@ -77,31 +76,27 @@
         required
         type="password"
       />
-      <div class="terms d-flex">
-        <div class="column check">
-          <input
-            class="check-control"
-            formControlName="terms"
-            id="terms"
-            name="terms"
-            required
-            type="checkbox"
-          />
-          <div class="none"></div>
-        </div>
-        <div class="column">
-          <control-messages [control]="registerForm.get('terms')" class="controlTerms"></control-messages>
+      <div class="d-flex justify-content-between mt-2 col-12">
+        <input
+          class="d-flex align-self-end check-control col-1 mb-1"
+          formControlName="terms"
+          id="terms"
+          name="terms"
+          required
+          type="checkbox"
+        />
+        <div class="d-flex flex-column col-10 align-items-center">
+          <control-messages [control]="registerForm.get('terms')" class="control d-flex justify-content-center col-12"></control-messages>
           <p>J'accepte les <a class="text-warning text-decoration-none" href="#">conditions générales</a> d'utilisation
           </p>
         </div>
       </div>
-      <button [disabled]="!registerForm.valid" class="btn btn-success" type="submit">Confirmer</button>
+      <button [disabled]="!registerForm.valid" class="btn btn-success col-4 border-none rounded-5 text-white mt-4 mb-3" type="submit">Confirmer</button>
     </form>
-    <div class="login">
+    <div class="pt-2 pb-3 border-top border-dark col-12 text-center">
       <p>Déjà inscrit ? <a routerLink="/login">Se connecter</a></p>
     </div>
   </section>
-
-  <div class="blue">
+  <div class="position-absolute end-0 top-0 blue col-3 d-inline-block">
   </div>
 </main>
