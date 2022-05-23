@@ -1,13 +1,13 @@
 <div class="container min-vh-100">
     <div class="mt-md-5">
-        <h1 class="text-light">NEWS POSTS</h1>
+        <h1 class="text-black">NEWS POSTS</h1>
     </div>
 
     <div class="row">
         <!-- Listes des posts -->
         <div class="col-md-6">
             <!-- Button pour faire une publication -->
-            <div class="list-group-item text-light my-2">
+            <div class="list-group-item text-black my-2">
                 <div class="d-flex justify-content-between">
                     <div class="profil">
                         <a href="" class="text-decoration-none">
@@ -15,11 +15,67 @@
                         </a>
                     </div>
                     <div class="d-grid gap-2 btn-post rounded-pill mx-2">
-                        <button class="btn btn-secondary rounded-pill text-start text-black" type="button">  Publier un post </button>
+                        <button type="button" class="btn btn-secondary rounded-pill text-start text-black" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                         Publier un post
+                        </button>
+
+                        <!-- Modal publier post-->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <!-- Modal header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title h6" id="exampleModalLabel">Créer un post</h5>
+                                        <button class="border-0 rounded-circle bg-light"><i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i></button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <form action="">
+                                        <div class="modal-body">
+                                            <div class="d-flex justify-content-between align-items-center profil">
+                                                <div class="d-flex">
+                                                    <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
+                                                    <ul class="list-unstyled text-black ms-3">
+                                                        <li class="fs-6 fw-light">Pseudo User</li>
+                                                        <li class="fs-6 fw-lighter">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Air
+  </button>
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <input type="text" class="p-1 bg-secondary" placeholder="Mettez votre titre ici">
+                                            </div>
+                                            <div>
+                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius impedit distinctio dolorem atque quibusdam, nobis necessitatibus tenetur eum, repellat similique officia qui? Eius laboriosam fugit laborum
+                                                    a vel corrupti quia?</p>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="border-0 rounded-circle bg-light end me-2"><i class="bi bi-camera-fill"></i>
+                                              </button>
+                                                <button class="border-0 rounded-circle bg-light end"><i class="bi bi-camera-reels-fill"></i>
+                                              </button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary w-100">Publier</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
+
+            <!-- Affichage des posts -->
+            <div class="card my-2">
                 <div class="card-body">
                     <div class="d-flex justify-content-between border-bottom">
                         <div class="d-flex profil">
@@ -30,7 +86,6 @@
                             </ul>
                         </div>
                         <button class="btn btn-link text-black" type="button"><i class="bi bi-three-dots-vertical"></i></button>
-                        <!-- <i class="bi bi-three-dots"></i> -->
                     </div>
                     <h5 class="card-title pt-2">Mon titre</h5>
                     <p class="card-text">Ut ornare nibh sit amet leo sollicitudin malesuada. Nam ac enim in elit gravida rhoncus et ut nulla. Nulla elit orci, vulputate a volutpat</p>
@@ -47,18 +102,20 @@
                     <button type="button" class="btn  btn-sm me-3"><i class="bi bi-chat-left-text"></i> Commenter</button>
                 </div>
                 <!-- Ajout des éléments une fois cliquer le botton Commenter -->
-                <div class="d-none">
+                <div class="d-block">
                     <!-- Button pour faire un commentaire -->
-                    <div class="list-group-item border-0 text-light">
+                    <div class="list-group-item border-0 text-black">
                         <div class="d-flex justify-content-between">
                             <div class="profil">
                                 <a href="" class="text-decoration-none">
                                     <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
                                 </a>
                             </div>
-                            <div class="d-grid gap-2 btn-post rounded-pill mx-2">
-                                <button class="btn btn-secondary rounded-pill text-start text-black" type="button">  Ajouter un commentaire </button>
-                            </div>
+                            <form action="" class="d-grid gap-2 btn-post rounded-pill mx-2">
+
+                                <input type="text" class="ps-3 bg-body rounded-pill text-start text-black" placeholder="Écrire un commentaire">
+
+                            </form>
                         </div>
                     </div>
                     <!-- Fin du button -->
@@ -90,8 +147,9 @@
                             <p class="border rounded mx-3 p-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas perspiciatis dignissimos molestias recusandae beatae! Aliquid quisquam quos, soluta in, amet ad consequatur, eos libero iste illum obcaecati mollitia! Animi,
                                 quam?
                             </p>
-                            <ul class="list-unstyled d-flex">
+                            <ul class="list-unstyled d-flex justify-content-around">
                                 <li>J'aime <i class="bi bi-hand-thumbs-up"></i></li>
+                                <li>|</li>
                                 <li>Répondre</li>
                             </ul>
                         </div>
@@ -100,17 +158,44 @@
                     <!-- Fin de l'ajout de commentaire -->
                 </div>
             </div>
+            <!--  -->
+
         </div>
+
         <!-- Fin de la listes -->
         <div class="col-md-6 d-none d-md-block border-left end">
             <!-- Form Recherche -->
             <div class="d-flex my-sm-3">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Que recherchez-vous ? " aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+                    <button class="btn btn-outline-secondary text-black" type="submit">Rechercher</button>
                 </form>
             </div>
         </div>
 
     </div>
 </div>
+<!-- Modals -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-secondary rounded-pill text-start text-black" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  publier
+</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> -->
