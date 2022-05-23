@@ -13,62 +13,65 @@
             </div>
         </div>
     </div>
-    <!-- Form Recherche -->
+
     <div class="d-flex my-sm-3 justify-content-between">
-        <button type="button" class="btn btn-outline-secondary rounded text-start text-black " data-bs-toggle="modal " data-bs-target="#exampleModal ">
+        <!-- Form Publier un post -->
+        <div>
+            <button type="button" class="btn btn-outline-secondary rounded text-start text-black" data-bs-toggle="modal" data-bs-target="#exampleModal">
                          Publier un post
                         </button>
 
-        <!-- Modal publier post-->
-        <div class="modal fade " id="exampleModal " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
-                <div class="modal-content ">
-                    <!-- Modal header -->
-                    <div class="modal-header ">
-                        <h5 class="modal-title h6 " id="exampleModalLabel ">Créer un post</h5>
-                        <button class="border-0 rounded-circle bg-light "><i class="bi bi-x-lg " data-bs-dismiss="modal " aria-label="Close "></i></button>
-                    </div>
-                    <!-- Modal body -->
-                    <form action=" ">
-                        <div class="modal-body ">
-                            <div class="d-flex justify-content-between align-items-center profil ">
-                                <div class="d-flex ">
-                                    <img src="/assets/img/img-prof.jpg " class="rounded-circle " alt=" ">
-                                    <ul class="list-unstyled text-black ms-3 ">
-                                        <li class="fs-6 fw-light ">Pseudo User</li>
-                                        <li class="fs-6 fw-lighter ">
-                                            <div class="dropdown ">
-                                                <button class="btn btn-secondary btn-sm dropdown-toggle " type="button " id="dropdownMenuButton1 " data-bs-toggle="dropdown " aria-expanded="false ">
-    Air
-  </button>
-                                                <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1 ">
-                                                    <li><a class="dropdown-item " href="# ">Action</a></li>
-                                                    <li><a class="dropdown-item " href="# ">Another action</a></li>
-                                                    <li><a class="dropdown-item " href="# ">Something else here</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
+            <!-- Modal publier post-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title h6" id="exampleModalLabel">Créer un post</h5>
+                            <button class="border-0 rounded-circle bg-light"><i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i></button>
+                        </div>
+                        <!-- Modal body -->
+                        <form action="">
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-between align-items-center profil">
+                                    <div class="d-flex">
+                                        <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
+                                        <ul class="list-unstyled text-black ms-3">
+                                            <li class="fs-6 fw-light">Pseudo User</li>
+                                            <li class="fs-6 fw-lighter">
+                                                <div class="input-group">
+                                                    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                                  <option selected>Air</option>
+                                                                  <option value="1">Pollution</option>
+                                                                  <option value="2">Météo</option>
+                                                                  <option value="3">Conseils</option>
+                                                                </select>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" class="p-1 bg-body border-1 rounded-1 border-secondary" placeholder="Mettez votre titre ici">
                                 </div>
-                                <input type="text " class="p-1 bg-secondary " placeholder="Mettez votre titre ici ">
-                            </div>
-                            <div>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius impedit distinctio dolorem atque quibusdam, nobis necessitatibus tenetur eum, repellat similique officia qui? Eius laboriosam fugit laborum a vel corrupti quia?</p>
-                            </div>
-                            <div class="d-flex justify-content-end ">
-                                <button class="border-0 rounded-circle bg-light end me-2 "><i class="bi bi-camera-fill "></i>
+                                <div class="my-2">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Écrire quelque chose..."></textarea>
+                                </div>
+                                <div class="d-flex justify-content-end">
+
+                                    <button class="border-0 rounded-circle bg-light end me-2"><i class="bi bi-camera-fill"></i>
                                               </button>
-                                <button class="border-0 rounded-circle bg-light end "><i class="bi bi-camera-reels-fill "></i>
+                                    <button class="border-0 rounded-circle bg-light end"><i class="bi bi-camera-reels-fill"></i>
                                               </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer ">
-                            <button type="button " class="btn btn-secondary w-100 ">Publier</button>
-                        </div>
-                    </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary w-100">Publier</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Form Recherche -->
         <form class="d-flex ">
             <input class="form-control me-2 " type="search " placeholder="Que recherchez-vous ? " aria-label="Search ">
             <button class="btn btn-outline-secondary text-black " type="submit ">Rechercher</button>
