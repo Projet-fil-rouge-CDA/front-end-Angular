@@ -1,13 +1,11 @@
 {
-  "users": [
-    {
-      "id": 41654,
-      "lastname": "Pinheiro",
-      "firstname": "Adrien",
-      "phone": "0625319690",
-      "email": "adrien@gmail.com",
-      "password": "Projet31",
-      "isActif": 1
-    }
-  ]
+    "users": [{
+        "id": 41654,
+        "lastname": "Pinheiro",
+        "firstname": "Adrien",
+        "phone": "0625319690",
+        "email": "adrien@gmail.com",
+        "password": "Projet31",
+        "isActif": 1
+    }]
 }
