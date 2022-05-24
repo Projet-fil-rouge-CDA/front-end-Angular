@@ -19,7 +19,7 @@ export class MapService {
   layer: Array<GeoJSON> = [];
   station: Array<any> = [];
   stationSelected: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  citySelected: BehaviorSubject<NominatimResponse> = new BehaviorSubject<any>(null);
+  citySelected: BehaviorSubject<NominatimResponse | null > = new BehaviorSubject<NominatimResponse | null>(null);
   constructor(private http: HttpClient, private stationService: StationService) {
   }
 
@@ -85,12 +85,12 @@ export class MapService {
         L.circleMarker([item.geometry.coordinates[1], item.geometry.coordinates[0]], {
           radius: 10, color: '#5d9f07', fillColor: 'rgba(36,152,5,0.32)', fillOpacity: 0.5,
         }).bindPopup('Station ' + item.nom).on('click', (e: LeafletMouseEvent) => {
+          console.log(item)
           this.citySelected.next(new NominatimResponse(item.geometry.coordinates[1], item.geometry.coordinates[0], item.nom, {
               city: item.commune_nom,
               country: 'France',
-              county: 'Loire',
+              county: item.code_departement,
               state: 'Pays de la Loire',
-              village: '',
           }));
           this.stationSelected.next(item.nom);
           this.map.setView(e.latlng, 16);

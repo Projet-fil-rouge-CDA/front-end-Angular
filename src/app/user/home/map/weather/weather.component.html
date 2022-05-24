@@ -1,19 +1,19 @@
-{{weather | json }}
-<div class="card m-2" style="width: 18rem; height: 90%; z-index: 999999;" *ngIf="weather && w" [ngClass]='getWeatherClass(w.weather_state_name)'>
+<div *ngIf="weather && w" [ngClass]='getWeatherClass(w.weather_state_name)' class="card m-2"
+     style="width: 18rem; height: 90%; z-index: 999999;">
 
   <!--  //Image-->
-  <img class="card-img-top img-weather" src="assets/img/sun.png" alt="Sun image"
-       *ngIf="w.weather_state_name === 'Clear'">
-  <img class="card-img-top img-weather" src="assets/img/cloud.png" alt="Cloud image"
-       *ngIf="w.weather_state_name === 'Clouds'">
-  <img class="card-img-top img-weather" src="assets/img/rain.png" alt="Cloud image"
-       *ngIf="w.weather_state_name === 'Rain'">
+  <img *ngIf="w.weather_state_name === 'Clear'" alt="Sun image" class="card-img-top img-weather"
+       src="assets/img/sun.png">
+  <img *ngIf="w.weather_state_name === 'Clouds'" alt="Cloud image" class="card-img-top img-weather"
+       src="assets/img/cloud.png">
+  <img *ngIf="w.weather_state_name === 'Rain'" alt="Cloud image" class="card-img-top img-weather"
+       src="assets/img/rain.png">
   <div class="card-body  body-card-position text-light">
     <!--    //Ville informations-->
     <div class="cityInformations basic-font">
-      <p class="card-title m-0 text-center ">{{weather.address.city}}</p>
+      <p class="card-title m-0 text-center ">{{weather.address.city || weather.displayName.split(',')[0]}}</p>
 
-      <p class="region m-0 text-center">{{weather.address.county}} (1 426 000 hab.)</p>
+      <p class="region m-0 text-center">{{weather.address.county}}</p>
       <p class="WeatherStation m-0 text-center">Station {{station}}</p>
 
     </div>
@@ -30,9 +30,12 @@
     </div>
     <div class="d-flex justify-content-center mt-5">
       <div class="actionBtn me-4">
-        <a href="#" class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
-          d'informations</a></div>
-      <a> <i [ngClass]="w.liked?'text-red bi bi-heart-fill':'text-red bi bi-heart'"  (click)="addFavorite()"></i></a>
+        <a [routerLink]="['/user/station']" [queryParams]="{stationName: station}" class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
+          d'informations
+        </a>
+      </div>
+      <i (click)="addFavorite()" [ngClass]="w.liked?'text-red bi bi-heart-fill':'text-red bi bi-heart'"
+         style="cursor: pointer"></i>
     </div>
   </div>
 </div>

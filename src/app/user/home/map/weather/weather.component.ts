@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {NominatimResponse} from "../../../../shared/models/nominatim-response.model";
 import {WeatherService} from "../../../../shared/services/weather.service";
 import {Weather} from "../../../../shared/models/weather.model";
 import {MapService} from "../../../../shared/services/map.service";
+
 
 @Component({
   selector: 'app-weather',
@@ -11,18 +12,23 @@ import {MapService} from "../../../../shared/services/map.service";
 })
 export class WeatherComponent implements OnInit {
 
-  weather: NominatimResponse;
+  s = this.mapService.citySelected;
+  weather: NominatimResponse | null;
   station: any;
   w: Weather;
 
-  constructor(private weatherService: WeatherService, private mapService: MapService) {
+  constructor(private weatherService: WeatherService, private mapService: MapService, private zone: NgZone) {
   }
 
   ngOnInit(): void {
     this.mapService.citySelected.subscribe(city => {
-      this.weather = city;
+      this.zone.run(() => {
+        this.weather = city;
+      });
       if (this.weather) this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe((data: any) => {
-        this.w = data;
+        this.zone.run(() => {
+          this.w = data;
+        });
       });
     });
     this.mapService.stationSelected.subscribe(station => {

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StationService} from "../../../../shared/services/station.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-station',
@@ -8,8 +9,14 @@ import {StationService} from "../../../../shared/services/station.service";
 })
 export class StationComponent implements OnInit {
 
-  constructor(private stationService: StationService) {}
+  stationName: string;
+  constructor(private stationService: StationService, private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {};
+  ngOnInit(): void {
+    // stationName = queryParams
+    this.activatedRoute.queryParams.subscribe(queryParams => {
+      this.stationName = queryParams['stationName'];
+    });
+  };
 
 }
