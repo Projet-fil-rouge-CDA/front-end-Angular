@@ -85,14 +85,13 @@ export class MapService {
         L.circleMarker([item.geometry.coordinates[1], item.geometry.coordinates[0]], {
           radius: 10, color: '#5d9f07', fillColor: 'rgba(36,152,5,0.32)', fillOpacity: 0.5,
         }).bindPopup('Station ' + item.nom).on('click', (e: LeafletMouseEvent) => {
-          console.log(item)
           this.citySelected.next(new NominatimResponse(item.geometry.coordinates[1], item.geometry.coordinates[0], item.nom, {
               city: item.commune_nom,
               country: 'France',
               county: item.code_departement,
               state: 'Pays de la Loire',
           }));
-          this.stationSelected.next(item.nom);
+          this.stationSelected.next(item);
           this.map.setView(e.latlng, 16);
         }).addTo(this.map);
       });
@@ -140,7 +139,7 @@ export class MapService {
       const currDist = MapService.getDistance(curr.geometry.coordinates[1], curr.geometry.coordinates[0], lat, lng);
       return prevDist < currDist ? prev : curr;
     });
-    this.stationSelected.next(station.nom);
+    this.stationSelected.next(station);
   }
 
   /**

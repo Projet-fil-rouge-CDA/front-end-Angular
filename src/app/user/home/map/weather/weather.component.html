@@ -14,7 +14,7 @@
       <p class="card-title m-0 text-center ">{{weather.address.city || weather.displayName.split(',')[0]}}</p>
 
       <p class="region m-0 text-center">{{weather.address.county}}</p>
-      <p class="WeatherStation m-0 text-center">Station {{station}}</p>
+      <p class="WeatherStation m-0 text-center">Station {{station.nom}}</p>
 
     </div>
     <!--    //Météo-->
@@ -30,7 +30,7 @@
     </div>
     <div class="d-flex justify-content-center mt-5">
       <div class="actionBtn me-4">
-        <a [routerLink]="['/user/station']" [queryParams]="{stationName: station}" class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
+        <a [routerLink]="['/user/station']" [queryParams]="{stationName: station.nom, stationCode: station.code}" class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
           d'informations
         </a>
       </div>
