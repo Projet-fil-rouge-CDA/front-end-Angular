@@ -13,5 +13,6 @@ export class NominatimAddress {
     public country: string,
     public county: string,
     public state: string,
+    public village?: string
   ) {}
 }
