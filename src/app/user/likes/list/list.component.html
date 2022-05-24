@@ -1,56 +1,85 @@
-<div class="d-flex justify-content-center text-light basic-font page-title"> Mes stations météo favorites</div>
+<div class="d-flex justify-content-center text-black basic-font page-title my-5"> Mes stations météo favorites</div>
 
-<div class="container-fluid">
+
+<div class="container-fluid containerCards">
   <div class="row">
-    <div class="">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-        <div class="carousel-indicators indicator-bottom">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+    <div *ngIf="weathers">
+      <div class="d-flex justify-content-center flex-wrap">
+        <div *ngFor="let weather of weathers; let index = index">
+          <div class="mb-4 cardItem me-4">
 
-            <div *ngIf="weathers">
-              <div class="d-flex justify-content-center">
-                <div *ngFor="let weather of weathers">
+            <div class="accordion accordion-flush overflow-hidden cardMiniature" id="accordionFlush{{index}}">
+              <div class="accordion-item  ">
+                <div class="accordion-header overflow-hidden " id="flush-heading{{index}}">
+                  <button  class="accordion-button collapsed cardMiniatureHead rounded-top " (click)="weather.clicked = !weather.clicked"
+                          [ngClass]='getWeatherClassMiniCard(weather.weather_state_name)'
+                          data-bs-toggle="collapse"
+                          [attr.data-bs-target]="'#flush-'+index" aria-expanded="false"
+                          [attr.aria-controls]="'#flush-'+index">
 
-                  <div class="card ms-2" *ngIf="weather"
-                       [ngClass]='getWeatherClass(weather.weather_state_name)'>
-                    <!--  //Image-->
                     <img class="card-img-top img-weather" src="assets/img/sun.png" alt="Sun image"
                          *ngIf="weather.weather_state_name === 'Clear'">
                     <img class="card-img-top img-weather" src="assets/img/cloud.png" alt="Cloud image"
                          *ngIf="weather.weather_state_name === 'Clouds'">
                     <img class="card-img-top img-weather" src="assets/img/rain.png" alt="Cloud image"
                          *ngIf="weather.weather_state_name === 'Rain'">
-                    <div class="card-body basic-font body-card-position text-light">
-                      <!--    //Ville informations-->
-                      <div class="cityInformations basic-font">
-                        <p class="card-title m-0 text-center ">{{weather.city?.city}}</p>
-                        <p class="region m-0 text-center">{{weather.city?.county}} (1 426 000 hab.)</p>
-                        <p class="WeatherStation m-0 text-center ">Station LA CHAUVINIERE</p>
-                      </div>
-                      <!--    //Météo-->
-                      <div class="detailsWeather row mt-4 ">
-                        <p class="degree m-0 text-center "> {{weather.temperature}}°C</p>
-                        <p class="degreeAppreciation m-0 text-center "> {{translateWeatherToFrench(weather.weather_state_name)}}</p>
-                      </div>
-                      <!--    //Qualité de l'air-->
-                      <div class="detailsAirQuality mt-4">
+                    <img class="card-img-top img-weather" src="assets/img/thunderstorm.png"
+                         style="position: absolute; top: -6px; left: 0;" alt="Cloud image"
+                         *ngIf="weather.weather_state_name === 'Thunderstorm'">
+
+                    <div class="w-100 text-light position-absolute start-0 pt-5" id="{{index}}"*ngIf="!weather.clicked">
+                      <p class="card-title m-0 text-center ">{{weather.city?.city}}</p>
+                      <div class="d-flex justify-content-center mt-2">
+
+                        <p class="degree m-0 text-center me-2"> {{weather.temperature}}°C</p>
+                        <p class="numberAirQuality m-0 text-center"> 20µg/m³</p></div>
+
+                    </div>
+                  </button>
+                </div>
+                <div id="flush-{{index}}" class="accordion-collapse collapse"
+                     [attr.aria-labelledby]="'flush-headingOne'+index"
+                     [attr.data-bs-parent]="'#accordionFlush'+index">
+                  <div class="accordion-body p-0">
+                    <div class="cardAllInformations" *ngIf="weather"
+                         [ngClass]='getWeatherClass(weather.weather_state_name)'>
+                      <!--  //Image-->
+                      <img class="card-img-top img-weather img-card" src="assets/img/sun.png" alt="Sun image"
+                           *ngIf="weather.weather_state_name === 'Clear'">
+                      <img class="card-img-top img-weather img-card" src="assets/img/cloud.png" alt="Cloud image"
+                           *ngIf="weather.weather_state_name === 'Clouds'">
+                      <img class="card-img-top img-weather img-card" src="assets/img/rain.png" alt="Cloud image"
+                           *ngIf="weather.weather_state_name === 'Rain'">
+                      <img class="card-img-top img-weather img-card" src="assets/img/thunderstorm.png" alt="Cloud image"
+                           *ngIf="weather.weather_state_name === 'Thunderstorm'">
+                      <div class="card-body basic-font body-card-position text-light">
+                        <!--    //Ville informations-->
+                        <div class="cityInformations basic-font">
+                          <p class="card-title m-0 text-center ">{{weather.city?.city}}</p>
+                          <p class="region m-0 text-center">{{weather.city?.county}} (1 426 000 hab.)</p>
+                          <p class="WeatherStation m-0 text-center ">Station LA CHAUVINIERE</p>
+                        </div>
+                        <!--    //Météo-->
+                        <div class="detailsWeather row mt-4 ">
+                          <p class="degree m-0 text-center "> {{weather.temperature}}°C</p>
+                          <p
+                            class="degreeAppreciation m-0 text-center "> {{translateWeatherToFrench(weather.weather_state_name)}}</p>
+                        </div>
+                        <!--    //Qualité de l'air-->
+                        <div class="detailsAirQuality mt-4">
 
                   <span class="airQualityAppreciation m-0 text-center"> <p class="m-0">Air</p> <p
                     class="m-0">Correct</p></span>
-                        <p class="numberAirQuality m-0 text-center"> 20µg/m³</p>
-                      </div>
-                      <div class="d-flex justify-content-center mt-4">
-                        <div class="actionBtn me-4">
-                          <a href="#"
-                             class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
-                            d'informations</a></div>
-                        <a href=""> <i class="bi bi-heart-fill text-red"></i></a>
+                          <p class="numberAirQuality m-0 text-center"> 20µg/m³</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                          <div class="actionBtn me-4">
+                            <a href="#"
+                               class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
+                              d'informations</a></div>
+                          <span> <i [ngClass]="weather.liked?'text-red bi bi-heart-fill':'text-red bi bi-heart'"
+                                    (click)="toggleFavorite(weather)"></i></span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -60,19 +89,13 @@
           </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
   </div>
 </div>
+
+
+
+
 
 
 

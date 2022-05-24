@@ -38,10 +38,30 @@ export class WeatherService {
         return 'white-gradient-background';
       case 'Rain':
         return 'grey-gradient-background';
+      case 'Thunderstorm':
+        return 'dark-grey-gradient-background';
       default:
         return 'white-gradient-background';
     }
   }
+  getWeatherClassMiniCard(weather: string): string {
+    switch (weather) {
+      case 'Clear':
+        return 'blue-gradient-background-mini-card';
+      case 'Clouds':
+        return 'grey-gradient-background-mini-card';
+      case 'Snow':
+        return 'white-gradient-background-mini-card';
+      case 'Rain':
+        return 'grey-gradient-background-mini-card';
+      case 'Thunderstorm':
+        return 'dark-grey-gradient-background-mini-card';
+
+      default:
+        return 'white-gradient-background';
+    }
+  }
+
   translateWeatherToFrench(weather: string): string {
     switch (weather) {
       case 'Clear':
@@ -52,6 +72,8 @@ export class WeatherService {
         return 'Neige';
       case 'Rain':
         return 'Pluvieux';
+      case 'Thunderstorm':
+        return 'Orageux';
       default:
         return 'Inconnu';
     }

@@ -39,11 +39,7 @@ export class WeatherComponent implements OnInit {
 
   }
 
-
-
-  addFavorite() {
+  toggleFavorite() {
 this.w.liked = !this.w.liked
-
-
   }
 }

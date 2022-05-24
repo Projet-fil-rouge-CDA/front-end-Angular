@@ -26,7 +26,8 @@ export class LikeService {
         "country": "France",
         "county": "Pays de la loire",
         "state": "Pays de la loire"
-      }
+      },
+      "clicked": false
 
 
     }, {
@@ -45,7 +46,8 @@ export class LikeService {
           "country": "France",
           "county": "Maine et loire",
           "state": "Pays de la loire"
-        }
+        },
+      "clicked": false
 
     }, {
       "id": 816,
@@ -62,10 +64,11 @@ export class LikeService {
         "country": "France",
         "county": "Loire-Atlantique",
         "state": "Pays de la loire"
-      }
+      },
+      "clicked": false
     }, {
       "id": 925,
-      "weather_state_name": "Rain",
+      "weather_state_name": "Thunderstorm",
       "temperature": 23,
       "humidity": 42,
       "wind_speed": 16,
@@ -78,7 +81,8 @@ export class LikeService {
         "country": "France",
         "county": "Sarthe",
         "state": "Pays de la loire"
-      }
+      },
+      "clicked": false
     }, {
       "id": 925,
       "weather_state_name": "Clouds",
@@ -88,16 +92,84 @@ export class LikeService {
       "cloud_cover": 28,
       "rain": 11,
       "snow": 9,
-      "liked": false,
+      "liked": true,
       "city": {
         "city": "Oudon",
         "country": "France",
         "county": "Loire-Atlantique",
         "state": "Pays de la loire"
-      }
+      },
+      "clicked": false
+    },{
+      "id": 925,
+      "weather_state_name": "Clouds",
+      "temperature": 23,
+      "humidity": 42,
+      "wind_speed": 16,
+      "cloud_cover": 28,
+      "rain": 11,
+      "snow": 9,
+      "liked": true,
+      "city": {
+        "city": "Oudon",
+        "country": "France",
+        "county": "Loire-Atlantique",
+        "state": "Pays de la loire"
+      },
+      "clicked": false
+    },{
+      "id": 925,
+      "weather_state_name": "Clouds",
+      "temperature": 23,
+      "humidity": 42,
+      "wind_speed": 16,
+      "cloud_cover": 28,
+      "rain": 11,
+      "snow": 9,
+      "liked": true,
+      "city": {
+        "city": "Oudon",
+        "country": "France",
+        "county": "Loire-Atlantique",
+        "state": "Pays de la loire"
+      },
+      "clicked": false
+    },{
+      "id": 925,
+      "weather_state_name": "Clouds",
+      "temperature": 23,
+      "humidity": 42,
+      "wind_speed": 16,
+      "cloud_cover": 28,
+      "rain": 11,
+      "snow": 9,
+      "liked": true,
+      "city": {
+        "city": "Oudon",
+        "country": "France",
+        "county": "Loire-Atlantique",
+        "state": "Pays de la loire"
+      },
+      "clicked": false
+    },{
+      "id": 925,
+      "weather_state_name": "Clouds",
+      "temperature": 23,
+      "humidity": 42,
+      "wind_speed": 16,
+      "cloud_cover": 28,
+      "rain": 11,
+      "snow": 9,
+      "liked": true,
+      "city": {
+        "city": "Oudon",
+        "country": "France",
+        "county": "Loire-Atlantique",
+        "state": "Pays de la loire"
+      },
+      "clicked": false
     }
   ]
-
 
 
   getWeathersLiked(): Weather[] {
@@ -105,4 +177,6 @@ export class LikeService {
       return weather.liked;
     });
   }
+
+
 }
