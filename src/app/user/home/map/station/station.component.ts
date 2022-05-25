@@ -40,12 +40,11 @@ export class StationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let c = this.datePipe.transform(this.startDate, 'yyyy-M-dd');
     this.activatedRoute.queryParams.subscribe(queryParams => {
       this.stationName = queryParams['stationName'];
       this.stationCode = queryParams['stationCode'];
     });
-    this.polluantService.getAllPolluants(parseInt(this.typePolluant), this.itemsPerPage, this.offset, c, '2022-5-24', this.metrique, this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getAllPolluants(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
       this.polluant = polluants.results;
       this.totalItems = polluants.count;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -54,20 +53,19 @@ export class StationComponent implements OnInit {
   };
 
   changePage(page: number) {
-    this.isLoading = true;
     this.currentPage = page;
     this.offset = (page - 1) * 10;
-    this.polluantService.getAllPolluants(this.typePolluant, 10, this.offset, '2022-4-1', '2022-5-24', this.metrique, this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getAllPolluants(this.typePolluant, 10, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
       this.polluant = polluants.results;
       this.totalItems = polluants.count;
+      console.log(this.totalItems);
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
-      this.isLoading = false;
     });
   }
 
   onChangePolluant() {
     this.isLoading = true;
-    this.polluantService.getAllPolluants(this.typePolluant, this.itemsPerPage, this.offset, '2022-4-1', '2022-5-24', 'horaire', this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getAllPolluants(this.typePolluant, this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), 'horaire', this.stationCode).subscribe((polluants: any) => {
       this.polluant = polluants.results;
       this.totalItems = polluants.count;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -77,7 +75,17 @@ export class StationComponent implements OnInit {
 
   onChangeMetrique() {
     this.isLoading = true;
-    this.polluantService.getAllPolluants(this.typePolluant, this.itemsPerPage, this.offset, '2022-4-1', '2022-5-24', this.metrique, this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getAllPolluants(this.typePolluant, this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
+      this.polluant = polluants.results;
+      this.totalItems = polluants.count;
+      this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
+      this.isLoading = false;
+    });
+  }
+
+  onChangeDate() {
+    this.isLoading = true;
+    this.polluantService.getAllPolluants(this.typePolluant, this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
       this.polluant = polluants.results;
       this.totalItems = polluants.count;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -100,6 +108,10 @@ export class StationComponent implements OnInit {
       default:
         return 'N/A';
     }
+  }
+
+  ngOnDestroy(): void {
+    this.polluant = null;
   }
 
 }

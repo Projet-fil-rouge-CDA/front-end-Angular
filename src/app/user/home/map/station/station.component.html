@@ -6,11 +6,11 @@
   <div class="row justify-content-end" *ngIf="!isLoading">
     <div class="col-md-2">
       <label class="col-form-label">Date de début</label>
-      <input type="date" class="form-select" [valueAsDate]="startDate">
+      <input type="date" [max]="endDate | date:'yyyy-MM-dd'" class="form-select" name="startDate" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event; onChangeDate()">
     </div>
     <div class="col-md-2">
       <label class="col-form-label">Date de fin</label>
-      <input type="date" class="form-select" [valueAsDate]="endDate">
+      <input type="date" [max]="endDate | date:'yyyy-MM-dd'" class="form-select" name="endDate" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="endDate = $event; onChangeDate()">
     </div>
     <div class="col-md-2">
       <label class="col-form-label">Type de métrique</label>
@@ -27,7 +27,7 @@
       </select>
     </div>
   </div>
-  <table class="table" *ngIf="polluant.length !== 0 && !isLoading">
+  <table class="table" *ngIf="polluant && polluant.length !== 0 && !isLoading">
     <thead>
     <tr>
       <th scope="col">#</th>
@@ -47,21 +47,24 @@
     </tr>
     </tbody>
   </table>
-  <nav aria-label="Page navigation example" *ngIf="polluant.length !== 0 && !isLoading">
+  <div class="d-flex justify-content-end" *ngIf="polluant && polluant.length !== 0 && !isLoading">
+    <button class="btn btn-warning text-white">Exporter les données au format PDF</button>
+  </div>
+  <nav aria-label="Page navigation example" *ngIf="polluant && polluant.length !== 0 && !isLoading">
     <ul class="pagination justify-content-center">
       <li class="page-item" [ngClass]="currentPage === 1 ? 'disabled' : ''">
         <button class="page-link" (click)="changePage(currentPage-1)">Précédent</button>
       </li>
       <li class="page-item" (click)="changePage(1)" [ngClass]="currentPage === 1 ? 'active' : ''"><button class="page-link">1</button></li>
-      <li class="page-item" (click)="changePage(2)" [ngClass]="currentPage === 2 ? 'active' : ''"><button class="page-link">2</button></li>
-      <li class="page-item" (click)="changePage(3)" [ngClass]="currentPage === 3 ? 'active' : ''"><button class="page-link">3</button></li>
+      <li class="page-item" (click)="changePage(2)" [ngClass]="currentPage === 2 ? 'active' : ''" *ngIf="maxPage > 1"><button class="page-link">2</button></li>
+      <li class="page-item" (click)="changePage(3)" [ngClass]="currentPage === 3 ? 'active' : ''" *ngIf="maxPage > 2"><button class="page-link">3</button></li>
       <li class="page-item" *ngIf="currentPage > 3 && currentPage < maxPage" (click)="changePage(currentPage+1)" [ngClass]="currentPage !== maxPage ? 'active' : ''"><button class="page-link">{{currentPage}}</button></li>
-      <li class="page-item"><button class="page-link">...</button></li>
-      <li class="page-item" [ngClass]="currentPage === maxPage ? 'active' : ''"><button class="page-link" (click)="changePage(maxPage)">{{maxPage}}</button></li>
+      <li class="page-item" *ngIf="maxPage > 3 && currentPage !== maxPage"><button class="page-link">...</button></li>
+      <li class="page-item" *ngIf="maxPage > 3" [ngClass]="currentPage === maxPage ? 'active' : ''"><button class="page-link" (click)="changePage(maxPage)">{{maxPage}}</button></li>
       <li class="page-item" [ngClass]="currentPage === maxPage ? 'disabled' : ''">
         <button class="page-link" (click)="changePage(currentPage+1)">Suivant</button>
       </li>
     </ul>
   </nav>
-  <h3 *ngIf="polluant.length === 0 && !isLoading" class="text-center my-5">Aucune donnée à afficher</h3>
+  <h3 *ngIf="polluant && polluant.length === 0 && !isLoading" class="text-center my-5">Aucune donnée à afficher</h3>
 </div>
