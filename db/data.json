@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "users": [{
         "id": 41654,
         "lastname": "Pinheiro",
@@ -9,3 +10,32 @@
         "isActif": 1
     }]
 }
+=======
+  "users": [
+    {
+      "id": 41654,
+      "lastname": "Pinheiro",
+      "firstname": "Adrien",
+      "phone": "0625319690",
+      "email": "adrien@gmail.com",
+      "password": "@Projet31",
+      "isActif": 1
+    },
+    {
+      "phone": "0625313131",
+      "password": "@Projet31",
+      "id": 41655
+    },
+    {
+      "phone": "0625313131",
+      "password": "@Police31",
+      "id": 41656
+    },
+    {
+      "phone": "0625313131",
+      "password": "@Police31",
+      "id": 41657
+    }
+  ]
+}
+>>>>>>> d76a19d5de36aedb51d23acd9b72b2d3f9dd8fbb

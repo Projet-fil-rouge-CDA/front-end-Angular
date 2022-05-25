@@ -1,3 +1,5 @@
+import { Address } from "./address";
+
 export interface Users {
   id?: string,
   lastname: string,
@@ -7,4 +9,5 @@ export interface Users {
   password: string,
   confirmPassword?: string,
   isActif?: boolean,
+  address: Address
 }

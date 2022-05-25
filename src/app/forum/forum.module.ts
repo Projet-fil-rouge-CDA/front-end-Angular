@@ -7,6 +7,7 @@ import { ListComponent } from './post/list/list.component';
 import { AddComponent } from './category/add/add.component';
 import { EditComponent } from './category/edit/edit.component';
 import {ForumRoutingModule} from "./forum-routing.module";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ForumRoutingModule} from "./forum-routing.module";
   ],
   imports: [
     CommonModule,
-    ForumRoutingModule
+    ForumRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ForumModule { }
