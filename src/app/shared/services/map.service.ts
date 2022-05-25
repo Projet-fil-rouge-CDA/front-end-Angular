@@ -117,6 +117,7 @@ export class MapService {
     this.map = map;
     const coordinates = latLng([this.mapPoint.latitude, this.mapPoint.longitude]);
     this.map.setView(coordinates, this.map.getZoom());
+    this.map.zoomControl.setPosition('bottomleft');
   }
 
   /**
@@ -160,7 +161,7 @@ export class MapService {
   initializeMapOptions() {
     return this.options = {
       zoom: 8, layers: [tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18, attribution: 'OSM', minZoom: 8
+        maxZoom: 18, attribution: 'OSM', minZoom: 8,
       })]
     }
   }
