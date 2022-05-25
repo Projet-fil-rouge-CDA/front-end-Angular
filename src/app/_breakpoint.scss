@@ -1,0 +1,55 @@
+// Breakpoint
+
+$breakpoint:(
+  1730 : 1730px,
+  1600: 1620px,
+  1500: 1520px,
+  1450: 1450px,
+  1370: 1370px,
+  1300: 1300px,
+  1030: 1030px
+);
+
+// Mixin
+
+@mixin macBookPro16 {
+  @media screen and (max-width: map-get($breakpoint, 1730)){
+    @content
+  }
+};
+
+@mixin ecranHDBetter {
+  @media screen and (max-width: map-get($breakpoint, 1600)){
+    @content
+  }
+};
+
+@mixin macBookPro14 {
+  @media screen and (max-width: map-get($breakpoint, 1500)){
+    @content
+  }
+};
+
+@mixin desktop {
+  @media screen and (max-width: map-get($breakpoint, 1450)){
+    @content
+  }
+};
+
+@mixin ecranHD {
+  @media screen and (max-width: map-get($breakpoint, 1370)){
+    @content
+  }
+};
+
+@mixin iMac {
+  @media screen and (max-width: map-get($breakpoint, 1300)){
+    @content
+  }
+};
+
+@mixin Slide43 {
+  @media screen and (max-width: map-get($breakpoint, 1030)){
+    @content
+  }
+};

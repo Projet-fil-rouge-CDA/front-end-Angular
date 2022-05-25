@@ -7,7 +7,6 @@ import { HeaderComponent } from './includes/header/header.component';
 import { FooterComponent } from './includes/footer/footer.component';
 import { CookiesComponent } from './includes/cookies/cookies.component';
 
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -20,7 +19,7 @@ import { CookiesComponent } from './includes/cookies/cookies.component';
         AppRoutingModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [ ],
   exports: [
     HeaderComponent,
     FooterComponent,

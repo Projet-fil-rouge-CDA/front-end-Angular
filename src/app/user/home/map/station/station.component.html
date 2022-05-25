@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 min-vw-100" *ngIf="isLoading">
+  <div class="spinner"></div>
+</div>
+<div class="container">
+  <h2 class="text-center mt-5" *ngIf="!isLoading">Station {{stationName}}</h2>
+  <div class="row justify-content-end" *ngIf="!isLoading">
+    <div class="col-md-2">
+      <label class="col-form-label">Date de début</label>
+      <input type="date" [max]="endDate | date:'yyyy-MM-dd'" class="form-select" name="startDate" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event; onChangeDate()">
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Date de fin</label>
+      <input type="date" [max]="endDate | date:'yyyy-MM-dd'" class="form-select" name="endDate" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="endDate = $event; onChangeDate()">
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Type de métrique</label>
+      <select class="form-select" [(ngModel)]="metrique" (change)="onChangeMetrique()">
+        <option ngValue="horaire">Horaire</option>
+        <option ngValue="journaliere">Journalière</option>
+        <option ngValue="mensuelle">Mensuelle</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Liste des polluants</label>
+      <select class="form-select" [(ngModel)]="typePolluant" (change)="onChangePolluant()">
+        <option *ngFor="let p of listPolluants" [ngValue]="p.polluant">{{p.polluant_name}}</option>
+      </select>
+    </div>
+  </div>
+  <table class="table" *ngIf="polluant && polluant.length !== 0 && !isLoading">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Polluant</th>
+      <th scope="col">Valeur</th>
+      <th scope="col">Unité</th>
+      <th scope="col">Date de prélèvement</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let poll of polluant; let i = index">
+      <th scope="row">{{(i+1)+(currentPage*10)-10}}</th>
+      <td>{{transformCodeToName(poll.code_polluant)}}</td>
+      <td>{{poll.valeur_originale}}</td>
+      <td>μG/m3</td>
+      <td>{{poll.date_heure_local | date}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end" *ngIf="polluant && polluant.length !== 0 && !isLoading">
+    <button class="btn btn-warning text-white">Exporter les données au format PDF</button>
+  </div>
+  <nav aria-label="Page navigation example" *ngIf="polluant && polluant.length !== 0 && !isLoading">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [ngClass]="currentPage === 1 ? 'disabled' : ''">
+        <button class="page-link" (click)="changePage(currentPage-1)">Précédent</button>
+      </li>
+      <li class="page-item" (click)="changePage(1)" [ngClass]="currentPage === 1 ? 'active' : ''"><button class="page-link">1</button></li>
+      <li class="page-item" (click)="changePage(2)" [ngClass]="currentPage === 2 ? 'active' : ''" *ngIf="maxPage > 1"><button class="page-link">2</button></li>
+      <li class="page-item" (click)="changePage(3)" [ngClass]="currentPage === 3 ? 'active' : ''" *ngIf="maxPage > 2"><button class="page-link">3</button></li>
+      <li class="page-item" *ngIf="currentPage > 3 && currentPage < maxPage" (click)="changePage(currentPage+1)" [ngClass]="currentPage !== maxPage ? 'active' : ''"><button class="page-link">{{currentPage}}</button></li>
+      <li class="page-item" *ngIf="maxPage > 3 && currentPage !== maxPage"><button class="page-link">...</button></li>
+      <li class="page-item" *ngIf="maxPage > 3" [ngClass]="currentPage === maxPage ? 'active' : ''"><button class="page-link" (click)="changePage(maxPage)">{{maxPage}}</button></li>
+      <li class="page-item" [ngClass]="currentPage === maxPage ? 'disabled' : ''">
+        <button class="page-link" (click)="changePage(currentPage+1)">Suivant</button>
+      </li>
+    </ul>
+  </nav>
+  <h3 *ngIf="polluant && polluant.length === 0 && !isLoading" class="text-center my-5">Aucune donnée à afficher</h3>
+</div>
