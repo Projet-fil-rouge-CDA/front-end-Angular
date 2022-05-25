@@ -6,9 +6,9 @@ import {ListComponent} from "./likes/list/list.component";
 import {StationComponent} from "./home/map/station/station.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'likes', component: ListComponent},
-  { path: 'station', component: StationComponent}
+  { path: '', component: HomeComponent, canActivate : [AuthGuard]},
+  { path: 'likes', component: ListComponent, canActivate : [AuthGuard]},
+  { path: 'station', component: StationComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({
