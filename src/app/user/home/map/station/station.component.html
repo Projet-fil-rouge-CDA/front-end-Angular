@@ -1,13 +1,16 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 min-vw-100" *ngIf="isLoading">
+  <div class="spinner"></div>
+</div>
 <div class="container">
-  <h2 class="text-center mt-5">Station {{stationName}}</h2>
-  <div class="row justify-content-end">
+  <h2 class="text-center mt-5" *ngIf="!isLoading">Station {{stationName}}</h2>
+  <div class="row justify-content-end" *ngIf="!isLoading">
     <div class="col-md-2">
       <label class="col-form-label">Date de début</label>
-      <input type="date" class="form-control" [valueAsDate]="startDate">
+      <input type="date" class="form-select" [valueAsDate]="startDate">
     </div>
     <div class="col-md-2">
       <label class="col-form-label">Date de fin</label>
-      <input type="date" class="form-control" [valueAsDate]="endDate">
+      <input type="date" class="form-select" [valueAsDate]="endDate">
     </div>
     <div class="col-md-2">
       <label class="col-form-label">Type de métrique</label>
@@ -24,25 +27,27 @@
       </select>
     </div>
   </div>
-  <table class="table" *ngIf="polluant.length > 0">
+  <table class="table" *ngIf="polluant.length !== 0 && !isLoading">
     <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Polluant</th>
       <th scope="col">Valeur</th>
+      <th scope="col">Unité</th>
       <th scope="col">Date de prélèvement</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let poll of polluant; let i = index">
-      <th scope="row">{{i+1}}</th>
+      <th scope="row">{{(i+1)+(currentPage*10)-10}}</th>
       <td>{{transformCodeToName(poll.code_polluant)}}</td>
       <td>{{poll.valeur_originale}}</td>
+      <td>μG/m3</td>
       <td>{{poll.date_heure_local | date}}</td>
     </tr>
     </tbody>
   </table>
-  <nav aria-label="Page navigation example" *ngIf="polluant.length > 0">
+  <nav aria-label="Page navigation example" *ngIf="polluant.length !== 0 && !isLoading">
     <ul class="pagination justify-content-center">
       <li class="page-item" [ngClass]="currentPage === 1 ? 'disabled' : ''">
         <button class="page-link" (click)="changePage(currentPage-1)">Précédent</button>
@@ -58,5 +63,5 @@
       </li>
     </ul>
   </nav>
-  <h3 *ngIf="polluant.length === 0" class="text-center my-5">Aucune donnée à afficher</h3>
+  <h3 *ngIf="polluant.length === 0 && !isLoading" class="text-center my-5">Aucune donnée à afficher</h3>
 </div>
