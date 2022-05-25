@@ -4,6 +4,21 @@
 }
 
 .shadow-menu{
-  -webkit-box-shadow: 4px 8px 24px 1px rgba(0,0,0,0.56);
-  box-shadow: 4px 8px 24px 1px rgba(0,0,0,0.56);
+  -webkit-box-shadow: 7px 4px 34px -3px rgba(0,0,0,0.6);
+  box-shadow: 7px 4px 34px -3px rgba(0,0,0,0.6);
 }
+
+.menu-item{
+  border-radius: 10px;
+  margin-top: 2px;
+  a{
+    padding: 20px;
+    cursor: pointer;
+  }
+}
+
+.menu-trigger{
+  width: fit-content;
+  align-self: end;
+}
+
