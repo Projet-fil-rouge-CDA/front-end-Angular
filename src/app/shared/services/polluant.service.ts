@@ -9,7 +9,7 @@ export class PolluantService {
   constructor(private http: HttpClient) {
   }
 
-  getAllPolluants(codePolluant: any, limit: number, offset: number, dateDebut: string, dateFin: string, mesure: string, codeStation: string) {
+  getAllPolluants(codePolluant: any, limit: number, offset: number, dateDebut: string | null, dateFin: string | null, mesure: string, codeStation: string) {
     return this.http.get(`https://data.airpl.org/api/v1/mesure/${mesure}/`,
       {
         params: {

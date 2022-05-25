@@ -14,15 +14,14 @@ export class MapComponent implements OnInit {
   options: MapOptions;
   layer: Array<GeoJSON> = [];
 
-
   constructor(private mapService: MapService) {
   }
 
   ngOnInit() {
+    this.mapService.initializeCircleStation();
     this.layer = this.mapService.initializeCountyLayer();
     this.mapPoint = this.mapService.initializeDefaultMapPoint();
     this.options = this.mapService.initializeMapOptions();
-    this.mapService.initializeCircleStation();
   }
 
   /**
@@ -37,4 +36,8 @@ export class MapComponent implements OnInit {
     this.mapService.initializeMap(map);
   }
 
+  ngOnDestroy() {
+    this.mapService.citySelected.next(null);
+    this.mapService.stationSelected.next(null);
+  }
 }
