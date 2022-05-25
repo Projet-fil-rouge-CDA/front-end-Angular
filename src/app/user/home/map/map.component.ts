@@ -3,6 +3,7 @@ import {GeoJSON, Map, MapOptions} from 'leaflet';
 import {MapPoint} from "../../../shared/models/map-point.model";
 import {NominatimResponse} from "../../../shared/models/nominatim-response.model";
 import {MapService} from "../../../shared/services/map.service";
+import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-map', templateUrl: './map.component.html', styleUrls: ['./map.component.scss']
@@ -13,8 +14,10 @@ export class MapComponent implements OnInit {
   mapPoint: MapPoint;
   options: MapOptions;
   layer: Array<GeoJSON> = [];
+  isLogged = this.authService.isAuth$.value;
+  role$ = this.authService.role$.value;
 
-  constructor(private mapService: MapService) {
+  constructor(private mapService: MapService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -39,5 +42,19 @@ export class MapComponent implements OnInit {
   ngOnDestroy() {
     this.mapService.citySelected.next(null);
     this.mapService.stationSelected.next(null);
+  }
+
+  showDropdownItems() {
+    if(window.document.getElementsByClassName('dropdown-menu')[0].classList.contains('show')){
+      setTimeout(() => {
+        window.document.getElementsByClassName('dropdown-menu')[0].classList.remove('show');
+      }, 100);
+    } else {
+      window.document.getElementsByClassName('dropdown-menu')[0].classList.add('show');
+    }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
