@@ -1,0 +1,62 @@
+<div class="container">
+  <h2 class="text-center mt-5">Station {{stationName}}</h2>
+  <div class="row justify-content-end">
+    <div class="col-md-2">
+      <label class="col-form-label">Date de début</label>
+      <input type="date" class="form-control" [valueAsDate]="startDate">
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Date de fin</label>
+      <input type="date" class="form-control" [valueAsDate]="endDate">
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Type de métrique</label>
+      <select class="form-select" [(ngModel)]="metrique" (change)="onChangeMetrique()">
+        <option ngValue="horaire">Horaire</option>
+        <option ngValue="journaliere">Journalière</option>
+        <option ngValue="mensuelle">Mensuelle</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Liste des polluants</label>
+      <select class="form-select" [(ngModel)]="typePolluant" (change)="onChangePolluant()">
+        <option *ngFor="let p of listPolluants" [ngValue]="p.polluant">{{p.polluant_name}}</option>
+      </select>
+    </div>
+  </div>
+  <table class="table" *ngIf="polluant.length > 0">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Polluant</th>
+      <th scope="col">Valeur</th>
+      <th scope="col">Date de prélèvement</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let poll of polluant; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{transformCodeToName(poll.code_polluant)}}</td>
+      <td>{{poll.valeur_originale}}</td>
+      <td>{{poll.date_heure_local | date}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example" *ngIf="polluant.length > 0">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [ngClass]="currentPage === 1 ? 'disabled' : ''">
+        <button class="page-link" (click)="changePage(currentPage-1)">Précédent</button>
+      </li>
+      <li class="page-item" (click)="changePage(1)" [ngClass]="currentPage === 1 ? 'active' : ''"><button class="page-link">1</button></li>
+      <li class="page-item" (click)="changePage(2)" [ngClass]="currentPage === 2 ? 'active' : ''"><button class="page-link">2</button></li>
+      <li class="page-item" (click)="changePage(3)" [ngClass]="currentPage === 3 ? 'active' : ''"><button class="page-link">3</button></li>
+      <li class="page-item" *ngIf="currentPage > 3 && currentPage < maxPage" (click)="changePage(currentPage+1)" [ngClass]="currentPage !== maxPage ? 'active' : ''"><button class="page-link">{{currentPage}}</button></li>
+      <li class="page-item"><button class="page-link">...</button></li>
+      <li class="page-item" [ngClass]="currentPage === maxPage ? 'active' : ''"><button class="page-link" (click)="changePage(maxPage)">{{maxPage}}</button></li>
+      <li class="page-item" [ngClass]="currentPage === maxPage ? 'disabled' : ''">
+        <button class="page-link" (click)="changePage(currentPage+1)">Suivant</button>
+      </li>
+    </ul>
+  </nav>
+  <h3 *ngIf="polluant.length === 0" class="text-center my-5">Aucune donnée à afficher</h3>
+</div>
