@@ -13,7 +13,8 @@ import {StationService} from "../../../shared/services/station.service";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  weathers: Weather[] = []
+  weathers: Weather[] = [];
+  weathersLength: number;
 
 
   @Input() weather: NominatimAddress;
@@ -30,12 +31,25 @@ export class ListComponent implements OnInit {
   }
 
 
-
-  getWeatherClass(weather:string){
+  getWeatherClass(weather: string) {
     return this.weatherService.getWeatherClass(weather)
   }
-  translateWeatherToFrench(weather:string){
+
+  getWeatherClassMiniCard(weather: string) {
+    return this.weatherService.getWeatherClassMiniCard(weather)
+  }
+
+  translateWeatherToFrench(weather: string) {
     return this.weatherService.translateWeatherToFrench(weather)
   }
 
+  toggleFavorite(weatherLiked: Weather) {
+    let resultLiked = weatherLiked.liked = !weatherLiked.liked
+
+
+  }
+
+
+
 }
+

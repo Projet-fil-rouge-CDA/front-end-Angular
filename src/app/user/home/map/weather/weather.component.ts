@@ -46,11 +46,13 @@ export class WeatherComponent implements OnInit {
     return this.weatherService.translateWeatherToFrench(weather)
   }
 
+
   addFavorite() {
     this.w.liked = !this.w.liked
   }
 
   ngOnDestroy(): void {
     this.weatherSubscription.unsubscribe();
+
   }
 }
