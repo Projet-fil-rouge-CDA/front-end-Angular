@@ -1,25 +1,68 @@
 <!--<div class="d-flex flex-column justify-content-center align-items-center mt-5">-->
 <!---->
-<div (leafletClick)="onMapClick($event)"
-     (leafletMapReady)="initializeMap($event)"
-     [leafletLayers]="layer"
-     [leafletOptions]="options"
-     id="map"
-     leaflet style="position:relative;">
-
-
-  <div class="leaflet-right leaflet-bottom" style="position: absolute; z-index: 999999">
-    <app-weather [station]="stationSelected" [weather]="citySelected"></app-weather>
-  </div>
+<div
+  (leafletMapReady)="initializeMap($event)"
+  [leafletLayers]="layer"
+  [leafletOptions]="options"
+  id="map"
+  leaflet>
 </div>
 <app-search (onSearch)="refreshSearchList($event)" style="
   position: absolute;
-  top: 10%;
+  top: 3%;
   left: 25%;
   bottom: 90%;
   width: 50%;
   z-index: 1000;"></app-search>
+<div class="d-flex" style="
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  width: max-content;
+  z-index: 1000;">
+  <div class="dropdown">
+    <button (blur)="showDropdownItems()" (click)="showDropdownItems()"
+            aria-expanded="false" class="btn border btn-light dropdown-toggle shadow-menu" data-bs-toggle="dropdown" type="button">
+      <i class="bi bi-person-circle me-2"></i>
+    </button>
+    <ul class="dropdown-menu text-end" style="right: 1.3%; z-index: 100121221">
+      <li>
+        <a [routerLink]="['/forum']" class="dropdown-item">Forum</a>
+      </li>
+      <li>
+        <a [routerLink]="['/user/profile']" class="dropdown-item">Mon profil <i
+          class="bi bi-person-badge"></i></a>
+      </li>
+      <li>
+        <a [routerLink]="['/user/likes']" class="btn btn-outline-light me-3 dropdown-item"> Mes favoris <i
+          class="bi bi-heart-fill text-danger"></i></a>
+      </li>
 
+      <li *ngIf="isLogged == true && role$ === 'moderator' || role$ === 'admin'">
+        <a [routerLink]="['/admin']" class="dropdown-item">Gestionnaire d'utilisateur <i
+          class="bi bi-box-arrow-right"></i></a>
+      </li>
+      <li *ngIf="isLogged == true" style="z-index: 1001;">
+        <button (click)="logout()" class="dropdown-item" style="cursor: pointer">Me déconnecter <i
+          class="bi bi-box-arrow-right"></i></button>
+      </li>
+
+
+    </ul>
+  </div>
+</div>
+<div class="d-flex" style="
+  position: absolute;
+  top: 2%;
+  left: 0;
+  width: max-content;
+  z-index: 1000;">
+  <a class="navbar-brand" routerLink="/">
+    <img src="../../../assets/img/logo/logo.png" class="rounded-circle ms-3 shadow-menu" width="40" height="40" alt="">
+  </a>
+</div>
+<app-weather style="
+position: absolute; top: 28%; right: 1.3%; z-index: 1001;"></app-weather>
 
 
 <!--</div>-->

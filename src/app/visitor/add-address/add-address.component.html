@@ -1,14 +1,15 @@
-<main class="d-flex align-items-center">
+<main class="d-flex align-items-center justify-content-end vh-100 position-relative">
 
-  <div class="d-flex title align-self-start align-items-center justify-content-center">
-    <a href="/">
-      <h1>Univer'Air</h1>
+  <div class="d-flex title align-self-start align-items-center justify-content-center position-absolute start-0 mt-4">
+    <a href="/" class="text-decoration-none">
+      <h1 class="position-relative text-white">Univer'Air</h1>
     </a>
   </div>
 
-  <section class="text-center bg-white">
-    <h2>Ajout de votre adresse postale</h2>
-    <form [formGroup]="addAddressForm" (submit)="addAddress()" class="d-flex flex-column align-items-center">
+  <section class="bg-white col-4 d-flex justify-content-center flex-column align-items-center">
+    <h2 class="pt-5 pb-2 text-center">Ajout de votre adresse postale</h2>
+    <form [formGroup]="addAddressForm" (submit)="addAddress()" class="d-flex flex-column align-items-center col-8">
+      <control-messages [control]="addAddressForm.get('street')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         type="text"
         name="Rue"
@@ -18,7 +19,7 @@
         id="Rue"
         class="form-control"
       />
-      <control-messages [control]="addAddressForm.get('street')" class="control"></control-messages>
+      <control-messages [control]="addAddressForm.get('zipCode')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         type="text"
         name="CodePostal"
@@ -29,7 +30,7 @@
         class="form-control"
         maxlength="5"
       />
-      <control-messages [control]="addAddressForm.get('zipCode')" class="control"></control-messages>
+      <control-messages [control]="addAddressForm.get('city')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         type="text"
         name="Ville"
@@ -39,11 +40,11 @@
         id="city"
         class="form-control"
       />
-      <control-messages [control]="addAddressForm.get('city')" class="control"></control-messages>
-      <button [disabled]="!addAddressForm.valid" type="submit" class="bg-success">Accéder à Univer'Air</button>
+      <button [disabled]="!addAddressForm.valid" type="submit" class="btn btn-success col-7 border-none rounded-5 text-white mt-5 mb-4">Accéder à Univer'Air</button>
     </form>
   </section>
+  <div class="col-2"></div>
 
-  <div class="blue">
+  <div class="position-absolute end-0 top-0 blue col-9 d-inline-block">
   </div>
 </main>

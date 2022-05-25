@@ -1,8 +1,8 @@
 <div class="container min-vh-100">
     <div class="mt-md-5">
-        <h1 class="text-light">FORUM</h1>
+        <h1 class="text-black">FORUM</h1>
         <div class="d-flex my-md-5 align-items-center">
-            <div class="text-light w-75">
+            <div class="text-black w-75">
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum, voluptatum repellat, perspiciatis voluptate itaque ipsam officia magnam sit aperiam numquam magni voluptas aliquid. Sunt ut molestias consectetur ad ullam. Optio nulla tempore
                     fuga animi accusamus sunt illo? Libero dolore quibusdam quod mollitia voluptatem quo cupiditate hic magni omnis animi itaque doloremque aliquid quasi praesentium ullam error, doloribus, nisi inventore?
@@ -13,252 +13,252 @@
             </div>
         </div>
     </div>
-    <!-- Form Recherche -->
-    <div class="d-flex my-sm-3">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Que recherchez-vous ? " aria-label="Search">
-            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+    <div class="d-flex my-sm-3 justify-content-between">
+        <!-- Form Publier un post -->
+        <div>
+            <button type="button" class="btn btn-outline-secondary rounded text-start text-black" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                         Publier un post
+                        </button>
+
+            <!-- Modal publier post-->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title h6" id="staticBackdropLabel">Créer un post</h5>
+                            <button class="border-0 rounded-circle bg-light"><i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i></button>
+                        </div>
+                        <!-- Modal body -->
+                        <form action="">
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-between align-items-center profil">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
+                                        <ul class="list-unstyled text-black ms-3">
+                                            <li class="fs-6 fw-light">Pseudo User</li>
+                                            <li class="fs-6 fw-lighter">
+                                                <div class="input-group">
+                                                    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                                  <option selected>Air</option>
+                                                                  <option value="1">Pollution</option>
+                                                                  <option value="2">Météo</option>
+                                                                  <option value="3">Conseils</option>
+                                                                </select>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" class="p-1 bg-body border-1 rounded-1 border-secondary" placeholder="Mettez votre titre ici">
+                                </div>
+                                <div class="my-2">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Écrire quelque chose..."></textarea>
+                                </div>
+                                <div class="d-flex justify-content-end">
+
+                                    <button class="border-0 rounded-circle bg-light end me-2"><i class="bi bi-camera-fill"></i>
+                                              </button>
+                                    <button class="border-0 rounded-circle bg-light end"><i class="bi bi-camera-reels-fill"></i>
+                                              </button>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary w-100">Publier</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Form Recherche -->
+        <form class="d-flex ">
+            <input class="form-control me-2 " type="search " placeholder="Que recherchez-vous ? " aria-label="Search ">
+            <button class="btn btn-outline-secondary text-black " type="submit ">Rechercher</button>
         </form>
     </div>
     <!-- Création de la liste des catégories -->
-    <div class="mt-sm-5 border rounded">
-        <div class="card-header bg-primary text-light">
+    <div class="mt-sm-5 rounded">
+        <div class="card-header bg-secondary text-black">
             <h2>Choisissez une catégorie</h2>
         </div>
         <!-- Liste des catégories -->
         <div class="accordion" id="forum">
             <!-- Catégorie Air -->
-            <div class="accordion-item bg-primary">
+            <div class="accordion-item bg-secondary">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button bg-secondary text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Air
       </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#forum">
                     <div class="accordion-body">
                         <div class="d-flex justify-content-between my-2 ms-md-5 ps-md-5">
-                            <h4 class="h6 text-light">Auteurs</h4>
-                            <h4 class="h6 text-light">Titres</h4>
-                            <h4 class="h6 text-light d-none d-md-block">Commentaires</h4>
+                            <h4 class="h6 text-black">Auteurs</h4>
+                            <h4 class="h6 text-black">Titres</h4>
+                            <h4 class="h6 text-black d-none d-md-block">Commentaires</h4>
                             <input class="d-none d-md-block" type="button" value="Filtrer">
 
                         </div>
                         <!-- Liste des users postes -->
                         <ul class="list-group">
-                            <li class="list-group-item bg-primary text-light">
+                            <li class="list-group-item bg-secondary text-light">
                                 <a href="" class="text-decoration-none">
                                     <div class="d-flex justify-content-between p-2">
                                         <div class="d-flex profil">
                                             <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
-                                            <ul class="list-unstyled text-light ms-3">
+                                            <ul class="list-unstyled text-black ms-3">
                                                 <li class="fs-6 fw-light">Pseudo User</li>
                                                 <li class="fs-6 fw-lighter">Date</li>
                                             </ul>
                                         </div>
-                                        <h4 class="h6 text-light fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
+                                        <h4 class="h6 text-black fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
                                     </div>
                                 </a>
-                            </li>
-                            <!-- Button pour faire une publication -->
-                            <li class="list-group-item bg-primary text-light">
-                                <div class="d-flex justify-content-between p-2">
-                                    <div class="profil">
-                                        <a href="" class="text-decoration-none">
-                                            <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="d-grid gap-2 btn-post rounded-pill">
-                                        <button class="btn btn-secondary rounded-pill text-start text-light" type="button">  Publier un post </button>
-                                    </div>
-                                    <!-- <button class="btn-post rounded-pill text-start border border-primary p-2 bg-secondary">Publier un post</button> -->
-                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- Catégorie Pollution -->
-            <div class="accordion-item bg-primary">
+            <div class="accordion-item bg-secondary">
                 <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="accordion-button collapsed bg-secondary text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
         Pollution
       </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#forum">
                     <div class="accordion-body">
                         <div class="d-flex justify-content-between my-2 ms-md-5 ps-md-5">
-                            <h4 class="h6 text-light">Auteurs</h4>
-                            <h4 class="h6 text-light">Titres</h4>
-                            <h4 class="h6 text-light">Commentaires</h4>
-                            <input type="button" value="Filtrer">
+                            <h4 class="h6 text-black">Auteurs</h4>
+                            <h4 class="h6 text-black">Titres</h4>
+                            <h4 class="h6 text-black d-none d-md-block">Commentaires</h4>
+                            <input class="d-none d-md-block" type="button" value="Filtrer">
 
                         </div>
                         <!-- Liste des users postes -->
                         <ul class="list-group">
-                            <li class="list-group-item bg-primary text-light">
+                            <li class="list-group-item bg-secondary text-light">
                                 <a href="" class="text-decoration-none">
                                     <div class="d-flex justify-content-between p-2">
                                         <div class="d-flex profil">
                                             <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
-                                            <ul class="list-unstyled text-light ms-3">
+                                            <ul class="list-unstyled text-black ms-3">
                                                 <li class="fs-6 fw-light">Pseudo User</li>
                                                 <li class="fs-6 fw-lighter">Date</li>
                                             </ul>
                                         </div>
-                                        <h4 class="h6 text-light fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
+                                        <h4 class="h6 text-black fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
                                     </div>
                                 </a>
-                            </li>
-                            <!-- Button pour faire une publication -->
-                            <li class="list-group-item bg-primary text-light">
-                                <div class="d-flex justify-content-between p-2">
-                                    <div class="profil">
-                                        <a href="" class="text-decoration-none">
-                                            <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="d-grid gap-2 btn-post rounded-pill">
-                                        <button class="btn btn-secondary rounded-pill text-start text-light" type="button">  Publier un post </button>
-                                    </div>
-                                    <!-- <button class="btn-post rounded-pill text-start border border-primary p-2 bg-secondary">Publier un post</button> -->
-                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- Catégorie Météo -->
-            <div class="accordion-item bg-primary">
-                <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <div class="accordion-item bg-secondary">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed bg-secondary text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Météo
       </button>
                 </h2>
-                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#forum">
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#forum">
                     <div class="accordion-body">
                         <div class="d-flex justify-content-between my-2 ms-md-5 ps-md-5">
-                            <h4 class="h6 text-light">Auteurs</h4>
-                            <h4 class="h6 text-light">Titres</h4>
-                            <h4 class="h6 text-light">Commentaires</h4>
-                            <input type="button" value="Filtrer">
+                            <h4 class="h6 text-black">Auteurs</h4>
+                            <h4 class="h6 text-black">Titres</h4>
+                            <h4 class="h6 text-black d-none d-md-block">Commentaires</h4>
+                            <input class="d-none d-md-block" type="button" value="Filtrer">
 
                         </div>
                         <!-- Liste des users postes -->
                         <ul class="list-group">
-                            <li class="list-group-item bg-primary text-light">
+                            <li class="list-group-item bg-secondary text-light">
                                 <a href="" class="text-decoration-none">
                                     <div class="d-flex justify-content-between p-2">
                                         <div class="d-flex profil">
                                             <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
-                                            <ul class="list-unstyled text-light ms-3">
+                                            <ul class="list-unstyled text-black ms-3">
                                                 <li class="fs-6 fw-light">Pseudo User</li>
                                                 <li class="fs-6 fw-lighter">Date</li>
                                             </ul>
                                         </div>
-                                        <h4 class="h6 text-light fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
+                                        <h4 class="h6 text-black fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
                                     </div>
                                 </a>
-                            </li>
-                            <!-- Button pour faire une publication -->
-                            <li class="list-group-item bg-primary text-light">
-                                <div class="d-flex justify-content-between p-2">
-                                    <div class="profil">
-                                        <a href="" class="text-decoration-none">
-                                            <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="d-grid gap-2 btn-post rounded-pill">
-                                        <button class="btn btn-secondary rounded-pill text-start text-light" type="button">  Publier un post </button>
-                                    </div>
-                                    <!-- <button class="btn-post rounded-pill text-start border border-primary p-2 bg-secondary">Publier un post</button> -->
-                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- Catégorie Conseil -->
-            <div class="accordion-item bg-primary">
-                <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            <div class="accordion-item bg-secondary">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed bg-secondary text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
         Conseils
       </button>
                 </h2>
-                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#forum">
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#forum">
                     <div class="accordion-body">
                         <div class="d-flex justify-content-between my-2 ms-md-5 ps-md-5">
-                            <h4 class="h6 text-light">Auteurs</h4>
-                            <h4 class="h6 text-light">Titres</h4>
-                            <h4 class="h6 text-light">Commentaires</h4>
-                            <input type="button" value="Filtrer">
+                            <h4 class="h6 text-black">Auteurs</h4>
+                            <h4 class="h6 text-black">Titres</h4>
+                            <h4 class="h6 text-black d-none d-md-block">Commentaires</h4>
+                            <input class="d-none d-md-block" type="button" value="Filtrer">
 
                         </div>
                         <!-- Liste des users postes -->
                         <ul class="list-group">
-                            <li class="list-group-item bg-primary text-light">
+                            <li class="list-group-item bg-secondary text-light">
                                 <a href="" class="text-decoration-none">
                                     <div class="d-flex justify-content-between p-2">
                                         <div class="d-flex profil">
                                             <img src="/assets/img/img-prof.jpg" class="rounded-circle" alt="">
-                                            <ul class="list-unstyled text-light ms-3">
+                                            <ul class="list-unstyled text-black ms-3">
                                                 <li class="fs-6 fw-light">Pseudo User</li>
                                                 <li class="fs-6 fw-lighter">Date</li>
                                             </ul>
                                         </div>
-                                        <h4 class="h6 text-light fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
-                                        <h4 class="h6 text-light fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
+                                        <h4 class="h6 text-black fw-light me-md-5 pe-md-5">Lorem ipsum</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block me-md-5 pe-md-5">0</h4>
+                                        <h4 class="h6 text-black fw-light d-none d-md-block">0 <i class="bi bi-eye-fill"></i></h4>
                                     </div>
                                 </a>
-                            </li>
-                            <!-- Button pour faire une publication -->
-                            <li class="list-group-item bg-primary text-light">
-                                <div class="d-flex justify-content-between p-2">
-                                    <div class="profil">
-                                        <a href="" class="text-decoration-none">
-                                            <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="d-grid gap-2 btn-post rounded-pill">
-                                        <button class="btn btn-secondary rounded-pill text-start text-light" type="button">  Publier un post </button>
-                                    </div>
-                                    <!-- <button class="btn-post rounded-pill text-start border border-primary p-2 bg-secondary">Publier un post</button> -->
-                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- Catégorie FAQs -->
-            <div class="accordion-item bg-primary">
-                <h2 class="accordion-header" id="headingSixe">
-                    <button class="accordion-button collapsed bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixe" aria-expanded="false" aria-controls="collapseSixe">
+            <div class="accordion-item bg-secondary">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed bg-secondary text-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
         FAQs
       </button>
                 </h2>
-                <div id="collapseSixe" class="accordion-collapse collapse" aria-labelledby="headingSixe" data-bs-parent="#forum">
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#forum">
                     <div class="accordion-body">
                         <ul class="list-group">
                             <a href="" class="text-decoration-none">
-                                <li class="list-group-item bg-primary text-light">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
+                                <li class="list-group-item bg-secondary text-black">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
                             </a>
                             <a href="" class="text-decoration-none">
-                                <li class="list-group-item bg-primary text-light">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
+                                <li class="list-group-item bg-secondary text-black">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
                             </a>
                             <a href="" class="text-decoration-none">
-                                <li class="list-group-item bg-primary text-light">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
+                                <li class="list-group-item bg-secondary text-black">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
                             </a>
                             <a href="" class="text-decoration-none">
-                                <li class="list-group-item bg-primary text-light">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
+                                <li class="list-group-item bg-secondary text-black">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
                             </a>
                             <a href="" class="text-decoration-none">
-                                <li class="list-group-item bg-primary text-light">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
+                                <li class="list-group-item bg-secondary text-black">Maecenas turpis orci, sollicitudin non pulvinar ?</li>
                             </a>
                         </ul>
                     </div>

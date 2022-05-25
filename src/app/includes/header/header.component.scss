@@ -1,0 +1,11 @@
+.dropdown-menu[data-bs-popper] {
+  left: -165px;
+}
+.dropdown-toggle {
+  &:hover, &:focus{
+    i {
+      filter: invert(1);
+    }
+  }
+
+}

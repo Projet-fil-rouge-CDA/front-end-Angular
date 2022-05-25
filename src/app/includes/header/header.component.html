@@ -1,14 +1,44 @@
-<nav class="navbar navbar-light bg-transparent">
+<nav [ngClass]="router.url === '/' ? 'navbar bg-transparent navbar-light pe-3 ' : 'navbar bg-primary navbar-light pe-3'" *ngIf="router.url !== '/user'">
   <div class="d-flex align-items-center">
     <a class="navbar-brand" routerLink="/">
       <img src="../../../assets/img/logo/logo.png" class="rounded-circle ms-3" width="35" height="35" alt="">
-      <span class="text-white mb-0 ms-3">Univ'Air</span>
+
     </a>
   </div>
-  <div>
+  <div class="d-flex">
+    <a [routerLink]="['/user/']" class="btn btn-outline-light me-3">Rechercher un lieu</a>
     <a [routerLink]="['/forum']" class="btn btn-outline-light me-3">Forum</a>
+    <div class="dropdown">
+      <button class="btn border border-light btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle text-light me-2"></i>
+      </button>
+      <ul class="dropdown-menu text-end" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <a [routerLink]="['/user/profile']" class="dropdown-item">Mon profil <i
+            class="bi bi-person-badge"></i></a>
+        </li>
+        <li>
+          <a [routerLink]="['/user/likes']" class="btn btn-outline-light me-3 dropdown-item"> Mes favoris <i
+            class="bi bi-heart-fill text-danger"></i></a>
+        </li>
+        <!--      <li *ngIf="isLogged == true && checkCookie == true">-->
+        <!--        <a [routerLink]="['/user/logout']" class="dropdown-item" (click)="logout()">Me déconnecter <i class="bi bi-box-arrow-right"></i></a>-->
+        <!--      </li>-->
+
+<!--        <li *ngIf="isLogged == true && checkCookie == true && role$ == 'moderator' || role$ == 'admin'">-->
+<!--          <a [routerLink]="['/admin']" class="dropdown-item">Gestionnaire d'utilisateur <i class="bi bi-box-arrow-right"></i></a>-->
+<!--        </li>-->
+        <li>
+          <a [routerLink]="['/admin']" class="dropdown-item">Gestionnaire d'utilisateur <i class="bi bi-people-fill"></i></a>
+        </li>
+
+
+      </ul>
+    </div>
   </div>
-  <div>
-    <a [routerLink]="['/user/likes']" class="btn btn-outline-light me-3">Likes</a>
-  </div>
+
+
 </nav>
+
+

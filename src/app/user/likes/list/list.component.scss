@@ -1,8 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.accordion-header button p{
+  text-shadow: -1px 6px 11px #000000, -1px 4px 11px #000000, -1px 4px 11px #000000;
+}
+accordion-header img {
+  object-fit: cover;
+}
+.accordion-button:after{
+  display: none;
+}
+.cardMiniature {
+  width: 286px;
+  border-radius: 5% 5% 0% 0%;
+
+}
+
+.cardMiniatureHead {
+  height: 160px;
+}
+
+
+.containerCards {
+  width: 75%;
+  justify-content: center;
+}
 
 //Variables
 $small-font-size: 10px;
 $danger: #8f1629;
+$carousel-control-color: #7b277d;
 
 //Color-parameters
 .text-red {
@@ -17,6 +42,8 @@ $danger: #8f1629;
 //name-page
 .page-title {
   font-weight: 200;
+  font-size: 30px;
+  padding: 5px;
 }
 
 //image-card
@@ -28,13 +55,34 @@ $danger: #8f1629;
 }
 
 //full-card
-.card {
-  border-radius: 3%;
-  width: 18rem;
-  height: 100%;
-  overflow: hidden;
+.cardAllInformations {
+  border-radius: 0% 0% 5% 5%;
+  margin-top: -160px;
 }
 
+.img-card {
+  margin-left: 20px;
+}
+
+
+//background-mini-card
+.blue-gradient-background-mini-card {
+  background: #418bdd;
+}
+
+.dark-grey-gradient-background-mini-card {
+  background: #333333;
+
+}
+
+.white-gradient-background-mini-card  {
+  background: #e2e2e2;
+}
+
+.grey-gradient-background-mini-card  {
+  background:  #444444 ;
+
+}
 //background-card
 .blue-gradient-background {
   background: linear-gradient(#206bcc, #82ccff);
@@ -50,6 +98,11 @@ $danger: #8f1629;
   background: linear-gradient(180deg, rgba(226, 226, 226, 1) 0%, rgba(166, 166, 166, 1) 62%);
 }
 
+.dark-grey-gradient-background {
+  background: rgb(105, 105, 105);
+  background: linear-gradient(180deg, #404040 0%, #1a1a1a 100%);
+}
+
 //body-card
 .body-card-position {
   margin-top: 0px;
@@ -58,11 +111,13 @@ $danger: #8f1629;
     .card-title {
       font-size: 20px;
       font-weight: normal;
+
     }
 
     p {
       font-size: $small-font-size;
       font-weight: 100;
+
     }
   }
 
@@ -87,7 +142,7 @@ $danger: #8f1629;
 }
 
 //carousel
-.indicator-bottom{
+.indicator-bottom {
   bottom: -40px;
 }
 

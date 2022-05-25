@@ -11,7 +11,8 @@ export class Weather {
     public rain: number,
     public snow: number,
     public liked: boolean,
-    public city?: NominatimAddress
+    public city?: NominatimAddress,
+    public clicked= false
   ) {
     this.liked = false
   }
