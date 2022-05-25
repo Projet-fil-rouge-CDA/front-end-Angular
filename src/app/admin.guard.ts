@@ -24,6 +24,7 @@ export class AdminGuard implements CanActivate {
   canActivate() : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(this.isLogged){
       this.cookieValue = this.cookieService.get('session')
+      // post cookie
       if(this.cookieValue /* vérifier le rôle de lié à l'utilisateur = admin*/){
         return true
       } else {
@@ -37,5 +38,4 @@ export class AdminGuard implements CanActivate {
   ngOnDestroy(){
     this.authService.isAuth$.unsubscribe();
   }
-
 }
