@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
-import { Users } from 'src/app/shared/models/users';
 import { ValidationService } from '../../shared/services/validation.service';
-import { LogsService } from '../../shared/services/logs.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -13,11 +11,11 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   loginForm: any;
-  users$: BehaviorSubject<Users[]> = this.logsService.users$
 
   constructor(
-    private logsService: LogsService,
+    private logsService: AuthService,
     private formBuilder: FormBuilder,
     private router : Router,
     private titleService : Title
@@ -34,9 +32,6 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.dirty && this.loginForm.valid) {
       this.logsService.login(this.loginForm.value)
-      if('Good'){
-        //this.router.navigate(['/add-address'])
-      }
     }
   }
 }
