@@ -21,7 +21,11 @@ export class AuthService {
     private http: HttpClient,
     private cookieService : CookieService,
     private router : Router
-  ) {}
+  ) {
+    if(this.cookieService.check('session')){
+      this.isAuth$.next(true);
+    }
+  }
 
   private httpHeaders = {
     headers: new HttpHeaders({
@@ -64,5 +68,6 @@ export class AuthService {
     })
   }
 
+  // logout
 
 }
