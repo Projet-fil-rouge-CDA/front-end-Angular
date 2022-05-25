@@ -8,45 +8,6 @@
       "email": "adrien@gmail.com",
       "password": "@Projet31",
       "isActif": 1
-    },
-    {
-      "phone": "0625313131",
-      "password": "@Projet31",
-      "id": 41655
-    },
-    {
-      "phone": "0625313131",
-      "password": "@Police31",
-      "id": 41656
-    },
-    {
-      "phone": "0625313131",
-      "password": "@Police31",
-      "id": 41657
-    },
-    {
-      "firstname": "Picquet",
-      "lastname": "Julien",
-      "phone": "0659213172",
-      "email": "julienpicquet49@icloud.com",
-      "password": "Ppaaoo123!",
-      "isActif": true,
-      "address": {
-        "street": "6 Boulevard du Général de Gaulle",
-        "zipCode": "49100",
-        "city": "Angers"
-      },
-      "id": 41658
-    },
-    {
-      "email": "julienpicquet49@icloud.com",
-      "password": "Ppaaoo123!",
-      "id": 41659
-    },
-    {
-      "phone": "0650287234",
-      "password": "Ppaaoo123!",
-      "id": 41660
     }
   ]
 }
