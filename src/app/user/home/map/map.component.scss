@@ -20,5 +20,8 @@
 .menu-trigger{
   width: fit-content;
   align-self: end;
+  &:hover{
+    background-color: #eaeaea;
+  }
 }
 
