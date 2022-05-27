@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ControlMessagesComponent } from '../shared/components/control-messages.component';
+import { ControlMessagesComponentVisitor } from '../shared/components/control-messages-visitor.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VisitorRoutingModule } from './visitor-routing.module';
@@ -14,7 +14,7 @@ import { VisitorRoutingModule } from './visitor-routing.module';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ControlMessagesComponent,
+    ControlMessagesComponentVisitor,
     AddAddressComponent
   ],
     imports: [

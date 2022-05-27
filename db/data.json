@@ -1,28 +1,34 @@
 {
   "users": [
     {
-      "id": 41654,
-      "lastname": "Pinheiro",
       "firstname": "Adrien",
-      "phone": "0625319690",
+      "lastname": "Pinheiro",
+      "phone": "0625313131",
       "email": "adrien@gmail.com",
       "password": "@Projet31",
-      "isActif": 1
-    },
-    {
-      "phone": "0650287234",
-      "password": "Ppaaoo123!",
-      "id": 41655
-    },
-    {
-      "email": "juju@juju.fr",
-      "password": "Juju727272!",
+      "isActif": true,
+      "address": {
+        "street": "302",
+        "zipCode": "31200",
+        "city": "Toulouse"
+      },
       "id": 41656
+    }
+  ],
+  "post": [
+    {
+      "id": 45646,
+      "id_user": 41656,
+      "title": "L'air est bon",
+      "message": "Good vibe, good wind",
+      "category": "Air"
     },
     {
-      "phone": "0761628127",
-      "password": "Ppaaoo123!!",
-      "id": 41657
+      "id": 48646,
+      "id_user": 41656,
+      "title": "L'air c'est trop bon",
+      "message": "Good wind, good vibe",
+      "category": "Air"
     }
   ]
 }
