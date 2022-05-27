@@ -49,16 +49,6 @@ export class MapComponent implements OnInit {
     this.mapService.stationSelected.next(null);
   }
 
-  showDropdownItems() {
-    if (window.document.getElementsByClassName('dropdown-menu')[0].classList.contains('show')) {
-      setTimeout(() => {
-        window.document.getElementsByClassName('dropdown-menu')[0].classList.remove('show');
-      }, 100);
-    } else {
-      window.document.getElementsByClassName('dropdown-menu')[0].classList.add('show');
-    }
-  }
-
   logout() {
     this.authService.logout();
   }
