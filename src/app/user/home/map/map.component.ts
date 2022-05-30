@@ -4,13 +4,12 @@ import {MapPoint} from "../../../shared/models/map-point.model";
 import {NominatimResponse} from "../../../shared/models/nominatim-response.model";
 import {MapService} from "../../../shared/services/map.service";
 import {AuthService} from "../../../shared/services/auth.service";
-import {DropDownAnimation} from "../../../shared/animations/dropdown";
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
-  animations: [DropDownAnimation]
+
 })
 export class MapComponent implements OnInit {
 
@@ -18,9 +17,7 @@ export class MapComponent implements OnInit {
   mapPoint: MapPoint;
   options: MapOptions;
   layer: Array<GeoJSON> = [];
-  isLogged = this.authService.isAuth$.value;
-  role$ = this.authService.role$.value;
-  isOpen = false;
+
 
   constructor(private mapService: MapService, private authService: AuthService) {
   }
@@ -49,7 +46,5 @@ export class MapComponent implements OnInit {
     this.mapService.stationSelected.next(null);
   }
 
-  logout() {
-    this.authService.logout();
-  }
+
 }
