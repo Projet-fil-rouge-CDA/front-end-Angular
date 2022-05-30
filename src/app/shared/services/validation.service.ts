@@ -11,6 +11,8 @@ export class ValidationService {
         return '1 majuscule, 1 chiffre et 1 caractère spécial minimum'
       case 'minlength':
         return `${validatorValue.requiredLength} lettres minimum`
+      case 'invalidSelect':
+        return '1 obligatoire'
       default:
         return 'Ce champs n\'est pas valide'
     }
@@ -51,6 +53,14 @@ export class ValidationService {
       return null
     } else {
       return { invalidEmailOrPhone : true};
+    }
+  }
+
+  static selectCategory(control : {value: number}){
+    if(control.value !== 0){
+      return null
+    } else{
+      return { invalidSelect : true }
     }
   }
 }

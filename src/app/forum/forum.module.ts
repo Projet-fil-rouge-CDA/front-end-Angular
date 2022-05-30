@@ -7,6 +7,8 @@ import { ListComponent } from './post/list/list.component';
 import { AddComponent } from './category/add/add.component';
 import { EditComponent } from './category/edit/edit.component';
 import {ForumRoutingModule} from "./forum-routing.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ControlMessagesComponentForum } from '../shared/components/control-messages-forum.components';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,14 @@ import {ForumRoutingModule} from "./forum-routing.module";
     EditPostComponent,
     ListComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    ControlMessagesComponentForum
   ],
   imports: [
     CommonModule,
-    ForumRoutingModule
+    ForumRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ForumModule { }

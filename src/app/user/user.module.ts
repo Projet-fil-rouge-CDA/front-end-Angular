@@ -14,6 +14,9 @@ import {SearchComponent} from './home/map/search/search.component';
 import {SearchAddressService} from "../shared/services/search-address.service";
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import localeFr from '@angular/common/locales/fr';
+import {DropdownComponent} from "../shared/components/dropdown/dropdown.component";
+import {LogoComponent} from "../shared/components/logo/logo.component";
+import {CardComponent} from "../shared/components/card/card.component";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -26,7 +29,11 @@ registerLocaleData(localeFr, 'fr');
     WeatherComponent,
     StationComponent,
     SearchComponent,
-    MapComponent
+    MapComponent,
+    DropdownComponent,
+    LogoComponent,
+    CardComponent
+
   ],
   imports: [
     CommonModule,
@@ -35,6 +42,7 @@ registerLocaleData(localeFr, 'fr');
     FormsModule,
     LeafletModule,
     ReactiveFormsModule,
+
   ],
   exports: [],
   providers: [SearchAddressService, {provide: LOCALE_ID, useValue: "fr-FR"}]

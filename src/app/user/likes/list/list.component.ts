@@ -5,6 +5,7 @@ import {Title} from "@angular/platform-browser";
 import {WeatherService} from "../../../shared/services/weather.service";
 import {NominatimAddress, NominatimResponse} from "../../../shared/models/nominatim-response.model";
 import {StationService} from "../../../shared/services/station.service";
+import {AuthService} from "../../../shared/services/auth.service";
 
 
 @Component({

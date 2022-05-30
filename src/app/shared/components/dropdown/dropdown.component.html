@@ -1,0 +1,28 @@
+<div class="d-flex flex-column dropdown-header" >
+  <div (click)="isOpen = !isOpen" class="menu-trigger btn border btn-light dropdown-toggle shadow-menu">
+    <i class="bi bi-person-circle me-2"></i> <i [ngClass]="isOpen ? 'gg-chevron-up' : 'gg-chevron-down'"></i>
+  </div>
+  <div *ngIf="isOpen" [@dropDownMenu]="isOpen" class="menu">
+    <div class="menu-item bg-light">
+      <a [routerLink]="['/forum']" class="dropdown-item">Forum</a>
+
+      <a [routerLink]="['/user/profile']" class="dropdown-item">Mon profil <i
+        class="bi bi-person-badge"></i></a>
+
+
+      <a [routerLink]="['/user/likes']" class="dropdown-item"> Mes favoris <i
+        class="bi bi-heart-fill text-danger"></i></a>
+
+
+      <a *ngIf="isLogged == true && role$ === 'moderator' || role$ === 'admin'" [routerLink]="['/admin']"
+         class="dropdown-item">Gestionnaire d'utilisateur <i
+        class="bi bi-box-arrow-right"></i></a>
+
+
+      <a (click)="logout()" *ngIf="isLogged === true" class="dropdown-item" style="cursor: pointer">Me déconnecter
+        <i
+          class="bi bi-box-arrow-right"></i></a>
+
+    </div>
+  </div>
+</div>

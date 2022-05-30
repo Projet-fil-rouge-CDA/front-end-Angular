@@ -1,6 +1,9 @@
 .dropdown-menu[data-bs-popper] {
   left: -165px;
 }
+.dropdownUnloggedMenu[data-bs-popper] {
+  left: -95px;
+}
 .dropdown-toggle {
   &:hover, &:focus{
     i {

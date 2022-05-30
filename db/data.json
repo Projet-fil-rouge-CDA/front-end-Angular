@@ -1,28 +1,100 @@
 {
   "users": [
     {
-      "id": 41654,
-      "lastname": "Pinheiro",
       "firstname": "Adrien",
-      "phone": "0625319690",
+      "lastname": "Pinheiro",
+      "phone": "0625313131",
       "email": "adrien@gmail.com",
       "password": "@Projet31",
-      "isActif": 1
+      "isActif": true,
+      "address": {
+        "street": "302",
+        "zipCode": "31200",
+        "city": "Toulouse"
+      },
+      "id": 41656
+    },
+    {
+      "phone": "0648172728",
+      "password": "Ppaaoo123!",
+      "id": 41657
+    },
+    {
+      "email": "adrien@gmail.com",
+      "password": "@Projet31",
+      "id": 41658
+    },
+    {
+      "email": "adrien@gmail.com",
+      "password": "@Projet31",
+      "id": 41659
     },
     {
       "phone": "0650287234",
       "password": "Ppaaoo123!",
-      "id": 41655
+      "id": 41660
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Air"
     },
     {
-      "email": "juju@juju.fr",
-      "password": "Juju727272!",
-      "id": 41656
+      "id": 2,
+      "name": "Pollution"
     },
     {
-      "phone": "0761628127",
-      "password": "Ppaaoo123!!",
-      "id": 41657
+      "id": 3,
+      "name": "Météo"
+    },
+    {
+      "id": 4,
+      "name": "Conseil"
+    },
+    {
+      "id": 5,
+      "name": "FAQs"
+    }
+  ],
+  "post": [
+    {
+      "id": 45646,
+      "id_user": 41656,
+      "title": "L'air est bon",
+      "message": "Good vibe, good wind",
+      "category": "Air"
+    },
+    {
+      "id": 48646,
+      "id_user": 41656,
+      "title": "L'air c'est trop bon",
+      "message": "Good wind, good vibe",
+      "category": "Air"
+    },
+    {
+      "title": "Il fait beau",
+      "category": "Air",
+      "message": "L'air est bon aujourd'hui",
+      "id": 48647
+    },
+    {
+      "title": "yolo",
+      "category": "Météo",
+      "message": "Salut les gens",
+      "id": 48648
+    },
+    {
+      "title": "Angers",
+      "category": "Pollution",
+      "message": "Oui ça va beaucoup",
+      "id": 48649
+    },
+    {
+      "title": "Cacaca",
+      "category": "Pollution",
+      "message": "cacacacacaca",
+      "id": 48650
     }
   ]
 }
