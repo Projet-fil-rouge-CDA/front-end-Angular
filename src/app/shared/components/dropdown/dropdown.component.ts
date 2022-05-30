@@ -13,12 +13,10 @@ export class DropdownComponent implements OnInit {
   role$ = this.authService.role$.value;
   isOpen = false;
 
-
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    console.log(this.role$)
   }
 
   logout() {
