@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ValidationService } from 'src/app/shared/services/validation.service';
 import { ForumService } from '../../shared/services/forum.service';
 import { Post } from '../../shared/models/post';
+import {Category} from "../../shared/models/category";
 
 @Component({
   selector: 'app-home',
@@ -30,14 +31,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Univ\'Air | Forum');
-    this.serviceForum.getCategories().subscribe((categories) => {
+    this.serviceForum.getCategories().subscribe((categories: Category) => {
       this.categories = categories;
       console.log(this.categories);
 
       this.serviceForum.getPosts().subscribe((posts) => {
         this.posts = posts
-        this.posts.filter((post: any) => {
-        post.category === categories.name
+        this.posts.filter((post: Post) => {
+        post.category === categories.name;
       })
       console.log(this.posts);
       })
