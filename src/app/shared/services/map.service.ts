@@ -103,7 +103,8 @@ export class MapService {
             state: 'Pays de la Loire',
           }));
           this.stationSelected.next(item);
-          this.map.setView(e.latlng, 16);
+          this.mapPoint = {latitude: item.geometry.coordinates[1], longitude: item.geometry.coordinates[0], name: item.nom};
+          this.createMarker();
         }).addTo(this.map);
       });
     });
