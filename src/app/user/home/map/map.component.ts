@@ -3,7 +3,6 @@ import {GeoJSON, Map, MapOptions} from 'leaflet';
 import {MapPoint} from "../../../shared/models/map-point.model";
 import {NominatimResponse} from "../../../shared/models/nominatim-response.model";
 import {MapService} from "../../../shared/services/map.service";
-import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-map',
@@ -18,8 +17,7 @@ export class MapComponent implements OnInit {
   options: MapOptions;
   layer: Array<GeoJSON> = [];
 
-
-  constructor(private mapService: MapService, private authService: AuthService) {
+  constructor(private mapService: MapService) {
   }
 
   ngOnInit() {
