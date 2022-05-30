@@ -16,6 +16,7 @@ export class AuthService {
 
   isAuth$ = new BehaviorSubject<boolean>(false)
   users$ = new BehaviorSubject<Users>({firstname: '', lastname: '', phone: 0, email: '', password: '', isActif: false, address: {rue: '', codePostal: 0, ville: ''}});
+  role$ = new BehaviorSubject<String>('user')
 
   constructor(
     private http: HttpClient,
@@ -62,12 +63,17 @@ export class AuthService {
         return console.log('ProbLogin');
       } else{
         this.cookieService.set('session', 'le cookie du back');
+        this.role$.next('admin') // recupérer le rôle du back et le mettre à jour
         this.isAuth$.next(true);
         return this.router.navigate(['/user']);
       }
     })
   }
 
-  // logout
-
+  // Permet de se déconnecter
+  logout(){
+    this.cookieService.delete('session');
+    this.role$.next('user');
+    this.isAuth$.next(false);
+  }
 }

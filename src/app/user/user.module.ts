@@ -1,5 +1,5 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {ListComponent} from './likes/list/list.component';
 import {AddComponent} from './likes/add/add.component';
@@ -13,8 +13,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SearchComponent} from './home/map/search/search.component';
 import {SearchAddressService} from "../shared/services/search-address.service";
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
-import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import {DropdownComponent} from "../shared/components/dropdown/dropdown.component";
+import {LogoComponent} from "../shared/components/logo/logo.component";
+import {CardComponent} from "../shared/components/card/card.component";
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -26,7 +29,11 @@ registerLocaleData(localeFr, 'fr');
     WeatherComponent,
     StationComponent,
     SearchComponent,
-    MapComponent
+    MapComponent,
+    DropdownComponent,
+    LogoComponent,
+    CardComponent
+
   ],
   imports: [
     CommonModule,
@@ -34,10 +41,11 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     FormsModule,
     LeafletModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   exports: [],
-  providers: [SearchAddressService,  {provide: LOCALE_ID, useValue: "fr-FR"}]
+  providers: [SearchAddressService, {provide: LOCALE_ID, useValue: "fr-FR"}]
 })
 export class UserModule {
 }

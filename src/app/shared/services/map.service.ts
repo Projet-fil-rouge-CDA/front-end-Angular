@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import * as L from "leaflet";
 import {GeoJSON, icon, latLng, LeafletMouseEvent, Map, MapOptions, marker, tileLayer} from "leaflet";
 import {MapPoint} from "../models/map-point.model";
 import {NominatimResponse} from "../models/nominatim-response.model";
 import {HttpClient} from "@angular/common/http";
 import {StationService} from "./station.service";
-import * as L from "leaflet";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -19,7 +19,8 @@ export class MapService {
   layer: Array<GeoJSON> = [];
   station: Array<any> = [];
   stationSelected: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  citySelected: BehaviorSubject<NominatimResponse | null > = new BehaviorSubject<NominatimResponse | null>(null);
+  citySelected: BehaviorSubject<NominatimResponse | null> = new BehaviorSubject<NominatimResponse | null>(null);
+
   constructor(private http: HttpClient, private stationService: StationService) {
   }
 
@@ -62,6 +63,7 @@ export class MapService {
    * Initialisation des contours de la région Pays de la Loire sur la carte
    */
   initializeCountyLayer(): GeoJSON[] {
+    if(this.layer.length === 0)
     this.http.get('assets/data/234400034_contours-paysdelaloire.geojson').subscribe((json: any) => {
       this.layer.push(L.geoJSON(json, {
         style: {
@@ -77,7 +79,16 @@ export class MapService {
    * Nécessite une API officielle de l'État (data.gouv.fr)
    */
   initializeCircleStation() {
-    this.stationService.getStations().subscribe(station => {
+    if (this.station.length === 0) {
+      this.subscribeToStations();
+    } else {
+      this.station = [];
+      this.subscribeToStations();
+    }
+  }
+
+  subscribeToStations() {
+    return this.stationService.getStations().subscribe(station => {
       station.features.filter((item: any) => item.etat === 'EN SERVICE').forEach((item: any) => {
         this.station.push(item);
       });
@@ -86,13 +97,14 @@ export class MapService {
           radius: 10, color: '#5d9f07', fillColor: 'rgba(36,152,5,0.32)', fillOpacity: 0.5,
         }).bindPopup('Station ' + item.nom).on('click', (e: LeafletMouseEvent) => {
           this.citySelected.next(new NominatimResponse(item.geometry.coordinates[1], item.geometry.coordinates[0], item.nom, {
-              city: item.commune_nom,
-              country: 'France',
-              county: item.code_departement,
-              state: 'Pays de la Loire',
+            city: item.commune_nom,
+            country: 'France',
+            county: item.code_departement,
+            state: 'Pays de la Loire',
           }));
           this.stationSelected.next(item);
-          this.map.setView(e.latlng, 16);
+          this.mapPoint = {latitude: item.geometry.coordinates[1], longitude: item.geometry.coordinates[0], name: item.nom};
+          this.createMarker();
         }).addTo(this.map);
       });
     });
@@ -106,6 +118,7 @@ export class MapService {
     this.map = map;
     const coordinates = latLng([this.mapPoint.latitude, this.mapPoint.longitude]);
     this.map.setView(coordinates, this.map.getZoom());
+    this.map.zoomControl.setPosition('bottomleft');
   }
 
   /**
@@ -149,7 +162,7 @@ export class MapService {
   initializeMapOptions() {
     return this.options = {
       zoom: 8, layers: [tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18, attribution: 'OSM', minZoom: 8
+        maxZoom: 18, attribution: 'OSM', minZoom: 8,
       })]
     }
   }
@@ -176,6 +189,13 @@ export class MapService {
   }
 
   /**
+   * Permet de supprimer tous les marqueurs de la carte
+   */
+  clearMap() {
+    if (this.map.hasLayer(this.lastLayer)) this.map.removeLayer(this.lastLayer);
+  }
+
+  /**
    * Permet de créer un marker sur la carte
    */
   private createMarker() {
@@ -186,10 +206,4 @@ export class MapService {
     this.map.setView(coordinates, 16);
   }
 
-  /**
-   * Permet de supprimer tous les marqueurs de la carte
-   */
-  clearMap() {
-    if (this.map.hasLayer(this.lastLayer)) this.map.removeLayer(this.lastLayer);
-  }
 }

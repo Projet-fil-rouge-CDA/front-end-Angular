@@ -30,7 +30,7 @@
                                         <button class="border-0 rounded-circle bg-light"><i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i></button>
                                     </div>
                                     <!-- Modal body -->
-                                    <form action="">
+                                    <form (submit)="newPost()" [formGroup]="postForm">
                                         <div class="modal-body">
                                             <div class="d-flex justify-content-between align-items-center profil">
                                                 <div class="d-flex align-items-center">
@@ -39,7 +39,9 @@
                                                         <li class="fs-6 fw-light">Pseudo User</li>
                                                         <li class="fs-6 fw-lighter">
                                                             <div class="input-group">
-                                                                <select class="form-select" id="inputGroupSelect04" aria-label="createPost select with button addon">
+
+                                                                <select class="form-select" id="inputGroupSelect04" aria-label="Select de plusieurs catégories">
+
                                                                   <option selected>Air</option>
                                                                   <option value="1">Pollution</option>
                                                                   <option value="2">Météo</option>
@@ -49,21 +51,21 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <input type="text" class="p-1 bg-body border-1 rounded-1 border-secondary" placeholder="Mettez votre titre ici">
+                                                <control-messages [control]="postForm.get('title')" class="control d-flex justify-content-center col-12"></control-messages>
+                                                <input type="text" class="p-1 bg-body border-1 rounded-1 border-secondary form-control" formControlName="title" id="title" name="title" placeholder="Titre du sujet" required />
                                             </div>
                                             <div class="my-2">
-                                                <textarea class="form-control" id="createPostFormControlTextarea1" rows="4" placeholder="Écrire quelque chose..."></textarea>
+
+                                                <control-messages [control]="postForm.get('lastname')" class="control d-flex justify-content-center col-12"></control-messages>
+                                                <input id="exampleFormControlTextarea1" class="form-control" rows="4" formControlName="message" name="message" placeholder="Écrire quelque chose..." required />
                                             </div>
                                             <div class="d-flex justify-content-end">
-
-                                                <button class="border-0 rounded-circle bg-light end me-2"><i class="bi bi-camera-fill"></i>
-                                              </button>
-                                                <button class="border-0 rounded-circle bg-light end"><i class="bi bi-camera-reels-fill"></i>
-                                              </button>
+                                                <button class="border-0 rounded-circle bg-light end me-2"><i class="bi bi-camera-fill"></i></button>
+                                                <button class="border-0 rounded-circle bg-light end"><i class="bi bi-camera-reels-fill"></i></button>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary w-100">Publier</button>
+                                            <button type="submit" [disabled]="!postForm.valid" class="btn btn-secondary w-100">Publier</button>
                                         </div>
                                     </form>
                                 </div>
@@ -139,10 +141,8 @@
                                     <img src="/assets/img/img-profil.png" class="rounded-circle" alt="">
                                 </a>
                             </div>
-                            <form action="" class="d-grid gap-2 btn-post rounded-pill mx-2">
-
+                            <form class="d-grid gap-2 btn-post rounded-pill mx-2">
                                 <input type="text" class="ps-3 bg-body rounded-pill text-start text-black" placeholder="Écrire un commentaire">
-
                             </form>
                         </div>
                     </div>

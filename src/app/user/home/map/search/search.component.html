@@ -1,17 +1,18 @@
 <div class="address-lookup">
 
   <div class="search-container">
-
     <input #InputSearch (click)="$event.stopPropagation()" (keyup)="changed(InputSearch.value)"
-           class="form-control mb-3"
+           class="form-control"
            placeholder="Rechercher une adresse..." type="text" id="search-bar" />
-    <i class="bi bi-search search-icon" ></i>
   </div>
 
-  <div class="row w-50">
-    <div *ngIf="isSearching && InputSearch.value.length > 3" class="search-box ms-3">
+  <div class="d-flex justify-content-center">
+    <div *ngIf="isSearching && InputSearch.value.length > 1" class="search-box">
+      <div *ngIf="searchResults && searchResults.length === 0">
+        <p class="text-center fw-bold fs-6">Aucun résultat trouvé</p>
+      </div>
       <div *ngFor="let result of searchResults" class="search-result">
-        <p (click)="onClickResult(result)">{{result.displayName}}</p>
+        <p (click)="onClickResult(result)"><i class="bi bi-geo me-2"></i>{{result.displayName}}</p><hr/>
       </div>
     </div>
   </div>
