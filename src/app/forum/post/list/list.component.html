@@ -1,6 +1,7 @@
 <div class="container min-vh-100">
+    <div class="my-3"><a href="" class="text-decoration-none link-primary" routerLink="/forum"><i class="bi bi-arrow-left-circle"></i> Retour</a></div>
     <div class="mt-md-5">
-        <h1 class="text-black">NEWS POSTS</h1>
+        <h1 class="text-primary h2">POSTS</h1>
     </div>
 
     <div class="row">
@@ -25,7 +26,7 @@
                                 <div class="modal-content">
                                     <!-- Modal header -->
                                     <div class="modal-header">
-                                        <h5 class="modal-title h6" id="exampleModalLabel">Créer un post</h5>
+                                        <h5 class="modal-title h6" id="createPostModalLabel">Créer un post</h5>
                                         <button class="border-0 rounded-circle bg-light"><i class="bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i></button>
                                     </div>
                                     <!-- Modal body -->
@@ -38,7 +39,9 @@
                                                         <li class="fs-6 fw-light">Pseudo User</li>
                                                         <li class="fs-6 fw-lighter">
                                                             <div class="input-group">
+
                                                                 <select class="form-select" id="inputGroupSelect04" aria-label="Select de plusieurs catégories">
+
                                                                   <option selected>Air</option>
                                                                   <option value="1">Pollution</option>
                                                                   <option value="2">Météo</option>
@@ -49,27 +52,12 @@
                                                     </ul>
                                                 </div>
                                                 <control-messages [control]="postForm.get('title')" class="control d-flex justify-content-center col-12"></control-messages>
-                                                <input
-                                                  type="text"
-                                                  class="p-1 bg-body border-1 rounded-1 border-secondary form-control"
-                                                  formControlName="title"
-                                                  id="title"
-                                                  name="title"
-                                                  placeholder="Titre du sujet"
-                                                  required
-                                                  />
+                                                <input type="text" class="p-1 bg-body border-1 rounded-1 border-secondary form-control" formControlName="title" id="title" name="title" placeholder="Titre du sujet" required />
                                             </div>
                                             <div class="my-2">
-                                              <control-messages [control]="postForm.get('lastname')" class="control d-flex justify-content-center col-12"></control-messages>
-                                                <input
-                                                  id="exampleFormControlTextarea1"
-                                                  class="form-control"
-                                                  rows="4"
-                                                  formControlName="message"
-                                                  name="message"
-                                                  placeholder="Écrire quelque chose..."
-                                                  required
-                                                  />
+
+                                                <control-messages [control]="postForm.get('lastname')" class="control d-flex justify-content-center col-12"></control-messages>
+                                                <input id="exampleFormControlTextarea1" class="form-control" rows="4" formControlName="message" name="message" placeholder="Écrire quelque chose..." required />
                                             </div>
                                             <div class="d-flex justify-content-end">
                                                 <button class="border-0 rounded-circle bg-light end me-2"><i class="bi bi-camera-fill"></i></button>
@@ -98,7 +86,36 @@
                                 <li class="fs-6 fw-lighter">Date</li>
                             </ul>
                         </div>
-                        <button class="btn btn-link text-black" type="button"><i class="bi bi-three-dots-vertical"></i></button>
+                        <!-- Button trigger modal -->
+                        <button class="btn btn-link text-black" type="button" data-bs-toggle="modal" data-bs-target="#postModal"><i class="bi bi-three-dots-vertical"></i></button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-secondary w-50 ">
+                                    <div class="modal-body mt-2">
+                                        <ul class="list-unstyled text-center">
+                                            <li>
+                                                <button type="button" class="btn btn-link text-decoration-none text-danger">Signaler</button>
+                                            </li>
+                                            <li class="border-top">
+                                                <button type="button" class="btn btn-link text-decoration-none text-danger">Supprimer</button>
+                                            </li>
+                                            <li class="border-top">
+                                                <button type="button" class="btn btn-link text-decoration-none">Modifier</button>
+                                            </li>
+                                            <li class="border-top">
+                                                <button type="button" class="btn btn-link text-decoration-none">Copier le lien</button>
+                                            </li>
+                                            <li class="border-top">
+                                                <button type="button" class="btn btn-link text-decoration-none " data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin modal -->
                     </div>
                     <h5 class="card-title pt-2">Mon titre</h5>
                     <p class="card-text">Ut ornare nibh sit amet leo sollicitudin malesuada. Nam ac enim in elit gravida rhoncus et ut nulla. Nulla elit orci, vulputate a volutpat</p>

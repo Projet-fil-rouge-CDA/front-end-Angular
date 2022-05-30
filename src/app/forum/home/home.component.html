@@ -1,6 +1,6 @@
 <div class="container min-vh-100">
     <div class="mt-md-5">
-        <h1 class="text-black">FORUM</h1>
+        <h1 class="h2 text-primary">FORUM</h1>
         <div class="d-flex my-md-5 align-items-center">
             <div class="text-black w-75">
                 <p>
@@ -16,8 +16,11 @@
     <div class="d-flex my-sm-3 justify-content-between">
         <!-- Form Publier un post -->
         <div>
-            <button type="button" class="btn btn-outline-secondary rounded text-start text-black" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" class="btn btn-outline-secondary rounded text-start text-black d-none d-md-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                          Publier un post
+                        </button>
+            <button type="button" class="btn btn-outline-secondary rounded text-start text-black d-block d-md-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                         <i class="bi bi-plus-square"></i>
                         </button>
 
             <!-- Modal publier post-->
@@ -31,49 +34,33 @@
                         </div>
                         <!-- Modal body -->
                         <form (submit)="newPost()" [formGroup]="postForm">
-                          <div class="d-flex">
-                            <img src="/assets/img/img-prof.jpg" class="rounded-circle col-2" alt="Photo de profil">
-                            <div class="d-flex flex-column">
-                              <h6>Categories :</h6>
-                              <control-messages [control]="postForm.get('category')" class="control d-flex justify-content-center col-12"></control-messages>
-                              <select formControlName="category">
+                            <div class="d-flex">
+                                <img src="/assets/img/img-prof.jpg" class="rounded-circle col-2" alt="Photo de profil">
+                                <div class="d-flex flex-column">
+                                    <h6>Categories :</h6>
+                                    <control-messages [control]="postForm.get('category')" class="control d-flex justify-content-center col-12"></control-messages>
+                                    <select formControlName="category">
                                 <option>Air</option>
                                 <option>Pollution</option>
                                 <option>Météo</option>
                                 <option>Conseils</option>
                               </select>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <control-messages [control]="postForm.get('title')" class="control d-flex justify-content-center col-12"></control-messages>
+                                    <input type="text" class="form-control" formControlName="title" id="title" name="title" placeholder="Titre du sujet" required />
+                                </div>
                             </div>
-                            <div class="d-flex flex-column">
-                              <control-messages [control]="postForm.get('title')" class="control d-flex justify-content-center col-12"></control-messages>
-                              <input
-                                type="text"
-                                class="form-control"
-                                formControlName="title"
-                                id="title"
-                                name="title"
-                                placeholder="Titre du sujet"
-                                required
-                                />
-                            </div>
-                          </div>
-                          <control-messages [control]="postForm.get('message')" class="control d-flex justify-content-center col-12"></control-messages>
-                          <input
-                            type="text"
-                            class="form-control"
-                            formControlName="message"
-                            id="message"
-                            name="message"
-                            placeholder="Message"
-                            required
-                          />
-                          <button [disabled]="!postForm.valid" type="submit">Publier</button>
+                            <control-messages [control]="postForm.get('message')" class="control d-flex justify-content-center col-12"></control-messages>
+                            <input type="text" class="form-control" formControlName="message" id="message" name="message" placeholder="Message" required />
+                            <button [disabled]="!postForm.valid" type="submit">Publier</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Form Recherche -->
-        <form class="d-flex ">
+        <form class="d-flex my-2">
             <input class="form-control me-2 " type="search " placeholder="Que recherchez-vous ? " aria-label="Search ">
             <button class="btn btn-outline-secondary text-black " type="submit ">Rechercher</button>
         </form>
@@ -81,7 +68,7 @@
     <!-- Création de la liste des catégories -->
     <div class="mt-sm-5 rounded">
         <div class="card-header bg-secondary text-black">
-            <h2>Choisissez une catégorie</h2>
+            <h2 class="h3">Choisissez une catégorie</h2>
         </div>
         <!-- Liste des catégories -->
         <div class="accordion" id="forum" *ngFor="let category of categories; index as i">
@@ -96,7 +83,12 @@
                             <h4 class="h6 text-black">Auteurs</h4>
                             <h4 class="h6 text-black">Titres</h4>
                             <h4 class="h6 text-black d-none d-md-block">Commentaires</h4>
-                            <input class="d-none d-md-block" type="button" value="Filtrer">
+                            <div>
+                                <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                               <option selected>Trier par nom</option>
+                               <option value="1">Trier par date</option>
+                            </select>
+                            </div>
 
                         </div>
                         <!-- Liste des users postes -->
