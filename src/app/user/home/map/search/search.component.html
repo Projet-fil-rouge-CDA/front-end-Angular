@@ -7,9 +7,12 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <div *ngIf="isSearching && InputSearch.value.length > 3" class="search-box">
+    <div *ngIf="isSearching && InputSearch.value.length > 1" class="search-box">
+      <div *ngIf="searchResults && searchResults.length === 0">
+        <p class="text-center fw-bold fs-6">Aucun résultat trouvé</p>
+      </div>
       <div *ngFor="let result of searchResults" class="search-result">
-        <p (click)="onClickResult(result)"><i class="bi bi-geo me-2"></i> {{result.displayName}}</p><hr/>
+        <p (click)="onClickResult(result)"><i class="bi bi-geo me-2"></i>{{result.displayName}}</p><hr/>
       </div>
     </div>
   </div>
