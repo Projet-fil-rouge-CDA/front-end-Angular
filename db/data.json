@@ -15,6 +15,28 @@
       "id": 41656
     }
   ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Air"
+    },
+    {
+      "id": 2,
+      "name": "Pollution"
+    },
+    {
+      "id": 3,
+      "name": "Météo"
+    },
+    {
+      "id": 4,
+      "name": "Conseil"
+    },
+    {
+      "id": 5,
+      "name": "FAQs"
+    }
+  ],
   "post": [
     {
       "id": 45646,
@@ -29,6 +51,18 @@
       "title": "L'air c'est trop bon",
       "message": "Good wind, good vibe",
       "category": "Air"
+    },
+    {
+      "title": "Il fait beau",
+      "category": "Air",
+      "message": "L'air est bon aujourd'hui",
+      "id": 48647
+    },
+    {
+      "title": "yolo",
+      "category": "Météo",
+      "message": "Salut les gens",
+      "id": 48648
     }
   ]
 }
