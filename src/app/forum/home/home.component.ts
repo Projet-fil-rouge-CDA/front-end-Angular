@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ValidationService } from 'src/app/shared/services/validation.service';
 import { ForumService } from '../../shared/services/forum.service';
+import { Post } from '../../shared/models/post';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,8 @@ import { ForumService } from '../../shared/services/forum.service';
 export class HomeComponent implements OnInit {
 
   postForm: any;
+  posts: any;
+  categories : any;
 
   constructor(
     private formBuilder : FormBuilder,
@@ -27,7 +30,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Univ\'Air | Forum');
-    this.serviceForum.getPost().subscribe()
+    this.serviceForum.getCategories().subscribe((categories) => {
+      this.categories = categories;
+      console.log(this.categories);
+
+      this.serviceForum.getPosts().subscribe((posts) => {
+        this.posts = posts
+        this.posts.filter((post: any) => {
+        post.category === categories.name
+      })
+      console.log(this.posts);
+      })
+    })
   }
 
   newPost(){
