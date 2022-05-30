@@ -1,5 +1,8 @@
 <div [ngClass]="router.url === '/' ? 'bg-primary bg-gradient' : 'bg-white'">
-  <app-header *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address'"></app-header>
+  <app-header *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address' && !isLoading"></app-header>
 <router-outlet></router-outlet>
-<app-footer *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address' && router.url !== '/user'"></app-footer>
+<app-footer *ngIf="router.url !== '/login' && router.url !== '/register' && router.url !== '/add-address' && router.url !== '/user' && !isLoading"></app-footer>
+</div>
+<div *ngIf="isLoading" class="d-flex min-vw-100 min-vh-100 justify-content-center align-items-center">
+  <div class="spinner"></div>
 </div>

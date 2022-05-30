@@ -83,6 +83,12 @@
       "category": "Météo",
       "message": "Salut les gens",
       "id": 48648
+    },
+    {
+      "title": "Angers",
+      "category": "Pollution",
+      "message": "Oui ça va beaucoup",
+      "id": 48649
     }
   ]
 }
