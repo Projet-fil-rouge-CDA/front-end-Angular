@@ -1,0 +1,32 @@
+
+.dropdown-header {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  width: max-content;
+  z-index: 99999;
+}
+
+.shadow-menu {
+  -webkit-box-shadow: 7px 4px 34px -3px rgba(0, 0, 0, 0.6);
+  box-shadow: 7px 4px 34px -3px rgba(0, 0, 0, 0.6);
+}
+
+.menu-item {
+
+  margin-top: 2px;
+
+  a {
+    padding: 20px;
+    cursor: pointer;
+  }
+}
+
+.menu-trigger {
+  width: fit-content;
+  align-self: end;
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+}

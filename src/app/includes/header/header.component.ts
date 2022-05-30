@@ -25,4 +25,7 @@ export class HeaderComponent implements OnInit {
       const checkCookie = this.cookieService.check('session')
     })
   }
+  logout() {
+    this.authService.logout();
+  }
 }
