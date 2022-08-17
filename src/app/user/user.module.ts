@@ -17,6 +17,7 @@ import localeFr from '@angular/common/locales/fr';
 import {DropdownComponent} from "../shared/components/dropdown/dropdown.component";
 import {LogoComponent} from "../shared/components/logo/logo.component";
 import {CardComponent} from "../shared/components/card/card.component";
+import {ControlMessagesComponentSetting} from "../shared/components/control-messages-setting.components";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -32,8 +33,8 @@ registerLocaleData(localeFr, 'fr');
     MapComponent,
     DropdownComponent,
     LogoComponent,
-    CardComponent
-
+    CardComponent,
+    ControlMessagesComponentSetting
   ],
   imports: [
     CommonModule,
