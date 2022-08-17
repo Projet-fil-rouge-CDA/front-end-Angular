@@ -1,1 +1,130 @@
-<p>settings works!</p>
+<main class="d-flex align-items-center justify-content-center vh-50 position-relative">
+  <section class="bg-white col-6 d-flex justify-content-center flex-column align-items-center">
+    <h2 class="pb-4 pt-4">Compte</h2>
+    <form (submit)="optionUser()" [formGroup]="optionForm" class="d-flex flex-column align-items-center col-12">
+      <div class="d-flex justify-content-between col-12 pb-4">
+        <div class="d-flex flex-column col-3">
+          <control-messages [control]="optionForm.get('lastname')" class="control d-flex justify-content-center col-12"></control-messages>
+          <input
+            class="form-control"
+            formControlName="lastname"
+            id="lastname"
+            name="lastname"
+            placeholder="Nom"
+            required
+            type="text"
+          />
+        </div>
+        <div class="d-flex flex-column col-3">
+          <control-messages [control]="optionForm.get('firstname')" class="control d-flex justify-content-center col-12"></control-messages>
+          <input
+            class="form-control align-self-end"
+            formControlName="firstname"
+            id="firstname"
+            name="firstname"
+            placeholder="Prénom"
+            required
+            type="text"
+          />
+        </div>
+        <div class="d-flex flex-column col-3">
+          <control-messages [control]="optionForm.get('pseudo')" class="control d-flex justify-content-center col-12"></control-messages>
+          <input
+            class="form-control align-self-end"
+            formControlName="pseudo"
+            id="pseudo"
+            name="pseudo"
+            placeholder="Pseudo"
+            required
+            type="text"
+          />
+        </div>
+      </div>
+      <control-messages [control]="optionForm.get('phone')" class="control d-flex justify-content-center col-12"></control-messages>
+      <input
+        class="form-control mb-4"
+        formControlName="phone"
+        id="phone"
+        maxlength="10"
+        name="phone"
+        placeholder="Numéro de téléphone"
+        required
+        type="text"
+      />
+      <control-messages [control]="optionForm.get('email')" class="control d-flex justify-content-center col-12"></control-messages>
+      <input
+        class="form-control mb-4"
+        formControlName="email"
+        id="email"
+        name="email"
+        placeholder="Adresse mail"
+        required
+        type="text"
+      />
+      <control-messages [control]="optionForm.get('password')" class="control d-flex justify-content-center col-12"></control-messages>
+      <input
+        class="form-control mb-4"
+        formControlName="password"
+        id="password"
+        name="password"
+        placeholder="Mot de passe"
+        required
+        type="password"
+      />
+      <control-messages [control]="optionForm.get('confirmPassword')" class="control d-flex justify-content-center col-12"></control-messages>
+      <input
+        class="form-control mb-4"
+        formControlName="confirmPassword"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="Confirmer le mot de passe"
+        required
+        type="password"
+      />
+      <h3 class="pb-4 pt-2">Adresse personnelle</h3>
+      <control-messages [control]="optionForm.get('rue')" class="control d-flex justify-content-center col-12"></control-messages>
+      <input
+        class="form-control mb-4"
+        formControlName="rue"
+        id="rue"
+        name="rue"
+        placeholder="Rue"
+        required
+        type="text"
+      />
+      <div class="d-flex justify-content-between col-12">
+        <div class="d-flex flex-column col-5">
+          <control-messages [control]="optionForm.get('codePostal')" class="control d-flex justify-content-center col-12"></control-messages>
+          <input
+            class="form-control"
+            formControlName="codePostal"
+            id="codePostal"
+            name="codePostal"
+            placeholder="Code postal"
+            required
+            type="text"
+          />
+        </div>
+        <div class="d-flex flex-column col-5">
+          <control-messages [control]="optionForm.get('ville')" class="control d-flex justify-content-center col-12"></control-messages>
+          <input
+            class="form-control"
+            formControlName="ville"
+            id="ville"
+            name="ville"
+            placeholder="Ville"
+            required
+            type="text"
+          />
+        </div>
+      </div>
+      <button class="btn btn-success col-4 border-none rounded-5 text-white mt-5 mb-4" type="submit">Valider les changements</button>
+    </form>
+    <div class="pt-2 pb-3 border-top border-dark col-12 text-center">
+      <p>Souhaitez-vous <a (click)="deleteAccount()" class="link-danger text-decoration-underline">supprimer</a> votre compte utilisateur ?</p>
+    </div>
+  </section>
+  <div class="position-absolute end-0 top-0 blue col-3 d-inline-block">
+  </div>
+</main>
+
