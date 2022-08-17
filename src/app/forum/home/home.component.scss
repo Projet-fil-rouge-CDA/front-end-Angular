@@ -57,8 +57,7 @@ h1 {
     .rubTitle {
         font-size: 5em;
         font-weight: 200;
-        //text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
-        text-shadow: #1a1a1a 1px 1px 1px;
+        text-shadow: white 1px 1px 1px;
         position: absolute;
         z-index: 10;
     }
@@ -67,7 +66,7 @@ h1 {
 @media (max-width: 767px) {
     .rubContainer {
         a {
-            width: 100vw;
+            width: 80vw;
         }
     }
 }

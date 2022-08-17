@@ -4,7 +4,7 @@
         <div *ngFor="let categorie of categories">
             <a routerLink="/forum/fils" [queryParams]="{category: categorie.name }">
                 <div class="rubBlock">
-                    <img src="assets/img/rubrique{{categorie.id}}.jpg"
+                    <img src="{{categorie.imagePath}}"
                          alt="Image illustrant la catégorie {{categorie.name}} du forum">
                     <span class="rubTitle">{{categorie.name}}</span>
                 </div>

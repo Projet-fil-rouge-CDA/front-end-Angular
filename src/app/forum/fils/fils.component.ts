@@ -23,17 +23,12 @@ export class FilsComponent implements OnInit {
         this.route.queryParamMap
             .subscribe(params => {
                 this.category = params.get('category');
-                console.log(this.category);
             });
 
         this.titleService.setTitle('Univ\'Air | Forum - ' + this.category);
 
         this.serviceForum.getPosts().subscribe((posts: Post) => {
             this.posts = posts;
-            console.log("Posts", this.posts);
         })
-
-        let date = new Date('2018-09-22T15:00:00');
-        console.log(date);
     }
 }

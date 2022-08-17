@@ -15,8 +15,8 @@
                 <div class="filsCore">
                     <div class="filsCoreSub">
                         <div>
-                            <a routerLink="/talking">{{post.title}}</a>
-                            <span>Par {{post.id_user}}</span>
+                            <a routerLink="/forum/fils/talking" [queryParams]="{post: post.id }">{{post.title}}</a>
+                            <span>Par {{post.username}}</span>
                         </div>
                         <button>
                             <span class="iconify" data-icon="ant-design:delete-filled"></span>

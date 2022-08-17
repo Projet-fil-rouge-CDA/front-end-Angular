@@ -1,0 +1,59 @@
+<div *ngFor="let post of posts" class="talking">
+    <ng-container *ngIf="post.id == idPost">
+        <div class="talkingSub">
+            <div class="talkingSubUp">
+                <div>
+                    <h1>{{post.title}}</h1>
+                    <span>{{post.usename}}</span>
+                </div>
+                <div>
+                    <button>
+                        <span class="iconify" data-icon="el:ban-circle"></span>
+                    </button>
+                    <button>
+                        <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                    </button>
+                </div>
+            </div>
+            <p>
+                {{post.message}}
+            </p>
+            <span class="postDate">Posté le {{post.dateCreation}}</span>
+        </div>
+        <ng-container *ngFor="let comment of comments">
+            <ng-container *ngIf="comment.id_post == post.id">
+                <div class="talkingSub">
+                    <div class="talkingSubUp">
+                        <div>
+                            <span>{{comment.username}}</span>
+                        </div>
+                        <div>
+                            <button>
+                                <span class="iconify" data-icon="el:ban-circle"></span>
+                            </button>
+                            <button>
+                                <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <p>
+                        {{comment.message}}
+                    </p>
+                    <span class="postDate">Posté le {{comment.date}}</span>
+                </div>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>
+<div>
+    <form class="talkingSub" [formGroup]="talkingForm" (ngSubmit)="onSubmit()">
+        <div class="talkingSubUp">
+            <div>
+                <span>Guy Tard</span>
+            </div>
+        </div>
+        <input type="text" class="hiddenForm" formControlName="id_post" value={{idPost}}>
+        <textarea cols="30" rows="10" formControlName="message"></textarea>
+        <button class="sendButton">Envoyer</button>
+    </form>
+</div>

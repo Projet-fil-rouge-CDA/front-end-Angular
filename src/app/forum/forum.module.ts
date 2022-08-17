@@ -5,12 +5,14 @@ import {ForumRoutingModule} from "./forum-routing.module";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ControlMessagesComponentForum} from '../shared/components/control-messages-forum.components';
 import {FilsComponent} from './fils/fils.component';
+import { TalkingComponent } from './talking/talking.component';
 
 @NgModule({
     declarations: [
         HomeComponent,
         ControlMessagesComponentForum,
-        FilsComponent
+        FilsComponent,
+        TalkingComponent
     ],
     imports: [
         CommonModule,
