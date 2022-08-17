@@ -1,100 +1,159 @@
 {
-  "users": [
-    {
-      "firstname": "Adrien",
-      "lastname": "Pinheiro",
-      "phone": "0625313131",
-      "email": "adrien@gmail.com",
-      "password": "@Projet31",
-      "isActif": true,
-      "address": {
-        "street": "302",
-        "zipCode": "31200",
-        "city": "Toulouse"
-      },
-      "id": 41656
-    },
-    {
-      "phone": "0648172728",
-      "password": "Ppaaoo123!",
-      "id": 41657
-    },
-    {
-      "email": "adrien@gmail.com",
-      "password": "@Projet31",
-      "id": 41658
-    },
-    {
-      "email": "adrien@gmail.com",
-      "password": "@Projet31",
-      "id": 41659
-    },
-    {
-      "phone": "0650287234",
-      "password": "Ppaaoo123!",
-      "id": 41660
-    }
-  ],
-  "category": [
-    {
-      "id": 1,
-      "name": "Air"
-    },
-    {
-      "id": 2,
-      "name": "Pollution"
-    },
-    {
-      "id": 3,
-      "name": "Météo"
-    },
-    {
-      "id": 4,
-      "name": "Conseil"
-    },
-    {
-      "id": 5,
-      "name": "FAQs"
-    }
-  ],
-  "post": [
-    {
-      "id": 45646,
-      "id_user": 41656,
-      "title": "L'air est bon",
-      "message": "Good vibe, good wind",
-      "category": "Air"
-    },
-    {
-      "id": 48646,
-      "id_user": 41656,
-      "title": "L'air c'est trop bon",
-      "message": "Good wind, good vibe",
-      "category": "Air"
-    },
-    {
-      "title": "Il fait beau",
-      "category": "Air",
-      "message": "L'air est bon aujourd'hui",
-      "id": 48647
-    },
-    {
-      "title": "yolo",
-      "category": "Météo",
-      "message": "Salut les gens",
-      "id": 48648
-    },
-    {
-      "title": "Angers",
-      "category": "Pollution",
-      "message": "Oui ça va beaucoup",
-      "id": 48649
-    },
-    {
-      "title": "Cacaca",
-      "category": "Pollution",
-      "message": "cacacacacaca",
-      "id": 48650
-    }
-  ]
+    "users": [
+        {
+            "firstname": "Adrien",
+            "lastname": "Pinheiro",
+            "phone": "0625313131",
+            "email": "adrien@gmail.com",
+            "password": "@Projet31",
+            "isActif": true,
+            "address": {
+                "street": "302",
+                "zipCode": "31200",
+                "city": "Toulouse"
+            },
+            "id": 41656
+        },
+        {
+            "phone": "0648172728",
+            "password": "Ppaaoo123!",
+            "id": 41657
+        },
+        {
+            "email": "adrien@gmail.com",
+            "password": "@Projet31",
+            "id": 41658
+        },
+        {
+            "email": "adrien@gmail.com",
+            "password": "@Projet31",
+            "id": 41659
+        },
+        {
+            "phone": "0650287234",
+            "password": "Ppaaoo123!",
+            "id": 41660
+        },
+        {
+            "phone": "0650287234",
+            "password": "Ppaaoo123!",
+            "id": 41661
+        },
+        {
+            "phone": "0648172728",
+            "password": "Ppaaoo123!",
+            "id": 41662
+        }
+    ],
+    "category": [
+        {
+            "id": 1,
+            "name": "Air"
+        },
+        {
+            "id": 2,
+            "name": "Météo"
+        },
+        {
+            "id": 3,
+            "name": "Conseils"
+        },
+        {
+            "id": 4,
+            "name": "FAQs"
+        }
+    ],
+    "post": [
+        {
+            "id": 45646,
+            "id_user": 41656,
+            "title": "L'air est bon",
+            "message": "Good vibe, good wind",
+            "category": "Air",
+            "reponses": 11,
+            "dateLastMessage": "2008-10-29 14:56:59"
+        },
+        {
+            "id": 48646,
+            "id_user": 41657,
+            "title": "L'air c'est trop bon",
+            "message": "Good wind, good vibe",
+            "category": "Air",
+            "reponses": 12,
+            "dateLastMessage": "2009-11-30 15:57:00"
+
+        },
+        {
+            "title": "Il fait beau",
+            "id_user": 41658,
+            "category": "Air",
+            "message": "L'air est bon aujourd'hui",
+            "id": 48647,
+            "reponses": 13,
+            "dateLastMessage": "2010-12-01 16:58:01"
+        },
+        {
+            "title": "yolo",
+            "id_user": 41659,
+            "category": "Météo",
+            "message": "Salut les gens",
+            "id": 48648,
+            "reponses": 14,
+            "dateLastMessage": "2011-01-02 17:59:02"
+        },
+        {
+            "title": "Post sur la météo",
+            "id_user": 41659,
+            "category": "Météo",
+            "message": "Ohlala il fait chaud",
+            "id": 48648,
+            "reponses": 15,
+            "dateLastMessage": "2012-02-03 18:00:03"
+        },
+        {
+            "title": "Qui veut des conseils ?",
+            "id_user": 41660,
+            "category": "Conseils",
+            "message": "Oui ça va beaucoup",
+            "id": 48649,
+            "reponses": 16,
+            "dateLastMessage": "2013-03-04 19:01:04"
+        },
+        {
+            "title": "Attention, l'eau ça mouille !!!",
+            "id_user": 41669,
+            "category": "Conseils",
+            "message": "Oui ça va beaucoup",
+            "id": 48649,
+            "reponses": 16,
+            "dateLastMessage": "2014-04-05 20:02:05"
+        },
+        {
+            "title": "Test FAQ",
+            "id_user": 41661,
+            "category": "FAQs",
+            "message": "Je suis une question",
+            "id": 48650,
+            "reponses": 17,
+            "dateLastMessage": "2015-05-06 21:03:06"
+        },
+        {
+            "title": "Test FAQ",
+            "id_user": 41662,
+            "category": "Air",
+            "message": "Test de création de post",
+            "id": 48651,
+            "reponses": 18,
+            "dateLastMessage": "2016-05-07 21:03:06"
+        },
+        {
+            "title": "Comment on supprime un post svp ?",
+            "id_user": 41662,
+            "category": "FAQs",
+            "message": "Test de création de post",
+            "id": 48651,
+            "reponses": 19,
+            "dateLastMessage": "2017-06-08 22:04:07"
+        }
+    ]
 }

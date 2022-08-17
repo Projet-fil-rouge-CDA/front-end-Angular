@@ -1,0 +1,35 @@
+<div class="fils">
+    <h1>{{category}}</h1>
+    <div class="filsNew">
+        <span class="iconify" data-icon="carbon:new-tab"></span>
+        <button>Nouveau fil de discussion</button>
+    </div>
+    <div class="filsContainer">
+        <div class="filsHead">
+            <span class="filsHeadSub">Sujet</span>
+            <span class="filsHeadRes">Réponses</span>
+            <span class="filsHeadMes">Messages</span>
+        </div>
+        <div class="filsCoreContainer" *ngFor="let post of posts">
+            <ng-container *ngIf="post.category==category">
+                <div class="filsCore">
+                    <div class="filsCoreSub">
+                        <div>
+                            <a routerLink="/talking">{{post.title}}</a>
+                            <span>Par {{post.id_user}}</span>
+                        </div>
+                        <button>
+                            <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                        </button>
+                    </div>
+                    <div class="filsCoreRes">
+                        <span>{{post.reponses}}</span>
+                    </div>
+                    <div class="filsCoreMes">
+                        <span>Dernier message le {{post.dateLastMessage}}</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
