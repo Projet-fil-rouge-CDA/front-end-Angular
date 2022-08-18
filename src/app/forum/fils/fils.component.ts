@@ -3,6 +3,8 @@ import {Title} from "@angular/platform-browser";
 import {ForumService} from "../../shared/services/forum.service";
 import {ActivatedRoute} from "@angular/router";
 import {Post} from "../../shared/models/post";
+import {MatDialog} from '@angular/material/dialog';
+import {ModalComponent} from "../modal/modal.component";
 
 @Component({
     selector: 'app-fils',
@@ -14,9 +16,7 @@ export class FilsComponent implements OnInit {
     category: any;
     posts: any;
 
-    constructor(private titleService: Title,
-                private serviceForum: ForumService,
-                private route: ActivatedRoute) {
+    constructor(private titleService: Title, private serviceForum: ForumService, private route: ActivatedRoute, public dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -31,4 +31,19 @@ export class FilsComponent implements OnInit {
             this.posts = posts;
         })
     }
+
+    ngAfterViewInit(): void {
+        // @ts-ignore
+        document.getElementById("skeletonLoader").style.display = "none";
+    }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(ModalComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
+
 }

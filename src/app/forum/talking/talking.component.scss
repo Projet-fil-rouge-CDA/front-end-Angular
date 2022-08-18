@@ -1,5 +1,5 @@
 .talking {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .postDate {
@@ -29,6 +29,31 @@
 .uploadedImg {
     max-width: 25%;
     height: auto;
+}
+
+.backTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #0d6efd;
+    color: white;
+    cursor: pointer;
+    padding: 2vh 1.5vw;
+    border-radius: 33px;
+    font-size: 18px;
+
+    &:hover {
+        background-color: #555;
+    }
+
+    svg {
+        width: 1.5em;
+        height: 1.5em;
+    }
 }
 
 .talkingSub {
@@ -63,6 +88,7 @@
             span {
                 font-weight: 600;
                 width: max-content;
+                font-family: 'Inter', sans-serif;
             }
 
             button {

@@ -23,6 +23,7 @@
             </p>
             <span class="postDate">Posté le {{post.dateCreation}}</span>
         </div>
+        <ngx-skeleton-loader id="skeletonLoader" count="20" [theme]="{'border-radius': '5px', height: '150px', width:'90vw', 'margin-left':'5vw', border: '1px solid white'}" appearance="line"></ngx-skeleton-loader>
         <ng-container *ngFor="let comment of comments">
             <ng-container *ngIf="comment.id_post == post.id">
                 <div class="talkingSub">
@@ -45,7 +46,7 @@
                     <p>
                         {{comment.message}}
                     </p>
-                    <img src="{{comment.image}}" class="uploadedImg" >
+                    <img class="uploadedImg" src="{{comment.image}}">
                     <span class="postDate">Posté le {{comment.date}}</span>
                 </div>
             </ng-container>
@@ -63,8 +64,13 @@
         <textarea cols="30" formControlName="message" rows="10"></textarea>
         <div class="imageUpload">
             <span>Ajouter une image :</span>
-            <input type="file" formControlName="image" >
+            <input formControlName="image" type="file">
         </div>
         <button class="sendButton">Envoyer</button>
     </form>
 </div>
+<button (click)="scrollTop()" class="backTop" id="backTop">
+    <span class="iconify"
+          data-icon="ant-design:arrow-up-outlined"
+          style="color: white;"></span>
+</button>

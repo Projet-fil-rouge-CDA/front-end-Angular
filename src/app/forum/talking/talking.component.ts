@@ -5,8 +5,7 @@ import {ForumService} from "../../shared/services/forum.service";
 import {Post} from "../../shared/models/post";
 import {Comment} from "../../shared/models/comment";
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class TalkingComponent implements OnInit {
     users: any;
 
     constructor(private route: ActivatedRoute, private titleService: Title,
-                private serviceForum: ForumService, private formBuilder: FormBuilder,private http: HttpClient) {
+                private serviceForum: ForumService, private formBuilder: FormBuilder) {
     }
 
     ngOnInit(): void {
@@ -54,6 +53,21 @@ export class TalkingComponent implements OnInit {
             id_user: '1',
             image: ''
         });
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                // @ts-ignore
+                document.getElementById("backTop").style.display = "block";
+            } else {
+                // @ts-ignore
+                document.getElementById("backTop").style.display = "none";
+            }
+        }
+    }
+
+    ngAfterViewInit(): void {
+        // @ts-ignore
+        document.getElementById("skeletonLoader").style.display = "none";
     }
 
     onSubmit(): void {
@@ -81,4 +95,9 @@ export class TalkingComponent implements OnInit {
             }
         )
     }
+
+    scrollTop(): void {
+        window.scroll(0, 0);
+    }
 }
+

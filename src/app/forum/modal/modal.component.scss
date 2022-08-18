@@ -1,0 +1,38 @@
+h2 {
+    font-family: 'Inter', sans-serif;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: end;
+}
+
+.newTalkForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    mat-form-field {
+        font-family: 'Inter', sans-serif;
+        width: 100%;
+    }
+
+    .postModalButton {
+        background-color: #0d6efd;
+        border: 1px solid black;
+        align-self: flex-end;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1em;
+        padding: 0.5em 5vw;
+        margin: 1.8em 4vw 5vh;
+        transition: transform .4s;
+        color: white;
+
+        &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+    }
+}

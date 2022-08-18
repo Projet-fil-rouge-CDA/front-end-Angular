@@ -50,6 +50,10 @@ export class ForumService {
         return this.http.get<any>(this._urlApiUsers, this.httpHeaders)
     }
 
+    postPost(post: Post) {
+        return this.http.post<Post>(this._urlApi, post, this.httpHeaders)
+    }
+
     // uploadImage(image: File) {
     //     const formData = new FormData()
     //     formData.append('image', image)
@@ -57,7 +61,7 @@ export class ForumService {
     //     console.log("image",image)
     //     return this.http.post<any>('assets/img/' + image.name, formData)
 
-        // return this.http.post('assets/img/', image)
+    // return this.http.post('assets/img/', image)
     // }
 
 }

@@ -2,7 +2,7 @@
     <h1>{{category}}</h1>
     <div class="filsNew">
         <span class="iconify" data-icon="carbon:new-tab"></span>
-        <button>Nouveau fil de discussion</button>
+        <button mat-button (click)="openDialog()">Nouveau fil de discussion</button>
     </div>
     <div class="filsContainer">
         <div class="filsHead">
@@ -10,6 +10,7 @@
             <span class="filsHeadRes">Réponses</span>
             <span class="filsHeadMes">Messages</span>
         </div>
+        <ngx-skeleton-loader id="skeletonLoader" count="5" [theme]="{'border-radius': '5px', height: '150px', border: '1px solid white'}" appearance="line"></ngx-skeleton-loader>
         <div class="filsCoreContainer" *ngFor="let post of posts">
             <ng-container *ngIf="post.category==category">
                 <div class="filsCore">
@@ -33,3 +34,4 @@
         </div>
     </div>
 </div>
+
