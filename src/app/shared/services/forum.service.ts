@@ -13,6 +13,7 @@ export class ForumService {
     private _urlApi = environment.urlApi + '/post'
     private _urlApiCategory = environment.urlApi + '/category'
     private _urlApiComment = environment.urlApi + '/commentaire'
+    private _urlApiUsers = environment.urlApi + '/users'
 
     private httpHeaders = {
         headers: new HttpHeaders({
@@ -23,11 +24,6 @@ export class ForumService {
     constructor(
         private http: HttpClient
     ) {
-    }
-
-    newPost(post: Post) {
-        console.log(post);
-        return this.http.post<Post>(this._urlApi, post, this.httpHeaders).subscribe()
     }
 
     getPosts() {
@@ -46,7 +42,22 @@ export class ForumService {
         return this.http.post<Comment>(this._urlApiComment, comment, this.httpHeaders)
     }
 
-    deleteComment(id: number) {
+    deleteComment(id: any) {
         return this.http.delete<Comment>(this._urlApiComment + '/' + id, this.httpHeaders)
     }
+
+    getUsers() {
+        return this.http.get<any>(this._urlApiUsers, this.httpHeaders)
+    }
+
+    // uploadImage(image: File) {
+    //     const formData = new FormData()
+    //     formData.append('image', image)
+    //     console.log("formdata",formData)
+    //     console.log("image",image)
+    //     return this.http.post<any>('assets/img/' + image.name, formData)
+
+        // return this.http.post('assets/img/', image)
+    // }
+
 }

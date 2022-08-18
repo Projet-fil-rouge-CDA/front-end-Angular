@@ -3,5 +3,6 @@ export interface Comment {
     id_user?: string,
     id_post?: Storage,
     message: string,
-    date: Date
+    date: Date,
+    image?: string
 }

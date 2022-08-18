@@ -4,7 +4,10 @@
             <div class="talkingSubUp">
                 <div>
                     <h1>{{post.title}}</h1>
-                    <span>{{post.usename}}</span>
+                    <ng-container *ngFor="let user of users">
+                        <img *ngIf="user.id == post.id_user" class="imageProfil" src="{{user.profilImg}}">
+                    </ng-container>
+                    <span>{{post.username}}</span>
                 </div>
                 <div>
                     <button>
@@ -25,13 +28,16 @@
                 <div class="talkingSub">
                     <div class="talkingSubUp">
                         <div>
+                            <ng-container *ngFor="let user of users">
+                                <img *ngIf="user.id == comment.id_user" class="imageProfil" src="{{user.profilImg}}">
+                            </ng-container>
                             <span>{{comment.username}}</span>
                         </div>
                         <div>
                             <button>
                                 <span class="iconify" data-icon="el:ban-circle"></span>
                             </button>
-                            <button>
+                            <button (click)="onDelete(comment.id)">
                                 <span class="iconify" data-icon="ant-design:delete-filled"></span>
                             </button>
                         </div>
@@ -39,6 +45,7 @@
                     <p>
                         {{comment.message}}
                     </p>
+                    <img src="{{comment.image}}" class="uploadedImg" >
                     <span class="postDate">Posté le {{comment.date}}</span>
                 </div>
             </ng-container>
@@ -46,14 +53,18 @@
     </ng-container>
 </div>
 <div>
-    <form class="talkingSub" [formGroup]="talkingForm" (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="talkingForm" class="talkingSub">
         <div class="talkingSubUp">
             <div>
-                <span>Guy Tard</span>
+                <span>Admin</span>
             </div>
         </div>
-        <input type="text" class="hiddenForm" formControlName="id_post" value={{idPost}}>
-        <textarea cols="30" rows="10" formControlName="message"></textarea>
+        <input class="hiddenForm" formControlName="id_post" type="text" value={{idPost}}>
+        <textarea cols="30" formControlName="message" rows="10"></textarea>
+        <div class="imageUpload">
+            <span>Ajouter une image :</span>
+            <input type="file" formControlName="image" >
+        </div>
         <button class="sendButton">Envoyer</button>
     </form>
 </div>
