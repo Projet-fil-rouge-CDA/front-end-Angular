@@ -8,9 +8,11 @@ import {FilsComponent} from './fils/fils.component';
 import {TalkingComponent} from './talking/talking.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import {ModalComponent as ModalComponent} from './modal/modal.component';
+import {NewPostComponent as ModalComponent} from './forum-includes/new-post/new-post.component';
 import {MatInputModule} from "@angular/material/input";
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import { ImageViewerComponent } from './forum-includes/image-viewer/image-viewer.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
     declarations: [
@@ -18,7 +20,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
         ControlMessagesComponentForum,
         FilsComponent,
         TalkingComponent,
-        ModalComponent
+        ModalComponent,
+        ImageViewerComponent
     ],
     imports: [
         CommonModule,
@@ -28,7 +31,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
         MatButtonModule,
         MatDialogModule,
         MatInputModule,
-        NgxSkeletonLoaderModule
+        NgxSkeletonLoaderModule,
+        MatCardModule
     ]
 })
 export class ForumModule {

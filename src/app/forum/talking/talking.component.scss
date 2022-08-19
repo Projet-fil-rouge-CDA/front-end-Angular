@@ -29,6 +29,10 @@
 .uploadedImg {
     max-width: 25%;
     height: auto;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .backTop {
@@ -61,7 +65,6 @@
     flex-direction: column;
     width: 90vw;
     margin: 2em 5vw auto 5vw;
-    //padding: 1em;
     padding: 3vh 2em;
 
     &:nth-child(odd) {

@@ -2,7 +2,7 @@
     <h1>{{category}}</h1>
     <div class="filsNew">
         <span class="iconify" data-icon="carbon:new-tab"></span>
-        <button mat-button (click)="openDialog()">Nouveau fil de discussion</button>
+        <button (click)="openDialog()" mat-button>Nouveau fil de discussion</button>
     </div>
     <div class="filsContainer">
         <div class="filsHead">
@@ -10,16 +10,19 @@
             <span class="filsHeadRes">Réponses</span>
             <span class="filsHeadMes">Messages</span>
         </div>
-        <ngx-skeleton-loader id="skeletonLoader" count="5" [theme]="{'border-radius': '5px', height: '150px', border: '1px solid white'}" appearance="line"></ngx-skeleton-loader>
-        <div class="filsCoreContainer" *ngFor="let post of posts">
+        <ngx-skeleton-loader [theme]="{'border-radius': '5px', height: '150px', border: '1px solid white'}"
+                             appearance="line"
+                             count="5"
+                             id="skeletonLoader"></ngx-skeleton-loader>
+        <div *ngFor="let post of posts" class="filsCoreContainer">
             <ng-container *ngIf="post.category==category">
                 <div class="filsCore">
                     <div class="filsCoreSub">
                         <div>
-                            <a routerLink="/forum/fils/talking" [queryParams]="{post: post.id }">{{post.title}}</a>
+                            <a [queryParams]="{post: post.id }" routerLink="/forum/fils/talking">{{post.title}}</a>
                             <span>Par {{post.username}}</span>
                         </div>
-                        <button>
+                        <button (click)="onDelete(post.id)">
                             <span class="iconify" data-icon="ant-design:delete-filled"></span>
                         </button>
                     </div>
@@ -34,4 +37,3 @@
         </div>
     </div>
 </div>
-

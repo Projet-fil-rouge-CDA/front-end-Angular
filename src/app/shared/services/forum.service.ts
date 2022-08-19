@@ -54,6 +54,14 @@ export class ForumService {
         return this.http.post<Post>(this._urlApi, post, this.httpHeaders)
     }
 
+    deletePost(id: any) {
+        return this.http.delete<Post>(this._urlApi + '/' + id, this.httpHeaders)
+    }
+
+    updateUser(id: any, user: any) {
+        return this.http.put<any>(this._urlApiUsers + '/' + id, user, this.httpHeaders)
+    }
+
     // uploadImage(image: File) {
     //     const formData = new FormData()
     //     formData.append('image', image)
@@ -63,5 +71,6 @@ export class ForumService {
 
     // return this.http.post('assets/img/', image)
     // }
+
 
 }

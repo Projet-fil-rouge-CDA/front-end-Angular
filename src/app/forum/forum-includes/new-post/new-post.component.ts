@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ForumService} from "../../shared/services/forum.service";
-import {Post} from "../../shared/models/post";
+import {ForumService} from "../../../shared/services/forum.service";
+import {Post} from "../../../shared/models/post";
 
 
 @Component({
-    selector: 'app-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss']
+    selector: 'app-new-post',
+    templateUrl: './new-post.html',
+    styleUrls: ['./new-post.scss']
 })
-export class ModalComponent implements OnInit {
+export class NewPostComponent implements OnInit {
 
     newTalkForm: FormGroup
     category: any

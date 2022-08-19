@@ -5,17 +5,9 @@
                 <div>
                     <h1>{{post.title}}</h1>
                     <ng-container *ngFor="let user of users">
-                        <img *ngIf="user.id == post.id_user" class="imageProfil" src="{{user.profilImg}}">
+                        <img *ngIf="user.id == post.id_user" alt="" class="imageProfil" src="{{user.profilImg}}">
                     </ng-container>
                     <span>{{post.username}}</span>
-                </div>
-                <div>
-                    <button>
-                        <span class="iconify" data-icon="el:ban-circle"></span>
-                    </button>
-                    <button>
-                        <span class="iconify" data-icon="ant-design:delete-filled"></span>
-                    </button>
                 </div>
             </div>
             <p>
@@ -23,19 +15,19 @@
             </p>
             <span class="postDate">Posté le {{post.dateCreation}}</span>
         </div>
-        <ngx-skeleton-loader id="skeletonLoader" count="20" [theme]="{'border-radius': '5px', height: '150px', width:'90vw', 'margin-left':'5vw', border: '1px solid white'}" appearance="line"></ngx-skeleton-loader>
         <ng-container *ngFor="let comment of comments">
             <ng-container *ngIf="comment.id_post == post.id">
                 <div class="talkingSub">
                     <div class="talkingSubUp">
                         <div>
                             <ng-container *ngFor="let user of users">
-                                <img *ngIf="user.id == comment.id_user" class="imageProfil" src="{{user.profilImg}}">
+                                <img *ngIf="user.id == comment.id_user" alt="" class="imageProfil"
+                                     src="{{user.profilImg}}">
                             </ng-container>
                             <span>{{comment.username}}</span>
                         </div>
                         <div>
-                            <button>
+                            <button (click)="onBan(comment.id_user, comment.id)">
                                 <span class="iconify" data-icon="el:ban-circle"></span>
                             </button>
                             <button (click)="onDelete(comment.id)">
@@ -46,7 +38,7 @@
                     <p>
                         {{comment.message}}
                     </p>
-                    <img class="uploadedImg" src="{{comment.image}}">
+                    <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
                     <span class="postDate">Posté le {{comment.date}}</span>
                 </div>
             </ng-container>

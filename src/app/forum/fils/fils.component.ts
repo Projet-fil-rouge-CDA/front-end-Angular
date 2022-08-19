@@ -4,12 +4,10 @@ import {ForumService} from "../../shared/services/forum.service";
 import {ActivatedRoute} from "@angular/router";
 import {Post} from "../../shared/models/post";
 import {MatDialog} from '@angular/material/dialog';
-import {ModalComponent} from "../modal/modal.component";
+import {NewPostComponent} from "../forum-includes/new-post/new-post.component";
 
 @Component({
-    selector: 'app-fils',
-    templateUrl: './fils.component.html',
-    styleUrls: ['./fils.component.scss']
+    selector: 'app-fils', templateUrl: './fils.component.html', styleUrls: ['./fils.component.scss']
 })
 export class FilsComponent implements OnInit {
 
@@ -38,12 +36,18 @@ export class FilsComponent implements OnInit {
     }
 
     openDialog() {
-        const dialogRef = this.dialog.open(ModalComponent);
+        const dialogRef = this.dialog.open(NewPostComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
         });
     }
 
-
+    onDelete(id: any) {
+        if (confirm('Voulez-vous vraiment supprimer ce post ?')) {
+            this.serviceForum.deletePost(id).subscribe(() => {
+                this.ngOnInit();
+            })
+        }
+    }
 }
