@@ -11,7 +11,7 @@ import {NewPostComponent} from "../forum-includes/new-post/new-post.component";
 })
 export class FilsComponent implements OnInit {
 
-    category: string | null;
+    category: any;
     posts: any;
 
     constructor(private titleService: Title, private serviceForum: ForumService, private route: ActivatedRoute, public dialog: MatDialog) {
