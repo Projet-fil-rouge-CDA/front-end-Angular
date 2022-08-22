@@ -2,10 +2,10 @@
 <mat-dialog-content class="mat-typography">
     <form [formGroup]="newTalkForm" class="newTalkForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
-            <input formControlName="title" matInput placeholder="Objet">
+            <input formControlName="titre" matInput placeholder="Objet">
         </mat-form-field>
         <mat-form-field>
-            <textarea formControlName="message" matInput placeholder="Message"></textarea>
+            <textarea formControlName="contenu" matInput placeholder="Message"></textarea>
         </mat-form-field>
         <button class="postModalButton">Publier</button>
     </form>

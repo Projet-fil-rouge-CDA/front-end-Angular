@@ -11,7 +11,7 @@ import {Comment} from '../models/comment';
 export class ForumService {
 
     // private _urlApi = environment.urlApi + '/post'
-    private _urlApi = environment.urlApi + '/forum/get-posts'
+    private _urlApi = environment.urlApi + '/forum'
     private _urlApiCategory = environment.urlApi + '/category'
     private _urlApiComment = environment.urlApi + '/commentaire'
     private _urlApiUsers = environment.urlApi + '/users'
@@ -28,13 +28,24 @@ export class ForumService {
         }
     }
 
+    private httpHeadersForm = {
+        headers: new HttpHeaders({
+            'Content-Type': 'multipart/form-data',
+            // 'Access-Control-Allow-Origin': 'https://univair.herokuapp.com'
+        }),
+        body: {
+            "identifier": "admin",
+            "motDePasse": "admin"
+        }
+    }
+
     constructor(
         private http: HttpClient
     ) {
     }
 
-    getPosts(nomCategorie: string) {
-        return this.http.get<Post>(this._urlApi + '?nomCategorie=' + nomCategorie, this.httpHeaders)
+    getPosts(nomCategories: string) {
+        return this.http.get<Post>(this._urlApi + '/' + nomCategories + '/posts/get', this.httpHeaders)
     }
 
     getCategories() {
@@ -57,8 +68,8 @@ export class ForumService {
         return this.http.get<any>(this._urlApiUsers, this.httpHeaders)
     }
 
-    postPost(post: Post) {
-        return this.http.post<Post>(this._urlApi, post, this.httpHeaders)
+    postPost(post: FormData) {
+        return this.http.post<Post>(this._urlApi + '/post/create', post, this.httpHeadersForm)
     }
 
     deletePost(id: any) {

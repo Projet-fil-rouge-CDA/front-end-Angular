@@ -38,7 +38,6 @@ export class FilsComponent implements OnInit {
 
     openDialog() {
         const dialogRef = this.dialog.open(NewPostComponent);
-
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
         });
