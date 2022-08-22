@@ -19,8 +19,8 @@
                 <div class="filsCore">
                     <div class="filsCoreSub">
                         <div>
-                            <a [queryParams]="{post: post.id }" routerLink="/forum/fils/talking">{{post.title}}</a>
-                            <span>Par {{post.username}}</span>
+                            <a [queryParams]="{post: post.id }" routerLink="/forum/fils/talking">{{post.titre}}</a>
+                            <span>Par {{post.pseudo}}</span>
                         </div>
                         <button (click)="onDelete(post.id)">
                             <span class="iconify" data-icon="ant-design:delete-filled"></span>

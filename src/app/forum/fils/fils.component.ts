@@ -11,7 +11,7 @@ import {NewPostComponent} from "../forum-includes/new-post/new-post.component";
 })
 export class FilsComponent implements OnInit {
 
-    category: string | null;
+    category: any;
     posts: any;
 
     constructor(private titleService: Title, private serviceForum: ForumService, private route: ActivatedRoute, public dialog: MatDialog) {
@@ -25,7 +25,8 @@ export class FilsComponent implements OnInit {
 
         this.titleService.setTitle('Univ\'Air | Forum - ' + this.category);
 
-        this.serviceForum.getPosts().subscribe((posts: Post) => {
+        this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
+            console.log(posts);
             this.posts = posts;
         })
     }

@@ -31,9 +31,9 @@ export class TalkingComponent implements OnInit {
 
         this.titleService.setTitle('Univ\'Air | Forum - Post - ' + this.idPost);
 
-        this.serviceForum.getPosts().subscribe((posts: Post) => {
-            this.posts = posts;
-        })
+        // this.serviceForum.getPosts().subscribe((posts: Post) => {
+        //     this.posts = posts;
+        // })
 
         this.serviceForum.getComments().subscribe((comments: Comment) => {
             this.comments = comments;

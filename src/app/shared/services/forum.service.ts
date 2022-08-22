@@ -10,8 +10,8 @@ import {Comment} from '../models/comment';
 })
 export class ForumService {
 
-    private _urlApi = environment.urlApi + '/post'
-    // private _urlApi = environment.urlApi + '/forum/get-posts'
+    // private _urlApi = environment.urlApi + '/post'
+    private _urlApi = environment.urlApi + '/forum/get-posts'
     private _urlApiCategory = environment.urlApi + '/category'
     private _urlApiComment = environment.urlApi + '/commentaire'
     private _urlApiUsers = environment.urlApi + '/users'
@@ -21,7 +21,7 @@ export class ForumService {
             'Content-Type': 'application/json',
             // 'Access-Control-Allow-Origin': 'https://univair.herokuapp.com'
 
-}),
+        }),
         body: {
             "identifier": "admin",
             "motDePasse": "admin"
@@ -33,8 +33,8 @@ export class ForumService {
     ) {
     }
 
-    getPosts() {
-        return this.http.get<Post>(this._urlApi, this.httpHeaders)
+    getPosts(nomCategorie: string) {
+        return this.http.get<Post>(this._urlApi + '?nomCategorie=' + nomCategorie, this.httpHeaders)
     }
 
     getCategories() {
