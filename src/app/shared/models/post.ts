@@ -2,7 +2,7 @@ export interface Post {
     id?: string,
     id_user?: string,
     title: string,
-    category: string,
+    categorie: string,
     message: string,
     reponses: number,
     dateCreation: Date,

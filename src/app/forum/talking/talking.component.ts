@@ -14,11 +14,11 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class TalkingComponent implements OnInit {
 
-    idPost: any;
+    idPost: string | null;
     posts: any;
     comments: any;
     talkingForm: FormGroup;
-    users: any;
+    users: any[];
 
     constructor(private route: ActivatedRoute, private titleService: Title, private serviceForum: ForumService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     }

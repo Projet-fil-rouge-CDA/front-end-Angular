@@ -11,14 +11,21 @@ import {Comment} from '../models/comment';
 export class ForumService {
 
     private _urlApi = environment.urlApi + '/post'
+    // private _urlApi = environment.urlApi + '/forum/get-posts'
     private _urlApiCategory = environment.urlApi + '/category'
     private _urlApiComment = environment.urlApi + '/commentaire'
     private _urlApiUsers = environment.urlApi + '/users'
 
     private httpHeaders = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
+            'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Origin': 'https://univair.herokuapp.com'
+
+}),
+        body: {
+            "identifier": "admin",
+            "motDePasse": "admin"
+        }
     }
 
     constructor(

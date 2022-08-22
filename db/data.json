@@ -157,6 +157,11 @@
       "password": "Ppaaoo123!",
       "id": 41670,
       "isActif": true
+    },
+    {
+      "phone": "0648172728",
+      "password": "Ppaaoo123!",
+      "id": 41671
     }
   ],
   "category": [
@@ -187,7 +192,7 @@
       "id_user": 41656,
       "title": "L'air est bon",
       "message": "Good vibe, good wind",
-      "category": "Air",
+      "categorie": "Air",
       "reponses": 11,
       "dateCreation": "2008-10-29 14:56:59",
       "dateLastMessage": "2008-10-29 14:56:59",
@@ -198,7 +203,7 @@
       "id_user": 41657,
       "title": "L'air c'est trop bon",
       "message": "Good wind, good vibe",
-      "category": "Air",
+      "categorie": "Air",
       "reponses": 12,
       "dateCreation": "2008-10-29 14:56:59",
       "dateLastMessage": "2009-11-30 15:57:00",
@@ -207,7 +212,7 @@
     {
       "title": "Il fait beau",
       "id_user": 41658,
-      "category": "Air",
+      "categorie": "Air",
       "message": "L'air est bon aujourd'hui",
       "id": 48648,
       "reponses": 13,
@@ -218,7 +223,7 @@
     {
       "title": "Post sur la météo",
       "id_user": 41659,
-      "category": "Météo",
+      "categorie": "Météo",
       "message": "Ohlala il fait chaud",
       "id": 48650,
       "reponses": 15,
@@ -229,7 +234,7 @@
     {
       "title": "J'ai besoin de conseils svp ?",
       "id_user": 41660,
-      "category": "Conseils",
+      "categorie": "Conseils",
       "message": "Bonjour, je suis à la recherche de conseils pour mon vélo de route! Merci de répondre à ma question! Merci!",
       "id": 48651,
       "reponses": 16,
@@ -240,7 +245,7 @@
     {
       "title": "Attention, l'eau ça mouille !!!",
       "id_user": 41669,
-      "category": "Conseils",
+      "categorie": "Conseils",
       "message": "Si jamais vous ne saviez pas",
       "id": 48652,
       "reponses": 16,
@@ -251,7 +256,7 @@
     {
       "title": "Test FAQ",
       "id_user": 41661,
-      "category": "FAQs",
+      "categorie": "FAQs",
       "message": "Je suis une question",
       "id": 48653,
       "reponses": 17,
@@ -262,7 +267,7 @@
     {
       "title": "Test FAQ",
       "id_user": 41662,
-      "category": "Air",
+      "categorie": "Air",
       "message": "Test de création de post",
       "id": 48654,
       "reponses": 18,
@@ -273,7 +278,7 @@
     {
       "title": "Comment on supprime un post svp ?",
       "id_user": 41662,
-      "category": "FAQs",
+      "categorie": "FAQs",
       "message": "Test de création de post",
       "id": 48655,
       "reponses": 19,
