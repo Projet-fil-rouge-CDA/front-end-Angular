@@ -1,8 +1,11 @@
 export interface Post {
-
-  id?: string,
-  // id_user récuperé avec le cookie
-  title: string,
-  category: string, // mettre id_category plus tard
-  message: string
+    id?: string,
+    id_user?: string,
+    title: string,
+    categorie: string,
+    message: string,
+    reponses: number,
+    dateCreation: Date,
+    dateLastMessage: Date,
+    username: string
 }

@@ -1,0 +1,39 @@
+<div class="fils">
+    <h1>{{category}}</h1>
+    <div class="filsNew">
+        <span class="iconify" data-icon="carbon:new-tab"></span>
+        <button (click)="openDialog()" mat-button>Nouveau fil de discussion</button>
+    </div>
+    <div class="filsContainer">
+        <div class="filsHead">
+            <span class="filsHeadSub">Sujet</span>
+            <span class="filsHeadRes">Réponses</span>
+            <span class="filsHeadMes">Messages</span>
+        </div>
+        <ngx-skeleton-loader [theme]="{'border-radius': '5px', height: '150px', border: '1px solid white'}"
+                             appearance="line"
+                             count="5"
+                             id="skeletonLoader"></ngx-skeleton-loader>
+        <div *ngFor="let post of posts" class="filsCoreContainer">
+                <ng-container *ngIf="post.categorie==category">
+                <div class="filsCore">
+                    <div class="filsCoreSub">
+                        <div>
+                            <a [queryParams]="{post: post.id }" routerLink="/forum/fils/talking">{{post.title}}</a>
+                            <span>Par {{post.username}}</span>
+                        </div>
+                        <button (click)="onDelete(post.id)">
+                            <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                        </button>
+                    </div>
+                    <div class="filsCoreRes">
+                        <span>{{post.reponses}}</span>
+                    </div>
+                    <div class="filsCoreMes">
+                        <span>Dernier message le {{post.dateLastMessage}}</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

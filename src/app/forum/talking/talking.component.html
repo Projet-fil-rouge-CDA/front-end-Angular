@@ -1,0 +1,68 @@
+<div *ngFor="let post of posts" class="talking">
+    <ng-container *ngIf="post.id == idPost">
+        <div class="talkingSub">
+            <div class="talkingSubUp">
+                <div>
+                    <h1>{{post.title}}</h1>
+                    <ng-container *ngFor="let user of users">
+                        <img *ngIf="user.id == post.id_user" alt="" class="imageProfil" src="{{user.profilImg}}">
+                    </ng-container>
+                    <span>{{post.username}}</span>
+                </div>
+            </div>
+            <p>
+                {{post.message}}
+            </p>
+            <span class="postDate">Posté le {{post.dateCreation}}</span>
+        </div>
+        <ng-container *ngFor="let comment of comments">
+            <ng-container *ngIf="comment.id_post == post.id">
+                <div class="talkingSub">
+                    <div class="talkingSubUp">
+                        <div>
+                            <ng-container *ngFor="let user of users">
+                                <img *ngIf="user.id == comment.id_user" alt="" class="imageProfil"
+                                     src="{{user.profilImg}}">
+                            </ng-container>
+                            <span>{{comment.username}}</span>
+                        </div>
+                        <div>
+                            <button (click)="onBan(comment.id_user, comment.id)">
+                                <span class="iconify" data-icon="el:ban-circle"></span>
+                            </button>
+                            <button (click)="onDelete(comment.id)">
+                                <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <p>
+                        {{comment.message}}
+                    </p>
+                    <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
+                    <span class="postDate">Posté le {{comment.date}}</span>
+                </div>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="talkingForm" class="talkingSub">
+        <div class="talkingSubUp">
+            <div>
+                <span>Admin</span>
+            </div>
+        </div>
+        <input class="hiddenForm" formControlName="id_post" type="text" value={{idPost}}>
+        <textarea cols="30" formControlName="message" rows="10"></textarea>
+        <div class="imageUpload">
+            <span>Ajouter une image :</span>
+            <input formControlName="image" type="file">
+        </div>
+        <button class="sendButton">Envoyer</button>
+    </form>
+</div>
+<button (click)="scrollTop()" class="backTop" id="backTop">
+    <span class="iconify"
+          data-icon="ant-design:arrow-up-outlined"
+          style="color: white;"></span>
+</button>

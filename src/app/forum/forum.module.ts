@@ -1,30 +1,39 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { AddPostComponent } from './post/add/add-post.component';
-import { EditPostComponent } from './post/edit/edit-post.component';
-import { ListComponent } from './post/list/list.component';
-import { AddComponent } from './category/add/add.component';
-import { EditComponent } from './category/edit/edit.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HomeComponent} from './home/home.component';
 import {ForumRoutingModule} from "./forum-routing.module";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ControlMessagesComponentForum } from '../shared/components/control-messages-forum.components';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ControlMessagesComponentForum} from '../shared/components/control-messages-forum.components';
+import {FilsComponent} from './fils/fils.component';
+import {TalkingComponent} from './talking/talking.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {NewPostComponent as ModalComponent} from './forum-includes/new-post/new-post.component';
+import {MatInputModule} from "@angular/material/input";
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import { ImageViewerComponent } from './forum-includes/image-viewer/image-viewer.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    AddPostComponent,
-    EditPostComponent,
-    ListComponent,
-    AddComponent,
-    EditComponent,
-    ControlMessagesComponentForum
-  ],
-  imports: [
-    CommonModule,
-    ForumRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        HomeComponent,
+        ControlMessagesComponentForum,
+        FilsComponent,
+        TalkingComponent,
+        ModalComponent,
+        ImageViewerComponent
+    ],
+    imports: [
+        CommonModule,
+        ForumRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatInputModule,
+        NgxSkeletonLoaderModule,
+        MatCardModule
+    ]
 })
-export class ForumModule { }
+export class ForumModule {
+}

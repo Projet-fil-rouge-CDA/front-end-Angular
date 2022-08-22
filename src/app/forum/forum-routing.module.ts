@@ -1,15 +1,18 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ListComponent } from './post/list/list.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {FilsComponent} from "./fils/fils.component";
+import {TalkingComponent} from "./talking/talking.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'post', component: ListComponent}
+    {path: '', component: HomeComponent},
+    {path: 'fils', component: FilsComponent},
+    {path: 'fils/talking', component: TalkingComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class ForumRoutingModule { }
+export class ForumRoutingModule {
+}
