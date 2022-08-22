@@ -12,9 +12,8 @@
         "zipCode": "31200",
         "city": "Toulouse"
       },
+      {
       "id": 41656
-    },
-    {
       "email": "adrien@gmail.com",
       "password": "@Projet31",
       "id": 41658,
@@ -161,7 +160,8 @@
     {
       "phone": "0648172728",
       "password": "Ppaaoo123!",
-      "id": 41671
+      "id": 41671,
+      "isActif":"true"
     }
   ],
   "category": [
