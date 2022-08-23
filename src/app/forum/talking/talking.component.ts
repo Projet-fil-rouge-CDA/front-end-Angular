@@ -16,9 +16,10 @@ export class TalkingComponent implements OnInit {
 
     idPost: string | null;
     posts: any;
-    comments: any;
+    comments: any = [];
     talkingForm: FormGroup;
     users: any[];
+    category: any;
 
     constructor(private route: ActivatedRoute, private titleService: Title, private serviceForum: ForumService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     }
@@ -27,16 +28,21 @@ export class TalkingComponent implements OnInit {
         this.route.queryParamMap
             .subscribe(params => {
                 this.idPost = params.get('post');
+                this.category = params.get('category');
             });
 
         this.titleService.setTitle('Univ\'Air | Forum - Post - ' + this.idPost);
 
-        // this.serviceForum.getPosts().subscribe((posts: Post) => {
-        //     this.posts = posts;
-        // })
+        this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
+            this.posts = posts;
+        })
 
-        this.serviceForum.getComments().subscribe((comments: Comment) => {
-            this.comments = comments;
+        this.serviceForum.getComments(this.idPost).subscribe((comments: Comment) => {
+            console.log(comments);
+            for (const comment of comments.commentaires) {
+                this.comments.push(comment);
+            }
+            console.log(this.comments);
         })
 
         this.serviceForum.getUsers().subscribe((users: any) => {
@@ -44,7 +50,7 @@ export class TalkingComponent implements OnInit {
         })
 
         this.talkingForm = this.formBuilder.group({
-            username: 'Admin',
+            username: 'admin',
             message: '',
             date: new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"}),
             id_post: this.idPost,

@@ -3,20 +3,20 @@
         <div class="talkingSub">
             <div class="talkingSubUp">
                 <div>
-                    <h1>{{post.title}}</h1>
+                    <h1>{{post.titre}}</h1>
                     <ng-container *ngFor="let user of users">
                         <img *ngIf="user.id == post.id_user" alt="" class="imageProfil" src="{{user.profilImg}}">
                     </ng-container>
-                    <span>{{post.username}}</span>
+                    <span>{{post.pseudo}}</span>
                 </div>
             </div>
             <p>
-                {{post.message}}
+                {{post.contenu}}
             </p>
-            <span class="postDate">Posté le {{post.dateCreation}}</span>
+            <span class="postDate">Posté le {{post.date}}</span>
         </div>
         <ng-container *ngFor="let comment of comments">
-            <ng-container *ngIf="comment.id_post == post.id">
+            <ng-container *ngIf="comment.postId == post.id">
                 <div class="talkingSub">
                     <div class="talkingSubUp">
                         <div>
@@ -24,7 +24,7 @@
                                 <img *ngIf="user.id == comment.id_user" alt="" class="imageProfil"
                                      src="{{user.profilImg}}">
                             </ng-container>
-                            <span>{{comment.username}}</span>
+                            <span>{{comment.pseudo}}</span>
                         </div>
                         <div>
                             <button (click)="onBan(comment.id_user, comment.id)">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <p>
-                        {{comment.message}}
+                        {{comment.contenu}}
                     </p>
                     <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
                     <span class="postDate">Posté le {{comment.date}}</span>

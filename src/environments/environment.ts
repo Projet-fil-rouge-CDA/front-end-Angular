@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     // urlApi: 'http://localhost:3000'
-    urlApi: 'https://univair.herokuapp.com/api'
+    urlApi: 'https://univair.herokuapp.com/api/'
 };
 
 /*

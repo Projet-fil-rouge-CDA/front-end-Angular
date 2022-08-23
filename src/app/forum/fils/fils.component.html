@@ -19,7 +19,7 @@
                 <div class="filsCore">
                     <div class="filsCoreSub">
                         <div>
-                            <a [queryParams]="{post: post.id }" routerLink="/forum/fils/talking">{{post.titre}}</a>
+                            <a [queryParams]="{post: post.id, category:category }" routerLink="/forum/fils/talking">{{post.titre}}</a>
                             <span>Par {{post.pseudo}}</span>
                         </div>
                         <button (click)="onDelete(post.id)">

@@ -11,49 +11,36 @@ import {Comment} from '../models/comment';
 export class ForumService {
 
     // private _urlApi = environment.urlApi + '/post'
-    private _urlApi = environment.urlApi + '/forum'
-    private _urlApiCategory = environment.urlApi + '/category'
-    private _urlApiComment = environment.urlApi + '/commentaire'
-    private _urlApiUsers = environment.urlApi + '/users'
+    private _urlApi = environment.urlApi
+    private _urlApiCategory = environment.urlApi + 'forum/categories'
+    private _urlApiComment = environment.urlApi + 'forum/post/get'
+    private _urlApiUsers = environment.urlApi + 'admin/users'
 
     private httpHeaders = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            // 'Access-Control-Allow-Origin': 'https://univair.herokuapp.com'
-
-        }),
-        body: {
-            "identifier": "admin",
-            "motDePasse": "admin"
-        }
+            'Content-Type': 'application/json'
+        })
     }
 
     private httpHeadersForm = {
         headers: new HttpHeaders({
-            'Content-Type': 'multipart/form-data',
-            // 'Access-Control-Allow-Origin': 'https://univair.herokuapp.com'
-        }),
-        body: {
-            "identifier": "admin",
-            "motDePasse": "admin"
-        }
+            // 'Content-Type': 'multipart/form-data',
+        })
     }
 
-    constructor(
-        private http: HttpClient
-    ) {
+    constructor(private http: HttpClient) {
     }
 
-    getPosts(nomCategories: string) {
-        return this.http.get<Post>(this._urlApi + '/' + nomCategories + '/posts/get', this.httpHeaders)
+    getPosts(nomCategorie: string) {
+        return this.http.get<Post>(this._urlApi + 'forum/'+ nomCategorie + '/posts/get', this.httpHeaders)
     }
 
     getCategories() {
-        return this.http.get<Category>(this._urlApiCategory, this.httpHeaders)
+        return this.http.get<Category>(this._urlApiCategory + '/get', this.httpHeaders)
     }
 
-    getComments() {
-        return this.http.get<Comment>(this._urlApiComment, this.httpHeaders)
+    getComments(id: any) {
+        return this.http.get<Comment>(this._urlApiComment + '?idPost=' + id, this.httpHeaders)
     }
 
     postComment(comment: Comment) {
@@ -65,7 +52,7 @@ export class ForumService {
     }
 
     getUsers() {
-        return this.http.get<any>(this._urlApiUsers, this.httpHeaders)
+        return this.http.get<any>(this._urlApiUsers + '/get', this.httpHeaders)
     }
 
     postPost(post: FormData) {

@@ -5,4 +5,5 @@ export interface Comment {
     message: string,
     date: Date,
     image?: string
+    commentaires: Comment[]
 }

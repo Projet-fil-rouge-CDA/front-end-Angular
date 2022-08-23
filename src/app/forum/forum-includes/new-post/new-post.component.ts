@@ -67,12 +67,12 @@ export class NewPostComponent implements OnInit {
         formData.append('pseudo', this.pseudo?.value);
         formData.append('contenu', this.contenu?.value);
 
-        console.log(this.titre?.value);
-        console.log(formData.getAll('titre'));
+        // console.log(this.titre?.value);
+        // console.log(formData.getAll('titre'));
         this.serviceForum.postPost(formData).subscribe(() => {
             this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
                 this.posts = posts;
-                this.router.navigate(['/forum/fils/talking'], {queryParams: {post: this.posts[this.posts.length - 1].id}}).then(r => {
+                this.router.navigate(['/forum/fils/talking'], {queryParams: {post: this.posts[this.posts.length - 1].id, category: this.category}}).then(r => {
                     window.location.reload();
                 })
             })
