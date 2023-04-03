@@ -18,6 +18,7 @@ export class WeatherComponent implements OnInit {
   station: any;
   w: Weather;
   weatherSubscription = new Subscription();
+  
 
   constructor(private weatherService: WeatherService, private mapService: MapService, private zone: NgZone) {
   }

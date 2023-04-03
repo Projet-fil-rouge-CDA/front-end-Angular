@@ -34,7 +34,6 @@ export class WeatherService {
 
 
   getWeatherClass(weather: string): string {
-      console.log(weather)
     switch (weather) {
       case 'Clear':
         return 'blue-gradient-background';

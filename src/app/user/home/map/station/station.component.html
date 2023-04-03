@@ -23,7 +23,7 @@
     <div class="col-md-2">
       <label class="col-form-label">Liste des polluants</label>
       <select class="form-select" [(ngModel)]="typePolluant" (change)="onChangePolluant()">
-        <option *ngFor="let p of listPolluants" [ngValue]="p.polluant">{{p.polluant_name}}</option>
+        <option *ngFor="let p of categoryPolluants" [ngValue]="p.codePolluant">{{p.nomPolluant}}</option>
       </select>
     </div>
   </div>
@@ -40,15 +40,15 @@
     <tbody>
     <tr *ngFor="let poll of polluant; let i = index">
       <th scope="row">{{(i+1)+(currentPage*10)-10}}</th>
-      <td>{{transformCodeToName(poll.code_polluant)}}</td>
-      <td>{{poll.valeur_originale}}</td>
-      <td>μG/m3</td>
-      <td>{{poll.date_heure_local | date}}</td>
+      <td>{{poll.polluant}}</td>
+      <td>{{poll.valeur}}</td>
+      <td>{{poll.unite}}</td>
+        <td>{{poll.date | date:'dd/MM/yyyy HH:mm'}}</td>
     </tr>
     </tbody>
   </table>
   <div class="d-flex justify-content-end" *ngIf="polluant && polluant.length !== 0 && !isLoading">
-    <button class="btn btn-warning text-white">Exporter les données au format PDF</button>
+    <button class="btn btn-warning text-white" (click)="exportPdf(stationName, startDate, endDate)">Exporter les données au format PDF</button>
   </div>
   <nav aria-label="Page navigation example" *ngIf="polluant && polluant.length !== 0 && !isLoading">
     <ul class="pagination justify-content-center">
