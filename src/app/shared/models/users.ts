@@ -6,9 +6,10 @@ export interface Users {
   prenom: string,
   phone: number,
   email: string,
-  motDePasse: string,
+  motDePasse?: string,
   confirmPassword?: string,
   isActif?: boolean,
   address: Address,
-  roles?: string[]
+  roles?: string[],
+  pseudo?:string
 }
