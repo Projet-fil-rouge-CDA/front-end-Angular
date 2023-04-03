@@ -2,12 +2,13 @@ import { Address } from "./address";
 
 export interface Users {
   id?: string,
-  lastname: string,
-  firstname: string,
+  nom: string,
+  prenom: string,
   phone: number,
   email: string,
-  password: string,
+  motDePasse: string,
   confirmPassword?: string,
   isActif?: boolean,
-  address: Address
+  address: Address,
+  roles?: string[]
 }

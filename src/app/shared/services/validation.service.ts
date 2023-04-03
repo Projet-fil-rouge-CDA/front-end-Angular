@@ -37,7 +37,7 @@ export class ValidationService {
 
   static passwordValidator(control : {value: string}) {
     // Mot de passe de 8 caractère minimum possedant au moins un nombre / une majuscule / un caractère spécial
-    if (control.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z0-9\d@$!%*?&]{8,}$/)) {
+    if (control.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)(?=.*[@$!%*?&+])[A-Za-z0-9\d@$!%*?&+]{8,}$/)) {
       return null;
     } else {
       return { invalidPassword : true };

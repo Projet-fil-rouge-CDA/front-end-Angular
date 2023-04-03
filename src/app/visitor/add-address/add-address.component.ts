@@ -35,7 +35,7 @@ export class AddAddressComponent implements OnInit{
 
   addAddress() {
     if (this.addAddressForm.dirty && this.addAddressForm.valid) {
-      this.user.address = this.addAddressForm.value
+      this.user.address = {rue: this.addAddressForm.value.street, codePostal: this.addAddressForm.value.zipCode, ville: this.addAddressForm.value.city}
       this.logsService.register(this.user)
     }
   }

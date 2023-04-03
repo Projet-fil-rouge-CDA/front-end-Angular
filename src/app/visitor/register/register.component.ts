@@ -38,13 +38,13 @@ export class RegisterComponent implements OnInit{
     if (this.registerForm.dirty && this.registerForm.valid && this.registerForm.value.password === this.registerForm.value.confirmPassword) {
       this.logsService.users$
       .next({
-      firstname: this.registerForm.value.firstname,
-      lastname: this.registerForm.value.lastname,
+      prenom: this.registerForm.value.firstname,
+      nom: this.registerForm.value.lastname,
       phone: this.registerForm.value.phone,
       email: this.registerForm.value.email,
-      password: this.registerForm.value.password,
+      motDePasse: this.registerForm.value.password,
       isActif: true,
-      address: {rue: '', codePostal: 0, ville: ''}
+      address: {rue: '', codePostal: 0, ville: ''},
       })
       this.router.navigate(['/add-address'])
     }

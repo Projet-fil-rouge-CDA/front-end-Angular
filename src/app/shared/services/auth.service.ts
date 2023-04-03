@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private _urlApi = environment.urlApi + '/login'
+  private _urlApi = environment.urlApi;
 
   isAuth$ = new BehaviorSubject<boolean>(false)
-  users$ = new BehaviorSubject<Users>({firstname: '', lastname: '', phone: 0, email: '', password: '', isActif: false, address: {rue: '', codePostal: 0, ville: ''}});
+  users$ = new BehaviorSubject<Users>({prenom: '', nom: '', phone: 0, email: '', motDePasse: '', isActif: false, address: {rue: '', codePostal: 0, ville: ''}});
   role$ = new BehaviorSubject<String>('user')
 
   constructor(
@@ -36,8 +36,7 @@ export class AuthService {
 
   // Permet de s'enregistrer sur l'appli
   register(user : Users){
-    console.log(user);
-    this.http.post<Users>(this._urlApi, user, this.httpHeaders).subscribe(res => {
+    this.http.post<Users>(this._urlApi + "/register", user, this.httpHeaders).subscribe(res => {
       if(res == null){
         // problème lors de l'enregistrement
         return 'ProbRegister'
@@ -52,13 +51,11 @@ export class AuthService {
     let dataLog;
     // Permet de savoir si un phone ou un email a été placé comme identifiant
     if(user.email.valueOf().match(/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[6-7](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/)){
-      dataLog = {identifiant: user.email, motDePasse: user.password}
+      dataLog = {identifiant: user.email, motDePasse: user.motDePasse}
     } else {
-      dataLog = {identifiant: user.email, motDePasse: user.password}
+      dataLog = {identifiant: user.email, motDePasse: user.motDePasse}
     }
-    console.log(dataLog);
-    this.http.post<any>(this._urlApi, dataLog, this.httpHeaders).subscribe(res => {
-        console.log(res)
+    this.http.post<any>(this._urlApi + "/login", dataLog, this.httpHeaders).subscribe(res => {
       if(res == null){
         // problème lors de la connection
         return console.log('ProbLogin');

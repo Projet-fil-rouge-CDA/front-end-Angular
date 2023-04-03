@@ -12,21 +12,21 @@
       <control-messages [control]="loginForm.get('email')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         type="text"
-        name="emailOrPhone"
+        name="email"
         placeholder="Adresse mail ou téléphone"
         required
         formControlName="email"
-        id="emailOrPhone"
+        id="email"
         class="form-control"
       />
-      <control-messages [control]="loginForm.get('password')" class="control d-flex justify-content-center col-12"></control-messages>
+      <control-messages [control]="loginForm.get('motDePasse')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
         type="password"
-        name="password"
+        name="motDePasse"
         placeholder="Mot de passe"
         required
-        formControlName="password"
-        id="password"
+        formControlName="motDePasse"
+        id="motDePasse"
         class="form-control"
       />
       <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success col-4 border-none rounded-5 text-white mt-4 mb-4">Confirmer</button>
