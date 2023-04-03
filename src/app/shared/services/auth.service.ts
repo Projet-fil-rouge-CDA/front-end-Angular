@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private _urlApi = environment.urlApi + '/users'
+  private _urlApi = environment.urlApi + '/login'
 
   isAuth$ = new BehaviorSubject<boolean>(false)
   users$ = new BehaviorSubject<Users>({firstname: '', lastname: '', phone: 0, email: '', password: '', isActif: false, address: {rue: '', codePostal: 0, ville: ''}});
@@ -52,17 +52,18 @@ export class AuthService {
     let dataLog;
     // Permet de savoir si un phone ou un email a été placé comme identifiant
     if(user.email.valueOf().match(/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[6-7](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/)){
-      dataLog = {phone: user.email, password: user.password}
+      dataLog = {identifiant: user.email, motDePasse: user.password}
     } else {
-      dataLog = {email: user.email, password: user.password}
+      dataLog = {identifiant: user.email, motDePasse: user.password}
     }
     console.log(dataLog);
-    this.http.post<Users>(this._urlApi, dataLog, this.httpHeaders).subscribe(res => {
+    this.http.post<any>(this._urlApi, dataLog, this.httpHeaders).subscribe(res => {
+        console.log(res)
       if(res == null){
         // problème lors de la connection
         return console.log('ProbLogin');
       } else{
-        this.cookieService.set('session', 'le cookie du back');
+        this.cookieService.set('session', res.value);
         this.role$.next('admin') // recupérer le rôle du back et le mettre à jour
         this.isAuth$.next(true);
         return this.router.navigate(['/user']);
