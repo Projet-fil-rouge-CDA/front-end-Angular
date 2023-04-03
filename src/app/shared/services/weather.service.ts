@@ -12,23 +12,29 @@ export class WeatherService {
   constructor(private http: HttpClient) {
   }
 
-  getWeather(lat: number, lon: number): Observable<Weather> {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=511625d50ec3f833cc94ee81b61298a2&units=metric`;
-    return this.http.get(url).pipe(map((item: any) => {
-      return new Weather(
-        item.sys.id,
-        item.weather[0].main,
-        item.main.temp,
-        item.main.humidity,
-        item.wind.speed,
-        item.clouds.all,
-        item.main.humidity,
-        item.main.humidity,
-        item.liked);
-    }));
-  }
+    getWeather(lat: number, lon: number): Observable<Weather> {
+        let url = `http://localhost:8080/api/meteo/get?latitude=${lat}&longitude=${lon}`;
+        return this.http.get(url).pipe(map((data: any) => {
+            return new Weather({
+                id: data.id,
+                descriptionTemps: data.temps,
+                temperature: data.temperature,
+                visibilite: data.visibilite,
+                vitesseVent: data.vitesseVent,
+                nuage: data.nuage,
+                pluie: data.pluie,
+                neige: data.neige,
+                liked: data.liked,
+                ville: data.ville,
+                date: new Date(data.date),
+                stations: data.stations
+            });
+        }));
+    }
+
 
   getWeatherClass(weather: string): string {
+      console.log(weather)
     switch (weather) {
       case 'Clear':
         return 'blue-gradient-background';

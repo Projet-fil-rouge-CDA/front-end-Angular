@@ -89,21 +89,21 @@ export class MapService {
 
   subscribeToStations() {
     return this.stationService.getStations().subscribe(station => {
-      station.features.filter((item: any) => item.etat === 'EN SERVICE').forEach((item: any) => {
+      station.filter((item: any) => item.etat === 'EN SERVICE').forEach((item: any) => {
         this.station.push(item);
       });
       this.station.map((item: any) => {
-        L.circleMarker([item.geometry.coordinates[1], item.geometry.coordinates[0]], {
+        L.circleMarker([item.latitude, item.longitude], {
           radius: 10, color: '#5d9f07', fillColor: 'rgba(36,152,5,0.32)', fillOpacity: 0.5,
         }).bindPopup('Station ' + item.nom).on('click', (e: LeafletMouseEvent) => {
-          this.citySelected.next(new NominatimResponse(item.geometry.coordinates[1], item.geometry.coordinates[0], item.nom, {
+          this.citySelected.next(new NominatimResponse(item.latitude, item.longitude, item.nom, {
             city: item.commune_nom,
             country: 'France',
             county: item.code_departement,
             state: 'Pays de la Loire',
           }));
           this.stationSelected.next(item);
-          this.mapPoint = {latitude: item.geometry.coordinates[1], longitude: item.geometry.coordinates[0], name: item.nom};
+          this.mapPoint = {latitude: item.latitude, longitude: item.longitude, name: item.nom};
           this.createMarker();
         }).addTo(this.map);
       });
