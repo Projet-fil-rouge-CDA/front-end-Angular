@@ -4,24 +4,24 @@
     <form (submit)="optionUser()" [formGroup]="optionForm" class="d-flex flex-column align-items-center col-12">
       <div class="d-flex justify-content-between col-12 pb-4">
         <div class="d-flex flex-column col-3">
-          <control-messages [control]="optionForm.get('lastname')" class="control d-flex justify-content-center col-12"></control-messages>
+          <control-messages [control]="optionForm.get('nom')" class="control d-flex justify-content-center col-12"></control-messages>
           <input
             class="form-control"
-            formControlName="lastname"
-            id="lastname"
-            name="lastname"
+            formControlName="nom"
+            id="nom"
+            name="nom"
             placeholder="Nom"
             required
             type="text"
           />
         </div>
         <div class="d-flex flex-column col-3">
-          <control-messages [control]="optionForm.get('firstname')" class="control d-flex justify-content-center col-12"></control-messages>
+          <control-messages [control]="optionForm.get('prenom')" class="control d-flex justify-content-center col-12"></control-messages>
           <input
             class="form-control align-self-end"
-            formControlName="firstname"
-            id="firstname"
-            name="firstname"
+            formControlName="prenom"
+            id="prenom"
+            name="prenom"
             placeholder="Prénom"
             required
             type="text"
@@ -61,26 +61,32 @@
         required
         type="text"
       />
-      <control-messages [control]="optionForm.get('password')" class="control d-flex justify-content-center col-12"></control-messages>
-      <input
-        class="form-control mb-4"
-        formControlName="password"
-        id="password"
-        name="password"
-        placeholder="Mot de passe"
-        required
-        type="password"
-      />
+      <control-messages [control]="optionForm.get('motDePasse')" class="control d-flex justify-content-center col-12"></control-messages>
+      <div class="d-flex mb-4 col-12 position-relative">
+          <input
+            class="form-control"
+            formControlName="motDePasse"
+            id="motDePasse"
+            name="motDePasse"
+            placeholder="Mot de passe"
+            required
+            [type]="showPassword ? 'text' : 'password'"
+          />
+          <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="togglePassword()"></i>
+      </div>
       <control-messages [control]="optionForm.get('confirmPassword')" class="control d-flex justify-content-center col-12"></control-messages>
-      <input
-        class="form-control mb-4"
-        formControlName="confirmPassword"
-        id="confirmPassword"
-        name="confirmPassword"
-        placeholder="Confirmer le mot de passe"
-        required
-        type="password"
-      />
+      <div class="d-flex mb-4 col-12 position-relative">
+          <input
+            class="form-control"
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirmer le mot de passe"
+            required
+            [type]="showConfirmPassword ? 'text' : 'password'"
+          />
+        <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="toggleConfirmPassword()"></i>
+      </div>
       <h3 class="pb-4 pt-2">Adresse personnelle</h3>
       <control-messages [control]="optionForm.get('rue')" class="control d-flex justify-content-center col-12"></control-messages>
       <input
