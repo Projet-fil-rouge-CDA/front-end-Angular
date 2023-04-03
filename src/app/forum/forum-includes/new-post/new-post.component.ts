@@ -25,7 +25,7 @@ export class NewPostComponent implements OnInit {
                 this.category = params.get('category');
             });
 
-        this.serviceForum.getPosts().subscribe((posts: Post) => {
+        this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
             this.posts = posts;
         })
 
@@ -46,7 +46,7 @@ export class NewPostComponent implements OnInit {
 
     onSubmit() {
         this.serviceForum.postPost(this.newTalkForm.value).subscribe(() => {
-            this.serviceForum.getPosts().subscribe((posts: Post) => {
+            this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
                 this.posts = posts;
                 this.router.navigate(['/forum/fils/talking'], {queryParams: {post: this.posts[this.posts.length - 1].id}}).then(r => {
                     window.location.reload();
