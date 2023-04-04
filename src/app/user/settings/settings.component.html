@@ -1,10 +1,11 @@
-<main class="d-flex align-items-center justify-content-center vh-50 position-relative">
+<main class="d-flex align-items-center justify-content-center position-relative">
   <section class="bg-white col-6 d-flex justify-content-center flex-column align-items-center">
     <h2 class="pb-4 pt-4">Compte</h2>
-    <form (submit)="optionUser()" [formGroup]="optionForm" class="d-flex flex-column align-items-center col-12">
+    <form (submit)="optionUser()" [formGroup]="optionForm" class="d-flex flex-column col-12">
       <div class="d-flex justify-content-between col-12 pb-4">
         <div class="d-flex flex-column col-3">
           <control-messages [control]="optionForm.get('nom')" class="control d-flex justify-content-center col-12"></control-messages>
+          <label for="nom">Nom</label>
           <input
             class="form-control"
             formControlName="nom"
@@ -17,6 +18,7 @@
         </div>
         <div class="d-flex flex-column col-3">
           <control-messages [control]="optionForm.get('prenom')" class="control d-flex justify-content-center col-12"></control-messages>
+          <label for="prenom">Prenom</label>
           <input
             class="form-control align-self-end"
             formControlName="prenom"
@@ -29,6 +31,7 @@
         </div>
         <div class="d-flex flex-column col-3">
           <control-messages [control]="optionForm.get('pseudo')" class="control d-flex justify-content-center col-12"></control-messages>
+          <label for="pseudo">Pseudo</label>
           <input
             class="form-control align-self-end"
             formControlName="pseudo"
@@ -41,6 +44,7 @@
         </div>
       </div>
       <control-messages [control]="optionForm.get('phone')" class="control d-flex justify-content-center col-12"></control-messages>
+      <label for="phone">Téléphone</label>
       <input
         class="form-control mb-4"
         formControlName="phone"
@@ -48,10 +52,10 @@
         maxlength="10"
         name="phone"
         placeholder="Numéro de téléphone"
-        required
         type="text"
       />
       <control-messages [control]="optionForm.get('email')" class="control d-flex justify-content-center col-12"></control-messages>
+      <label for="email">Email</label>
       <input
         class="form-control mb-4"
         formControlName="email"
@@ -62,6 +66,7 @@
         type="text"
       />
       <control-messages [control]="optionForm.get('motDePasse')" class="control d-flex justify-content-center col-12"></control-messages>
+      <label for="motDePasse">Mot de passe</label>
       <div class="d-flex mb-4 col-12 position-relative">
           <input
             class="form-control"
@@ -69,12 +74,12 @@
             id="motDePasse"
             name="motDePasse"
             placeholder="Mot de passe"
-            required
             [type]="showPassword ? 'text' : 'password'"
           />
           <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="togglePassword()"></i>
       </div>
       <control-messages [control]="optionForm.get('confirmPassword')" class="control d-flex justify-content-center col-12"></control-messages>
+      <label for="confirmPassword">Confirmez le mot de passe</label>
       <div class="d-flex mb-4 col-12 position-relative">
           <input
             class="form-control"
@@ -82,13 +87,13 @@
             id="confirmPassword"
             name="confirmPassword"
             placeholder="Confirmer le mot de passe"
-            required
             [type]="showConfirmPassword ? 'text' : 'password'"
           />
         <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="toggleConfirmPassword()"></i>
       </div>
-      <h3 class="pb-4 pt-2">Adresse personnelle</h3>
+      <h3 class="pb-4 pt-2 align-self-center">Adresse personnelle</h3>
       <control-messages [control]="optionForm.get('rue')" class="control d-flex justify-content-center col-12"></control-messages>
+      <label for="rue">Rue</label>
       <input
         class="form-control mb-4"
         formControlName="rue"
@@ -101,6 +106,7 @@
       <div class="d-flex justify-content-between col-12">
         <div class="d-flex flex-column col-5">
           <control-messages [control]="optionForm.get('codePostal')" class="control d-flex justify-content-center col-12"></control-messages>
+          <label for="codePostal">Code postal</label>
           <input
             class="form-control"
             formControlName="codePostal"
@@ -113,6 +119,7 @@
         </div>
         <div class="d-flex flex-column col-5">
           <control-messages [control]="optionForm.get('ville')" class="control d-flex justify-content-center col-12"></control-messages>
+          <label for="ville">Ville</label>
           <input
             class="form-control"
             formControlName="ville"
@@ -124,9 +131,13 @@
           />
         </div>
       </div>
-      <button class="btn btn-success col-4 border-none rounded-5 text-white mt-5 mb-4" type="submit">Valider les changements</button>
+    <div class="mt-5 mb-4 col-4 text-center align-self-center">
+        <span>{{updateMessage}}</span>
+        <button class="btn btn-success border-none rounded-5 text-white" type="submit">Valider les changements</button>
+    </div>
     </form>
     <div class="pt-2 pb-3 border-top border-dark col-12 text-center">
+      <span class="link-danger">{{deleteMessage}}</span>
       <p>Souhaitez-vous <a (click)="deleteAccount()" class="link-danger text-decoration-underline">supprimer</a> votre compte utilisateur ?</p>
     </div>
   </section>
