@@ -42,7 +42,7 @@
                         {{comment.contenu}}
                     </p>
                     <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
-                    <span class="postDate">Posté le {{comment.date}}</span>
+                    <span class="postDate">Posté le {{comment.date.split('.')[0].replace("T", " ")}}</span>
                 </div>
 <!--            </ng-container>-->
         </ng-container>

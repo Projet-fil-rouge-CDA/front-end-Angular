@@ -15,8 +15,6 @@ export class FilsComponent implements OnInit {
     posts: any;
     categoryID: string | null;
 
-    postLoaded = false;
-
     constructor(private titleService: Title, private serviceForum: ForumService, private route: ActivatedRoute, public dialog: MatDialog) {
     }
 
@@ -27,19 +25,11 @@ export class FilsComponent implements OnInit {
                 this.categoryID = params.get('id');
             });
 
-        console.log(this.categoryID)
-
         this.titleService.setTitle('Univ\'Air | Forum - ' + this.category);
 
         this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
-            console.log(posts);
             this.posts = posts;
-            this.postLoaded = true;
         })
-
-        setTimeout(() => {
-        console.log(this.posts)
-        }, 1000)
     }
 
     ngAfterViewInit(): void {

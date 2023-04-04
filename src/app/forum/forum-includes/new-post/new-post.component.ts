@@ -30,14 +30,11 @@ export class NewPostComponent implements OnInit {
         })
 
         this.newTalkForm = this.formBuilder.group({
-            title: '',
-            category: this.category,
-            username: 'Admin',
-            message: '',
-            reponses: 0,
-            dateCreation: new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"}),
-            dateLastMessage: new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"}),
-            id_user: '1',
+            titre: '',
+            categorie: this.category,
+            pseudo: 'admin',
+            contenu: '',
+            date: new Date().toISOString(),
             image: ''
         });
 

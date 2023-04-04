@@ -1,0 +1,43 @@
+.administration-forum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.create-category{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+
+    form, h3 {
+        margin-top: 2em;
+    }
+
+    label {
+        margin-right: 0.5em;
+    }
+
+    input {
+        margin-right: 5em;
+    }
+}
+
+.sendButton {
+    background-color: #0d6efd;
+    border: 1px solid black;
+    align-self: flex-end;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    transition: transform .4s;
+    color: white;
+    margin-left: 2em;
+
+    &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+}
