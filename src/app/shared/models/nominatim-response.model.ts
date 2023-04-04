@@ -8,6 +8,7 @@ export class NominatimResponse {
 }
 
 export class NominatimAddress {
+
   constructor(
     public city: string,
     public country: string,

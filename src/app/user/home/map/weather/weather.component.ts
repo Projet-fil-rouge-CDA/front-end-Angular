@@ -49,10 +49,11 @@ export class WeatherComponent implements OnInit {
     }
 
 
-    addFavorite(nomStation:string) {
+    addFavorite(nomStation: string) {
         this.w.liked = !this.w.liked
         this.likeService.addFavoritesLikes(nomStation, this.tokenService.takePseudo(), this.w.liked)
     }
+
 
     ngOnDestroy(): void {
         this.weatherSubscription.unsubscribe();
