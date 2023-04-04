@@ -1,7 +1,9 @@
 <div class="d-flex justify-content-center text-black basic-font page-title my-5"> Mes stations météo favorites</div>
 
-
-<div class="container-fluid containerCards">
+<div class="d-flex justify-content-center align-items-center min-vh-100 min-vw-100" *ngIf="loader">
+    <div class="spinner"></div>
+</div>
+<div class="container-fluid containerCards" *ngIf="!loader">
   <div class="row">
     <div *ngIf="weathers">
       <div class="d-flex justify-content-center flex-wrap">
@@ -27,8 +29,9 @@
                          style="position: absolute; top: -6px; left: 0;" alt="Cloud image"
                          *ngIf="weather.weather_state_name === 'Thunderstorm'">
 
-                    <div class="w-100 text-light position-absolute start-0 pt-5" id="{{index}}"*ngIf="!weather.clicked">
-                      <p class="card-title m-0 text-center ">{{weather.city?.city}}</p>
+                    <div class="w-100 text-light position-absolute start-0 pt-5" id="{{index}}" *ngIf="!weather.clicked">
+                        <p class="WeatherStation m-0 text-center">{{stations[index].nom}}</p>
+                      <p class="card-title m-0 text-center ">{{weather.city}}</p>
                       <div class="d-flex justify-content-center mt-2">
 
                         <p class="degree m-0 text-center me-2"> {{weather.temperature}}°C</p>
@@ -55,9 +58,8 @@
                       <div class="card-body basic-font body-card-position text-light">
                         <!--    //Ville informations-->
                         <div class="cityInformations basic-font">
-                          <p class="card-title m-0 text-center ">{{weather.city?.city}}</p>
-                          <p class="region m-0 text-center">{{weather.city?.county}} (1 426 000 hab.)</p>
-                          <p class="WeatherStation m-0 text-center ">Station LA CHAUVINIERE</p>
+                          <p class="card-title m-0 text-center ">{{weather.city}}</p>
+                          <p class="WeatherStation m-0 text-center ">{{stations[index].nom}}</p>
                         </div>
                         <!--    //Météo-->
                         <div class="detailsWeather row mt-4 ">
@@ -74,11 +76,11 @@
                         </div>
                         <div class="d-flex justify-content-center mt-4">
                           <div class="actionBtn me-4">
-                            <a [routerLink]="['/home/']"href="#"
+                            <a [routerLink]="['/user/station']" [queryParams]="{stationName: stations[index].nom, stationCode: stations[index].code}"
                                class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
                               d'informations</a></div>
-                          <span> <i [ngClass]="weather.liked?'text-red bi bi-heart-fill':'text-red bi bi-heart'"
-                                    (click)="toggleFavorite(weather)"></i></span>
+                          <span> <i class="text-red bi bi-heart-fill"
+                                    (click)="toggleFavorite(weather, stations[index].nom)"></i></span>
                         </div>
                       </div>
                     </div>

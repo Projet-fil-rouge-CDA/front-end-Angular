@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {map} from 'rxjs/operators';
 import {Weather} from "../models/weather.model";
 import {Observable} from "rxjs";
+import {NominatimResponse} from "../models/nominatim-response.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class WeatherService {
   constructor(private http: HttpClient) {
   }
 
-    getWeather(lat: number, lon: number): Observable<Weather> {
+    getWeather(lat: number, lon: number, city?: NominatimResponse): Observable<Weather> {
         let url = `http://localhost:8080/api/meteo/get?latitude=${lat}&longitude=${lon}`;
         return this.http.get(url).pipe(map((data: any) => {
             return new Weather({
@@ -26,6 +27,7 @@ export class WeatherService {
                 neige: data.neige,
                 liked: data.liked,
                 ville: data.ville,
+                city: city,
                 date: new Date(data.date),
                 stations: data.stations
             });
@@ -34,7 +36,6 @@ export class WeatherService {
 
 
   getWeatherClass(weather: string): string {
-      console.log(weather)
     switch (weather) {
       case 'Clear':
         return 'blue-gradient-background';
