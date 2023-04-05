@@ -20,12 +20,20 @@ export class WeatherComponent implements OnInit {
     station: any;
     w: Weather;
     weatherSubscription = new Subscription();
-  
+    showMessage: boolean = false;
+    textMessage: string = "Station ajoutée avec succès à vos favoris";
+    stationAlreadyLiked: String[] = [];
+
 
     constructor(private weatherService: WeatherService, private mapService: MapService, private zone: NgZone, private likeService: LikeService, private tokenService: TokenService) {
     }
 
     ngOnInit(): void {
+        this.likeService.getFavoritesLikes(this.tokenService.takePseudo()).subscribe((s) => {
+            s.map(c => {
+                this.stationAlreadyLiked.push(c.code)
+            })
+        })
         this.weatherSubscription.add(this.mapService.citySelected.subscribe(city => {
             this.zone.run(() => {
                 this.weather = city;
@@ -33,11 +41,17 @@ export class WeatherComponent implements OnInit {
             if (this.weather) this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe((data: any) => {
                 this.zone.run(() => {
                     this.w = data;
+                    if(this.station != null && this.w != null){
+                        if(this.stationAlreadyLiked.includes(this.station.code)){
+                            this.w.liked = true;
+                        }
+                    }
                 });
             });
         }));
         this.weatherSubscription.add(this.mapService.stationSelected.subscribe(station => {
             this.station = station;
+
         }));
     }
 
@@ -53,6 +67,7 @@ export class WeatherComponent implements OnInit {
     addFavorite(nomStation: string) {
         this.w.liked = !this.w.liked
         this.likeService.addFavoritesLikes(nomStation, this.tokenService.takePseudo(), this.w.liked)
+        this.showMessage = true;
     }
 
 
