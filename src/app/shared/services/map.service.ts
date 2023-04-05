@@ -148,8 +148,8 @@ export class MapService {
    */
   getNearestStation(lat: number, lng: number) {
     const station = this.station.reduce((prev, curr) => {
-      const prevDist = MapService.getDistance(prev.geometry.coordinates[1], prev.geometry.coordinates[0], lat, lng);
-      const currDist = MapService.getDistance(curr.geometry.coordinates[1], curr.geometry.coordinates[0], lat, lng);
+      const prevDist = MapService.getDistance(prev.latitude, prev.longitude, lat, lng);
+      const currDist = MapService.getDistance(curr.latitude, curr.longitude, lat, lng);
       return prevDist < currDist ? prev : curr;
     });
     this.stationSelected.next(station);

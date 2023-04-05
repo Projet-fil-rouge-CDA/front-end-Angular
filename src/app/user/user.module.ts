@@ -46,7 +46,9 @@ registerLocaleData(localeFr, 'fr');
         LeafletModule,
         ReactiveFormsModule,
     ],
-    exports: [],
+    exports: [
+        MessagevalidationComponent
+    ],
     providers: [SearchAddressService, {provide: LOCALE_ID, useValue: "fr-FR"}]
 })
 export class UserModule {

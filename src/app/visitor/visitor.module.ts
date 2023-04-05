@@ -8,6 +8,7 @@ import { ControlMessagesComponentVisitor } from '../shared/components/control-me
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VisitorRoutingModule } from './visitor-routing.module';
+import {UserModule} from "../user/user.module";
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { VisitorRoutingModule } from './visitor-routing.module';
     AddAddressComponent
   ],
     imports: [
-      VisitorRoutingModule,
-      CommonModule,
-      HttpClientModule,
-      FormsModule,
-      ReactiveFormsModule
+        VisitorRoutingModule,
+        CommonModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        UserModule
     ]
 })
 export class VisitorModule { }
