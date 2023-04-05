@@ -22,7 +22,7 @@ export class WeatherComponent implements OnInit {
     station: any;
     w: Weather;
     weatherSubscription = new Subscription();
-  
+
     showMessage: boolean = false;
     textMessage: string = "Station ajoutée avec succès à vos favoris";
     stationAlreadyLiked: String[] = [];
@@ -59,6 +59,7 @@ export class WeatherComponent implements OnInit {
         }));
         this.weatherSubscription.add(this.mapService.stationSelected.subscribe(station => {
             this.station = station;
+            if(this.station != null)
             this.polluantService.getOnePolluantByStation(24, 24,0, new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), "horaire", this.station.code).subscribe(res =>{
                 this.indices = res;
                 // @ts-ignore
