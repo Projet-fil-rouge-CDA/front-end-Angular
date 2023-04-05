@@ -13,7 +13,7 @@ export class ForumService {
     private _urlApi = environment.urlApi + '/forum'
     private _urlApiCategory = this._urlApi + '/categories'
     private _urlApiComment = this._urlApi + '/post/commentaire'
-    private _urlApiUsers = this._urlApi + '/users'
+    private _urlApiUsers = environment.urlApi + '/admin/users'
 
     private httpHeaders = {
         headers: new HttpHeaders({
@@ -68,8 +68,12 @@ export class ForumService {
         return this.http.delete<Post>(`${this._urlApi}/post/delete?idPost=${id}`, this.httpHeaders)
     }
 
-    updateUser(id: any) {
-        return this.http.delete<any>(`${environment.urlApi}/user/delete?idUtilisateur=${id}`, this.httpHeaders)
+    updateUser( pseudo:string, actif:boolean) {
+        return this.http.post<any>(`${environment.urlApi}/admin/utilisateur?estActif=${actif}&pseudo=${pseudo}` , this.httpHeaders)
+    }
+
+    getUsers() {
+        return this.http.get<any>(`${this._urlApiUsers}/get`, this.httpHeaders)
     }
 
     // uploadImage(image: File) {

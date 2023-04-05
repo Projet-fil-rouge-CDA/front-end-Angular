@@ -29,7 +29,7 @@
               <i class="bi bi-people-fill"></i>
           </a>
         </li>
-          <li>
+          <li *ngIf="isAdmin == true">
               <a [routerLink]="['/forum/administration']" class="dropdown-item">Gestionnaire forum <i
                   class="bi bi-people-fill"></i></a>
           </li>
