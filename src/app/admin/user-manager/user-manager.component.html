@@ -1,0 +1,65 @@
+<main style="min-height: 90vh" class="d-flex flex-column">
+    <div class="mb-5 mt-5 col-8 align-self-center">
+        <h2>Gestionnaire d'utilisateur</h2>
+        <input
+        type="text"
+        name="userSearch"
+        id="userSearch"
+        placeholder="Rechercher un utilisateur"
+        />
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+        <table class="col-10 table table-striped table-hover table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Pseudo</th>
+                    <th>Mail</th>
+                    <th>Téléphone</th>
+                    <th>Rue</th>
+                    <th>Code Postal</th>
+                    <th>Ville</th>
+                    <th>Moderateur</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i=index" [ngClass]="{'editing': isEditing[i], 'disable': !user.actif}">
+                    <ng-container *ngIf="!user.editing; else editRow">
+                        <td>{{user.prenom}}</td>
+                        <td>{{user.nom}}</td>
+                        <td>{{user.pseudo}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.telephone}}</td>
+                        <td>{{user.rue}}</td>
+                        <td>{{user.codePostal}}</td>
+                        <td>{{user.ville}}</td>
+                        <td>MODERATEUR <input type="checkbox" [checked]="user.roles.includes('MODERATEUR')" disabled/></td>
+                        <td>
+                            <span *ngIf="user.actif" (click)="editUser(user)">modifier / </span>
+                            <ng-container *ngIf="!user.actif">
+                                <span (click)="desactivate(user)">activer</span>
+                            </ng-container>
+                            <ng-container *ngIf="user.actif">
+                                <span (click)="desactivate(user)">desactiver</span>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+                    <ng-template #editRow>
+                        <td><input type="text" [(ngModel)]="user.prenom"></td>
+                        <td><input type="text" [(ngModel)]="user.nom"></td>
+                        <td><input type="text" [(ngModel)]="user.pseudo"></td>
+                        <td><input type="text" [(ngModel)]="user.email"></td>
+                        <td><input type="text" [(ngModel)]="user.telephone"></td>
+                        <td><input type="text" [(ngModel)]="user.rue"></td>
+                        <td><input type="text" [(ngModel)]="user.codePostal"></td>
+                        <td><input type="text" [(ngModel)]="user.ville"></td>
+                        <td>MODERATEUR <input type="checkbox" [checked]="user.roles.includes('MODERATEUR')"/></td>
+                        <td><span (click)="updateUser(user); user.editing=false;">valider</span></td>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>

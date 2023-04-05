@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -10,19 +9,22 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLogged: boolean = false
+  isLogged: boolean = false;
+
+  isAdmin : boolean = false;
 
   constructor(
     public router: Router,
-    private authService: AuthService,
-    private cookieService: CookieService
+    private authService: AuthService
     ) {
   }
 
   ngOnInit(): void {
     this.authService.isAuth$.subscribe(value => {
       this.isLogged = value
-      const checkCookie = this.cookieService.check('session')
+    })
+    this.authService.isAdmin$.subscribe(value => {
+      this.isAdmin = value
     })
   }
   logout() {

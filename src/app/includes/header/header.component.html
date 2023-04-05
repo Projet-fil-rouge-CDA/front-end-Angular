@@ -24,9 +24,10 @@
             class="bi bi-heart-fill text-danger"></i></a>
         </li>
 
-        <li>
-          <a [routerLink]="['/admin']" class="dropdown-item">Gestionnaire d'utilisateur <i
-            class="bi bi-people-fill"></i></a>
+        <li *ngIf="isAdmin == true">
+          <a [routerLink]="['/admin/user-manager']" class="dropdown-item">Gestionnaire d'utilisateur
+              <i class="bi bi-people-fill"></i>
+          </a>
         </li>
         <a (click)="logout()" *ngIf="isLogged == true" class="dropdown-item" style="cursor: pointer">Me déconnecter
           <i

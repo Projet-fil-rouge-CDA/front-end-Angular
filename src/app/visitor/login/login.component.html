@@ -20,16 +20,22 @@
         class="form-control"
       />
       <control-messages [control]="loginForm.get('motDePasse')" class="control d-flex justify-content-center col-12"></control-messages>
-      <input
-        type="password"
-        name="motDePasse"
-        placeholder="Mot de passe"
-        required
-        formControlName="motDePasse"
-        id="motDePasse"
-        class="form-control"
-      />
-      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success col-4 border-none rounded-5 text-white mt-4 mb-4">Confirmer</button>
+        <div class="d-flex mb-4 col-12 position-relative">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            name="motDePasse"
+            placeholder="Mot de passe"
+            required
+            formControlName="motDePasse"
+            id="motDePasse"
+            class="form-control"
+          />
+          <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="togglePassword()"></i>
+        </div>
+    <div class="col-12 mt-4 mb-4 text-center d-flex flex-column align-items-center">
+        <span>{{messageError}}</span>
+        <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success col-4 border-none rounded-5 text-white mt-1">Confirmer</button>
+    </div>
     </form>
     <div class="pb-2 pt-2 border-top border-dark col-12 text-center">
       <p>Pas inscrit ? <a routerLink="/register">S'inscrire</a></p>

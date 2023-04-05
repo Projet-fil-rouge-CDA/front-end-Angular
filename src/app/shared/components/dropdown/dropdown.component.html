@@ -14,7 +14,7 @@
         class="bi bi-heart-fill text-danger"></i></a>
 
 
-      <a *ngIf="isLogged == true && role$ === 'moderator' || role$ === 'admin'" [routerLink]="['/admin']"
+      <a *ngIf="isLogged == true && role$" [routerLink]="['/admin/user-manager']"
          class="dropdown-item">Gestionnaire d'utilisateur <i
         class="bi bi-box-arrow-right"></i></a>
 
