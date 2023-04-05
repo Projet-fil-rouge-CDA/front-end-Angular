@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center text-black basic-font page-title my-5"> Mes stations météo favorites</div>
 
-<div class="d-flex justify-content-center align-items-center min-vh-100 min-vw-100" *ngIf="loader">
+<div class="d-flex justify-content-center align-items-center" *ngIf="loader">
     <div class="spinner"></div>
 </div>
 <div class="container-fluid containerCards" *ngIf="!loader">
@@ -63,7 +63,7 @@
                         </div>
                         <!--    //Météo-->
                         <div class="detailsWeather row mt-4 ">
-                          <p class="degree m-0 text-center "> {{weather.temperature}}°C</p>
+                          <p class="degree m-0 text-center "> {{weather.temperature | number : '0.0-0'}}°C</p>
                           <p
                             class="degreeAppreciation m-0 text-center "> {{translateWeatherToFrench(weather.weather_state_name)}}</p>
                         </div>
