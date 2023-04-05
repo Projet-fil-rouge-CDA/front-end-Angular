@@ -109,7 +109,7 @@ export class WeatherComponent implements OnInit {
 
     getSentenceInfoAir(indiceValue : number){
         if(indiceValue < 50){
-            this.indiceAir = "Air dégradé"
+            this.indiceAir = "Air correct"
         } else if (indiceValue < 80){
             this.indiceAir = "Air dégradé"
         } else {
