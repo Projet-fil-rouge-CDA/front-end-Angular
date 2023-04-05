@@ -9,9 +9,14 @@ import {Router} from "@angular/router";
 export class FooterComponent implements OnInit {
 
   date: Date = new Date();
+  isHomePage: boolean = false;
   constructor(public router:Router) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        // Vérifier si on est sur le composant Home
+        if (this.router.url === '/') {
+            this.isHomePage = true;
+        }
+    }
 
 }
