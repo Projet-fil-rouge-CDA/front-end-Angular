@@ -6,6 +6,8 @@ import {MapService} from "../../../../shared/services/map.service";
 import {Subscription} from "rxjs";
 import {LikeService} from "../../../../shared/services/like.service";
 import {TokenService} from "../../../../shared/services/token.service";
+import {PolluantService} from "../../../../shared/services/polluant.service";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
@@ -20,9 +22,14 @@ export class WeatherComponent implements OnInit {
     station: any;
     w: Weather;
     weatherSubscription = new Subscription();
-  
 
-    constructor(private weatherService: WeatherService, private mapService: MapService, private zone: NgZone, private likeService: LikeService, private tokenService: TokenService) {
+    indices : object;
+    indiceValue: string;
+    indiceUnit: string;
+    indiceDate: string;
+    indiceAir : string;
+
+    constructor(private weatherService: WeatherService, private mapService: MapService, private zone: NgZone, private likeService: LikeService, private tokenService: TokenService, private polluantService : PolluantService) {
     }
 
     ngOnInit(): void {
@@ -38,6 +45,29 @@ export class WeatherComponent implements OnInit {
         }));
         this.weatherSubscription.add(this.mapService.stationSelected.subscribe(station => {
             this.station = station;
+            this.polluantService.getOnePolluantByStation(24, 24,0, new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), "horaire", this.station.code).subscribe(res =>{
+                this.indices = res;
+                // @ts-ignore
+                if(this.indices.content != null){
+                    // @ts-ignore
+                    this.indices.content.some(indice => {
+                        if(indice.valeur != null){
+                            this.indiceValue = indice.valeur.toFixed(2);
+                            this.indiceUnit = indice.unite;
+                            const date = new Date(indice.date);
+                            const day = date.getDate().toString().padStart(2, '0');
+                            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                            const hour = date.getHours().toString().padStart(2, '0');
+                            this.indiceDate = `${day}/${month} à ${hour}h`;
+                            return true;
+                        }
+                    })
+                    this.getSentenceInfoAir(parseFloat(this.indiceValue));
+                } else{
+                    this.indiceUnit = "relevé"
+                    this.indiceValue = "Aucun"
+                }
+            })
         }));
     }
 
@@ -59,5 +89,15 @@ export class WeatherComponent implements OnInit {
     ngOnDestroy(): void {
         this.weatherSubscription.unsubscribe();
 
+    }
+
+    getSentenceInfoAir(indiceValue : number){
+        if(indiceValue < 50){
+            this.indiceAir = "Air dégradé"
+        } else if (indiceValue < 80){
+            this.indiceAir = "Air dégradé"
+        } else {
+            this.indiceAir = "Air mauvais"
+        }
     }
 }

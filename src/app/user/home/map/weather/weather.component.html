@@ -25,8 +25,9 @@
     <!--    //Qualité de l'air-->
     <div class="detailsAirQuality mt-4">
 
-      <span class="airQualityAppreciation m-0 text-center"> <p class="m-0">Air</p> <p class="m-0">Correct</p></span>
-      <p class="numberAirQuality m-0 text-center"> 20µg/m³</p>
+      <span class="airQualityAppreciation m-0 text-center"><p class="m-0">{{indiceAir}}</p></span>
+      <p class="numberAirQuality m-0 text-center">{{indiceValue}} {{indiceUnit}}</p>
+        <p class="text-center pt-2" style="font-size: 15px; font-weight: lighter;">Relevé du {{indiceDate}}</p>
     </div>
     <div class="d-flex justify-content-center mt-5">
       <div class="actionBtn me-4">
@@ -35,7 +36,7 @@
           d'informations
         </a>
       </div>
-      <i (click)="addFavorite(station.nom)" [ngClass]="w.liked?'text-red bi bi-heart-fill':'text-red bi bi-heart'"
+      <i (click)="addFavorite(station.code)" [ngClass]="w.liked?'text-red bi bi-heart-fill':'text-red bi bi-heart'"
          style="cursor: pointer"></i>
     </div>
   </div>

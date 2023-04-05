@@ -11,7 +11,7 @@ export class PolluantService {
     constructor(private http: HttpClient) {
     }
 
-    getAllPolluants(codePolluant: any, limit: number, offset: number, dateDebut: string | null, dateFin: string | null, mesure: string, codeStation: string) {
+    getOnePolluantByStation(codePolluant: any, limit: number, offset: number, dateDebut: string | null, dateFin: string | null, mesure: string, codeStation: string) {
         return this.http.get(`http://localhost:8080/api/station/${codeStation}/${codePolluant}`,
             {
                 params: {
