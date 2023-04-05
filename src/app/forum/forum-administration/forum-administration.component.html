@@ -1,25 +1,81 @@
-<link href="forum-administration.component.scss" rel="stylesheet">
-<div class="administration-forum">
-    <h1>Administration Forum</h1>
-    <div class="create-category">
-        <h2>Ajouter une rubrique</h2>
-        <form (ngSubmit)="onSubmit()" [formGroup]="categoryForm" class="talkingSub">
+<!--<link href="forum-administration.component.scss" rel="stylesheet">-->
+<!--<div class="administration-forum">-->
+<!--    <h1>Administration Forum</h1>-->
+<!--    <div class="create-category">-->
+<!--        <h2>Ajouter une rubrique</h2>-->
+<!--        <form (ngSubmit)="onSubmit()" [formGroup]="categoryForm" class="talkingSub">-->
 
-            <label for="forumAdminTitre">Titre</label>
-            <input formControlName="libelle" id="forumAdminTitre" type="text">
+<!--            <label for="forumAdminTitre">Titre</label>-->
+<!--            <input formControlName="libelle" id="forumAdminTitre" type="text">-->
 
-            <label for="forumAdminDescription">Description</label>
-            <input formControlName="description" id="forumAdminDescription">
+<!--            <label for="forumAdminDescription">Description</label>-->
+<!--            <input formControlName="description" id="forumAdminDescription">-->
 
-            <button class="sendButton">Envoyer</button>
-        </form>
+<!--            <button class="sendButton">Envoyer</button>-->
+<!--        </form>-->
 
-        <h3>Supprimer une rubrique</h3>
-        <form (ngSubmit)="onDelete()">
-            <select id="forumAdminDelete">
-                <option *ngFor="let category of categories" [value]="category.id">{{category.libelle}}</option>
-            </select>
-            <button class="sendButton">Supprimer</button>
-        </form>
+<!--        <h3>Supprimer une rubrique</h3>-->
+<!--        <form (ngSubmit)="onDelete()">-->
+<!--            <select id="forumAdminDelete">-->
+<!--                <option *ngFor="let category of categories" [value]="category.id">{{category.libelle}}</option>-->
+<!--            </select>-->
+<!--            <button class="sendButton">Supprimer</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="container">
+    <div class="administration-forum">
+        <h1 class="text-center mb-4">Administration Forum</h1>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">Ajouter une rubrique</div>
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()" [formGroup]="categoryForm">
+
+                        <div class="form-group">
+                            <label for="forumAdminTitre">Titre</label>
+                            <input formControlName="libelle" id="forumAdminTitre" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forumAdminDescription">Description</label>
+                            <input formControlName="description" id="forumAdminDescription" type="text"
+                                   class="form-control">
+                        </div>
+
+                        <div class="text-center mt-2">
+                            <button class="btn btn-primary">Envoyer</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">Supprimer une rubrique</div>
+                <div class="card-body">
+                    <form (ngSubmit)="onDelete()">
+                        <div class="form-group">
+                            <label for="forumAdminDelete">Rubrique à supprimer</label>
+                            <select id="forumAdminDelete" class="form-control">
+                                <option *ngFor="let category of categories"
+                                        [value]="category.id">{{category.libelle}}</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center mt-2">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
