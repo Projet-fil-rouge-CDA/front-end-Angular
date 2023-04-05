@@ -10,7 +10,7 @@ import {DropDownAnimation} from "../../animations/dropdown";
 })
 export class DropdownComponent implements OnInit {
   isLogged = this.authService.isAuth$.value;
-  role$ = this.authService.role$.value;
+  role$ = this.authService.isAdmin$.value;
   isOpen = false;
 
   constructor(private authService: AuthService) {

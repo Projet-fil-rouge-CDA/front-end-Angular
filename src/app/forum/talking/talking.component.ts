@@ -5,7 +5,6 @@ import {ForumService} from "../../shared/services/forum.service";
 import {Post} from "../../shared/models/post";
 import {Comment} from "../../shared/models/comment";
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Users} from "../../shared/models/users";
 import {ImageViewerComponent} from "../forum-includes/image-viewer/image-viewer.component";
 import {MatDialog} from '@angular/material/dialog';
 
@@ -15,8 +14,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class TalkingComponent implements OnInit {
 
     idPost: string | null;
-    posts: any;
-    comments: any;
+    post: any;
     talkingForm: FormGroup;
     users: any[];
 
@@ -27,29 +25,20 @@ export class TalkingComponent implements OnInit {
         this.route.queryParamMap
             .subscribe(params => {
                 this.idPost = params.get('post');
+
+                this.serviceForum.getSpecificPost(this.idPost).subscribe((post: Post) => {
+                    this.post = post;
+                })
             });
 
         this.titleService.setTitle('Univ\'Air | Forum - Post - ' + this.idPost);
 
-        this.serviceForum.getPosts().subscribe((posts: Post) => {
-            this.posts = posts;
-        })
-
-        this.serviceForum.getComments().subscribe((comments: Comment) => {
-            this.comments = comments;
-        })
-
-        this.serviceForum.getUsers().subscribe((users: any) => {
-            this.users = users;
-        })
-
         this.talkingForm = this.formBuilder.group({
-            username: 'Admin',
-            message: '',
-            date: new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"}),
-            id_post: this.idPost,
-            id_user: '1',
-            image: ''
+            contenu: '',
+            date: new Date().toISOString(),
+            id: 0,
+            postId: Number(this.idPost),
+            pseudo: 'Admin'
         });
     }
 
@@ -66,41 +55,25 @@ export class TalkingComponent implements OnInit {
     }
 
     onSubmit(): void {
-        // this.serviceForum.uploadImage(this.talkingForm.value.image).subscribe((image: any) => {
-        //     this.talkingForm.value.image = image.image;
-        //     this.serviceForum.postComment(this.talkingForm.value).subscribe((comment: Comment) => {
-        //         this.comments.push(comment);
-        //         this.talkingForm.reset();
-        //             this.ngOnInit();
-        //     }
-        //     )
-        // })
-
         this.serviceForum.postComment(this.talkingForm.value).subscribe((comment: Comment) => {
-            this.comments.push(comment);
+            // this.comments.push(comment);
             this.talkingForm.reset();
             this.ngOnInit();
         })
     }
 
     onDelete(id: any): void {
-        this.serviceForum.deleteComment(id).subscribe((comment: Comment) => {
-            this.comments = this.comments.filter((c: { id: string | undefined; }) => c.id !== comment.id);
-            this.ngOnInit();
-        })
+        if (confirm('Êtes vous sur de vouloir supprimer ce commentaire ?')) {
+            this.serviceForum.deleteComment(id).subscribe(() => {
+                this.ngOnInit();
+            })
+        }
     }
 
-    //get user by id
-    getUserById(id: any): any {
-        return this.users.find((u: { id: string | undefined; }) => u.id === id);
-    }
 
-    onBan(id: any, commentId: any): void {
-        let user = this.getUserById(id);
-        user.isActif = false;
+    onBan(id: number, commentId: any): void {
         if (confirm('Voulez-vous vraiment bannir cet utilisateur ?')) {
-            this.serviceForum.updateUser(id, user).subscribe((user: Users) => {
-                this.onDelete(commentId);
+            this.serviceForum.updateUser(id).subscribe(() => {
                 this.ngOnInit();
             })
         }

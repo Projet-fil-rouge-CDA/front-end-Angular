@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit{
 
   registerForm: any;
+  showPassword : boolean = false;
+  showConfirmPassword : boolean = false;
 
   constructor(
     private logsService: AuthService,
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit{
     this.registerForm = this.formBuilder.group({
       lastname: ['', [Validators.required, Validators.minLength(3)]],
       firstname: ['', [Validators.required, Validators.minLength(3)]],
-      phone: ['', [Validators.required, ValidationService.phoneValidator]],
+      phone: ['', [ValidationService.phoneValidator]],
       email: ['', [Validators.required, ValidationService.emailValidator]],
       password: ['', [Validators.required, ValidationService.passwordValidator]],
       confirmPassword: ['', [Validators.required]],
@@ -49,4 +51,12 @@ export class RegisterComponent implements OnInit{
       this.router.navigate(['/add-address'])
     }
   }
+
+    togglePassword(){
+        this.showPassword = !this.showPassword
+    }
+
+    toggleConfirmPassword(){
+        this.showConfirmPassword = !this.showConfirmPassword
+    }
 }
