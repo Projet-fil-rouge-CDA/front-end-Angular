@@ -53,7 +53,7 @@ export class StationComponent implements OnInit {
           });
       });
 
-      this.polluantService.getAllPolluants(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
+      this.polluantService.getOnePolluantByStation(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
         this.polluant = polluants.content;
       this.totalItems = polluants.totalElements;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -64,7 +64,7 @@ export class StationComponent implements OnInit {
   changePage(page: number) {
     this.currentPage = page;
     this.offset = (page - 1);
-    this.polluantService.getAllPolluants(parseInt(this.typePolluant), 10, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getOnePolluantByStation(parseInt(this.typePolluant), 10, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
         this.polluant = polluants.content;
         this.totalItems = polluants.totalElements;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -73,7 +73,7 @@ export class StationComponent implements OnInit {
 
   onChangePolluant() {
     this.isLoading = true;
-    this.polluantService.getAllPolluants(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), 'horaire', this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getOnePolluantByStation(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), 'horaire', this.stationCode).subscribe((polluants: any) => {
         this.polluant = polluants.content;
         this.totalItems = polluants.totalElements;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -83,7 +83,7 @@ export class StationComponent implements OnInit {
 
   onChangeMetrique() {
     this.isLoading = true;
-      this.polluantService.getAllPolluants(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
+      this.polluantService.getOnePolluantByStation(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
           console.log(polluants)
           this.polluant = polluants.content;
         this.totalItems = polluants.totalElements;
@@ -94,7 +94,7 @@ export class StationComponent implements OnInit {
 
   onChangeDate() {
     this.isLoading = true;
-    this.polluantService.getAllPolluants(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
+    this.polluantService.getOnePolluantByStation(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
         this.polluant = polluants.content;
         this.totalItems = polluants.totalElements;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
