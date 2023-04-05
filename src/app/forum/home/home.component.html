@@ -2,10 +2,10 @@
     <h1>Rubriques</h1>
     <div class="rubContainer">
         <div *ngFor="let categorie of categories">
-            <a *ngIf="categorie.estActive" routerLink="/forum/fils" [queryParams]="{category: categorie.libelle}">
+            <a *ngIf="categorie.estActive" [queryParams]="{category: categorie.libelle}" routerLink="/forum/fils">
                 <div class="rubBlock">
-                    <img src="{{categorie.image}}"
-                         alt="Image illustrant la catégorie {{categorie.libelle}} du forum">
+                    <img alt="Image illustrant la catégorie {{categorie.libelle}} du forum"
+                         src="{{categorie.image}}">
                     <span class="rubTitle">{{categorie.libelle}}</span>
                 </div>
             </a>

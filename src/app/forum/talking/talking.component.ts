@@ -7,7 +7,6 @@ import {Comment} from "../../shared/models/comment";
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ImageViewerComponent} from "../forum-includes/image-viewer/image-viewer.component";
 import {MatDialog} from '@angular/material/dialog';
-import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-talking', templateUrl: './talking.component.html', styleUrls: ['./talking.component.scss']
@@ -87,7 +86,7 @@ export class TalkingComponent implements OnInit {
             }
         }
         if (confirm('Voulez-vous vraiment bannir cet utilisateur ?') && pseudo) {
-            this.serviceForum.updateUser( pseudo, false).subscribe(() => {
+            this.serviceForum.updateUser(pseudo, false).subscribe(() => {
                 this.onDelete(commentID, true)
                 this.ngOnInit();
             })

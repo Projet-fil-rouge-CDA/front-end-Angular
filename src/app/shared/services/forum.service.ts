@@ -48,8 +48,8 @@ export class ForumService {
         return this.http.post<Category>(`${environment.urlApi}/admin/categorie/create`, category, this.httpHeaders)
     }
 
-    changeActiveCategory(active:boolean, id:number) {
-        return this.http.post<Category>(`${environment.urlApi}/admin/categorie/active?estActive=${active}&idCategorie=${id}` ,  this.httpHeaders)
+    changeActiveCategory(active: boolean, id: number) {
+        return this.http.post<Category>(`${environment.urlApi}/admin/categorie/active?estActive=${active}&idCategorie=${id}`, this.httpHeaders)
     }
 
     postComment(comment: Comment) {
@@ -68,23 +68,11 @@ export class ForumService {
         return this.http.delete<Post>(`${this._urlApi}/post/delete?idPost=${id}`, this.httpHeaders)
     }
 
-    updateUser( pseudo:string, actif:boolean) {
-        return this.http.post<any>(`${environment.urlApi}/admin/utilisateur?estActif=${actif}&pseudo=${pseudo}` , this.httpHeaders)
+    updateUser(pseudo: string, actif: boolean) {
+        return this.http.post<any>(`${environment.urlApi}/admin/utilisateur?estActif=${actif}&pseudo=${pseudo}`, this.httpHeaders)
     }
 
     getUsers() {
         return this.http.get<any>(`${this._urlApiUsers}/get`, this.httpHeaders)
     }
-
-    // uploadImage(image: File) {
-    //     const formData = new FormData()
-    //     formData.append('image', image)
-    //     console.log("formdata",formData)
-    //     console.log("image",image)
-    //     return this.http.post<any>('assets/img/' + image.name, formData)
-
-    // return this.http.post('assets/img/', image)
-    // }
-
-
 }

@@ -1,67 +1,64 @@
-<nav [ngClass]="router.url === '/' ? 'navbar bg-transparent navbar-light pe-3 ' : 'navbar bg-primary navbar-light pe-3'"
-     *ngIf="router.url !== '/user'">
-  <div class="d-flex align-items-center">
-    <a class="navbar-brand" routerLink="/">
-      <img src="../../../assets/img/logo/logo.png" class="rounded-circle ms-3" width="35" height="35" alt="">
+<nav *ngIf="router.url !== '/user'"
+     [ngClass]="router.url === '/' ? 'navbar bg-transparent navbar-light pe-3 ' : 'navbar bg-primary navbar-light pe-3'">
+    <div class="d-flex align-items-center">
+        <a class="navbar-brand" routerLink="/">
+            <img alt="" class="rounded-circle ms-3" height="35" src="../../../assets/img/logo/logo.png" width="35">
 
-    </a>
-  </div>
-  <div class="d-flex">
-    <a [routerLink]="['/user/']" class="btn btn-outline-light me-3" *ngIf="isLogged == true ">Rechercher un lieu</a>
-    <a [routerLink]="['/forum']" class="btn btn-outline-light me-3">Forum</a>
-    <div class="dropdown" *ngIf="isLogged == true ">
-      <button class="btn border border-light btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1"
-              data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi bi-person-circle text-light me-2"></i>
-      </button>
-      <ul class="dropdown-menu text-end rounded-0" aria-labelledby="dropdownMenuButton1">
-        <li>
-          <a [routerLink]="['/user/profile']" class="dropdown-item">Mon profil <i
-            class="bi bi-person-badge"></i></a>
-        </li>
-        <li>
-          <a [routerLink]="['/user/likes']" class="dropdown-item"> Mes favoris <i
-            class="bi bi-heart-fill text-danger"></i></a>
-        </li>
-
-        <li *ngIf="isAdmin == true">
-          <a [routerLink]="['/admin/user-manager']" class="dropdown-item">Gestionnaire d'utilisateur
-              <i class="bi bi-people-fill"></i>
-          </a>
-        </li>
-          <li *ngIf="isAdmin == true">
-              <a [routerLink]="['/forum/administration']" class="dropdown-item">Gestionnaire forum <i
-                  class="bi bi-people-fill"></i></a>
-          </li>
-        <a (click)="logout()" *ngIf="isLogged == true" class="dropdown-item" style="cursor: pointer">Me déconnecter
-          <i
-            class="bi bi-box-arrow-right"></i></a>
-      </ul>
+        </a>
     </div>
-    <div class="dropdown" *ngIf="isLogged == false ">
-      <button class="btn border border-light btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton2"
-              data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi bi-person-circle text-light me-2"></i>
-      </button>
-      <ul class="dropdown-menu dropdownUnloggedMenu text-end rounded-0" aria-labelledby="dropdownMenuButton2">
-        <li>
-          <a [routerLink]="['/login']" class="dropdown-item">Me connecter
-            <i class="bi bi-box-arrow-in-right"></i></a>
-        </li>
+    <div class="d-flex">
+        <a *ngIf="isLogged == true " [routerLink]="['/user/']" class="btn btn-outline-light me-3">Rechercher un lieu</a>
+        <a [routerLink]="['/forum']" class="btn btn-outline-light me-3">Forum</a>
+        <div *ngIf="isLogged == true " class="dropdown">
+            <button aria-expanded="false" class="btn border border-light btn-outline-light dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    id="dropdownMenuButton1" type="button">
+                <i class="bi bi-person-circle text-light me-2"></i>
+            </button>
+            <ul aria-labelledby="dropdownMenuButton1" class="dropdown-menu text-end rounded-0">
+                <li>
+                    <a [routerLink]="['/user/profile']" class="dropdown-item">Mon profil <i
+                        class="bi bi-person-badge"></i></a>
+                </li>
+                <li>
+                    <a [routerLink]="['/user/likes']" class="dropdown-item"> Mes favoris <i
+                        class="bi bi-heart-fill text-danger"></i></a>
+                </li>
 
-        <li>
-          <a [routerLink]="['/register']" class="dropdown-item">M'inscrire
-            <i class="bi bi-plus-square"></i></a>
-        </li>
+                <li *ngIf="isAdmin == true">
+                    <a [routerLink]="['/admin/user-manager']" class="dropdown-item">Gestionnaire d'utilisateur
+                        <i class="bi bi-people-fill"></i>
+                    </a>
+                </li>
+                <li *ngIf="isAdmin == true">
+                    <a [routerLink]="['/forum/administration']" class="dropdown-item">Gestionnaire forum <i
+                        class="bi bi-people-fill"></i></a>
+                </li>
+                <a (click)="logout()" *ngIf="isLogged == true" class="dropdown-item" style="cursor: pointer">Me
+                    déconnecter
+                    <i
+                        class="bi bi-box-arrow-right"></i></a>
+            </ul>
+        </div>
+        <div *ngIf="isLogged == false " class="dropdown">
+            <button aria-expanded="false" class="btn border border-light btn-outline-light dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    id="dropdownMenuButton2" type="button">
+                <i class="bi bi-person-circle text-light me-2"></i>
+            </button>
+            <ul aria-labelledby="dropdownMenuButton2" class="dropdown-menu dropdownUnloggedMenu text-end rounded-0">
+                <li>
+                    <a [routerLink]="['/login']" class="dropdown-item">Me connecter
+                        <i class="bi bi-box-arrow-in-right"></i></a>
+                </li>
 
-
-      </ul>
+                <li>
+                    <a [routerLink]="['/register']" class="dropdown-item">M'inscrire
+                        <i class="bi bi-plus-square"></i></a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-
-  </div>
-
-
 </nav>
 
 

@@ -1,13 +1,10 @@
-<div  class="talking">
+<div class="talking">
     <ng-container *ngIf="post">
         <div class="talkingSub">
             <div class="talkingSubUp">
                 <div>
                     <h1>{{post.titre}}</h1>
-<!--                    <ng-container *ngFor="let user of users">-->
-                    <img src="assets/img/profil1.png" alt="" class="imageProfil">
-<!--                        <img *ngIf="user.id == post.id_user" alt="" class="imageProfil" src="{{user.profilImg}}">-->
-<!--                    </ng-container>-->
+                    <img alt="" class="imageProfil" src="assets/img/profil1.png">
                     <span>{{post.pseudo}}</span>
                 </div>
             </div>
@@ -17,34 +14,27 @@
             <span class="postDate">Posté le {{post.date}}</span>
         </div>
         <ng-container *ngFor="let comment of post.commentaires">
-<!--            <ng-container *ngIf="comment.id_post == post.id">-->
-                <div class="talkingSub">
-                    <div class="talkingSubUp">
-                        <div>
-<!--                            <ng-container *ngFor="let user of users">-->
-<!--                                <img *ngIf="user.id == comment.id_user" alt="" class="imageProfil"-->
-<!--                                     src="{{user.profilImg}}">-->
-                            <img src="assets/img/profil2.png" alt="" class="imageProfil">
-
-                            <!--                            </ng-container>-->
-                            <span>{{comment.pseudo}}</span>
-                        </div>
-                        <div>
-                            <button (click)="onBan( comment.userId, comment.id)">
-                                <span class="iconify" data-icon="el:ban-circle"></span>
-                            </button>
-                            <button (click)="onDelete(comment.id)">
-                                <span class="iconify" data-icon="ant-design:delete-filled"></span>
-                            </button>
-                        </div>
+            <div class="talkingSub">
+                <div class="talkingSubUp">
+                    <div>
+                        <img alt="" class="imageProfil" src="assets/img/profil2.png">
+                        <span>{{comment.pseudo}}</span>
                     </div>
-                    <p>
-                        {{comment.contenu}}
-                    </p>
-                    <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
-                    <span class="postDate">Posté le {{comment.date.split('.')[0].replace("T", " ")}}</span>
+                    <div>
+                        <button (click)="onBan( comment.userId, comment.id)">
+                            <span class="iconify" data-icon="el:ban-circle"></span>
+                        </button>
+                        <button (click)="onDelete(comment.id)">
+                            <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                        </button>
+                    </div>
                 </div>
-<!--            </ng-container>-->
+                <p>
+                    {{comment.contenu}}
+                </p>
+                <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
+                <span class="postDate">Posté le {{comment.date.split('.')[0].replace("T", " ")}}</span>
+            </div>
         </ng-container>
     </ng-container>
 </div>
@@ -57,10 +47,6 @@
         </div>
         <input class="hiddenForm" formControlName="postId" type="text" value={{idPost}}>
         <textarea cols="30" formControlName="contenu" rows="10"></textarea>
-<!--        <div class="imageUpload">-->
-<!--            <span>Ajouter une image :</span>-->
-<!--            <input formControlName="image" type="file">-->
-<!--        </div>-->
         <button class="sendButton">Envoyer</button>
     </form>
 </div>
