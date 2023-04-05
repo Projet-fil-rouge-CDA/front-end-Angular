@@ -21,8 +21,8 @@ export class StationService {
   }
 
 
-    exporterPdf(stationName: string, startDate: string | null, endDate: string | null) {
-        const url = `${environment.urlApi}/export-to-pdf/${stationName}?dateDebut=${startDate ?? ''}&dateFin=${endDate ?? ''}`;
+    exporterPdf(stationName: string, startDate: string | null, endDate: string | null, polluant:string) {
+        const url = `${environment.urlApi}/export-to-pdf/${stationName}?dateDebut=${startDate ?? ''}&dateFin=${endDate ?? ''}&polluant=${polluant}`;
         this.http.get(url, { responseType: 'blob', observe: 'events' }).subscribe(event => {
             if (event.type === HttpEventType.Response) {
                 const response = event as HttpResponse<Blob>;
