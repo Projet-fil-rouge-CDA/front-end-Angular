@@ -1,4 +1,4 @@
-<main style="min-height: 90vh" class="d-flex flex-column">
+<main style="min-height: 90vh" class="d-flex flex-column container">
     <div class="mb-5 mt-5 col-8 align-self-center">
         <h2>Gestionnaire d'utilisateur</h2>
         <input
@@ -6,6 +6,7 @@
         name="userSearch"
         id="userSearch"
         placeholder="Rechercher un utilisateur"
+        (keyup)="onSearchValueChange($event)"
         />
     </div>
     <div class="col-12 d-flex justify-content-center">
@@ -25,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users; let i=index" [ngClass]="{'editing': isEditing[i], 'disable': !user.actif}">
+                <tr *ngFor="let user of getUsersForPage(pageNumber); let i=index" [ngClass]="{'editing': isEditing[i], 'disable': !user.actif}">
                     <ng-container *ngIf="!user.editing; else editRow">
                         <td>{{user.prenom}}</td>
                         <td>{{user.nom}}</td>
@@ -55,11 +56,16 @@
                         <td><input type="text" [(ngModel)]="user.rue"></td>
                         <td><input type="text" [(ngModel)]="user.codePostal"></td>
                         <td><input type="text" [(ngModel)]="user.ville"></td>
-                        <td>MODERATEUR <input type="checkbox" [checked]="user.roles.includes('MODERATEUR')"/></td>
-                        <td><span (click)="updateUser(user); user.editing=false;">valider</span></td>
+                        <td>MODERATEUR <input type="checkbox" [(ngModel)]="user.isModerateur" [checked]="user.roles.includes('MODERATEUR')"/></td>
+                        <td><span (click)="updateUser(user, user.isModerateur); user.editing=false;">valider</span></td>
                     </ng-template>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div *ngFor="let pageNumber of getPageNumbers()">
+            <a (click)="goToPage(pageNumber)" class="btn btn-outline-primary">{{pageNumber}}</a>
+        </div>
     </div>
 </main>
