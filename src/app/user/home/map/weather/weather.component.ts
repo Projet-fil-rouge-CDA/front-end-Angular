@@ -22,7 +22,7 @@ export class WeatherComponent implements OnInit {
     station: any;
     w: Weather;
     weatherSubscription = new Subscription();
-  
+
     showMessage: boolean = false;
     textMessage: string = "Station ajoutée avec succès à vos favoris";
     stationAlreadyLiked: String[] = [];
@@ -108,7 +108,7 @@ export class WeatherComponent implements OnInit {
 
     getSentenceInfoAir(indiceValue : number){
         if(indiceValue < 50){
-            this.indiceAir = "Air dégradé"
+            this.indiceAir = "Air correct"
         } else if (indiceValue < 80){
             this.indiceAir = "Air dégradé"
         } else {
