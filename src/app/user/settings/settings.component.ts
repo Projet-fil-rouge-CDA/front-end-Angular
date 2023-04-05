@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators} from '@angular/forms';
 import {Title} from "@angular/platform-browser";
 import {Router} from "@angular/router";
 import {ValidationService} from "../../shared/services/validation.service";
@@ -7,6 +7,7 @@ import {UserService} from "../user.service";
 import {optionUser} from "../../shared/models/optionUser";
 import {CookieService} from "ngx-cookie-service";
 import {TokenService} from "../../shared/services/token.service";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-settings',
@@ -14,6 +15,9 @@ import {TokenService} from "../../shared/services/token.service";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+
+  deleteMessage : string;
+  updateMessage : string;
 
   showPassword : boolean = false;
   showConfirmPassword : boolean = false;
@@ -29,7 +33,8 @@ export class SettingsComponent implements OnInit {
     private router : Router,
     private userService : UserService,
     private cookieService : CookieService,
-    private tokenService : TokenService
+    private tokenService : TokenService,
+    private authService : AuthService
   ) {
     this.optionForm = this.formBuilder.group({
       nom: ['', [Validators.required, Validators.minLength(3)]],
@@ -47,7 +52,6 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Univ\'Air | Option utilisateur');
-    // recuperer le pseudo
     this.userService.getInfoOption(this.tokenService.takePseudo()).subscribe(res => {
         this.optionForm.patchValue({
             nom: res.nom,
@@ -93,8 +97,13 @@ export class SettingsComponent implements OnInit {
   deleteAccount(){
     const result = window.confirm("Voulez-vous vraiment supprimer votre compte ?");
     if(result){
-      // delete de l'utilisateur (information perso + adresse + favoris + cookie)
-      console.log("supprimé !");
+        this.userService.deleteUser(this.tokenService.takePseudo(), this.tokenService.takePrenom(), this.tokenService.takeNom()).subscribe(res => {
+            if(res != null){
+                this.authService.logout();
+            } else {
+                this.deleteMessage = res;
+            }
+        });
     }
   }
 
@@ -102,8 +111,9 @@ export class SettingsComponent implements OnInit {
       if(!isPseudoExist){
           this.userService.updateInfoOption(this.tokenService.takePseudo(), this.userUpdate).subscribe(res =>{
               if(res != null){
-                  this.cookieService.set('session', res.value)
+                  this.cookieService.set('session', res.Token.value)
               }
+              this.updateMessage = res.Success
           });
           this.userInfo = this.userUpdate;
           this.optionForm.patchValue({

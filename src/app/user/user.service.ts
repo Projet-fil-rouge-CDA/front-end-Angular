@@ -34,4 +34,8 @@ export class UserService {
     updateInfoOption(pseudo: string, user : optionUser) : Observable<any>{
         return this.http.post<any>(this._urlApi+"/user/option/update?pseudo="+pseudo, user, this.httpHeaders);
     }
+
+    deleteUser(pseudo : string, prenom : string, nom : string){
+        return this.http.delete(this._urlApi+"/user/delete?pseudo="+pseudo+"&prenom="+prenom+"&nom="+nom, this.httpHeaders);
+    }
 }

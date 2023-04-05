@@ -13,19 +13,21 @@ export class FilsComponent implements OnInit {
 
     category: any;
     posts: any;
+    categoryID: string | null;
 
     constructor(private titleService: Title, private serviceForum: ForumService, private route: ActivatedRoute, public dialog: MatDialog) {
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
         this.route.queryParamMap
             .subscribe(params => {
                 this.category = params.get('category');
+                this.categoryID = params.get('id');
             });
 
         this.titleService.setTitle('Univ\'Air | Forum - ' + this.category);
 
-        this.serviceForum.getPosts().subscribe((posts: Post) => {
+        this.serviceForum.getPosts(this.category).subscribe((posts: Post) => {
             this.posts = posts;
         })
     }

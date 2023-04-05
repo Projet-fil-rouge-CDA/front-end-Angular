@@ -43,7 +43,6 @@
         maxlength="10"
         name="phone"
         placeholder="Numéro de téléphone"
-        required
         type="text"
       />
       <control-messages [control]="registerForm.get('email')" class="control d-flex justify-content-center col-12"></control-messages>
@@ -57,25 +56,31 @@
         type="text"
       />
       <control-messages [control]="registerForm.get('password')" class="control d-flex justify-content-center col-12"></control-messages>
-      <input
-        class="form-control"
-        formControlName="password"
-        id="password"
-        name="password"
-        placeholder="Mot de passe"
-        required
-        type="password"
-      />
+        <div class="d-flex mb-2 col-12 position-relative">
+            <input
+            class="form-control"
+            formControlName="password"
+            id="password"
+            name="password"
+            placeholder="Mot de passe"
+            required
+            [type]="showPassword ? 'text' : 'password'"
+            />
+            <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="togglePassword()"></i>
+        </div>
       <control-messages [control]="registerForm.get('confirmPassword')" class="control d-flex justify-content-center col-12"></control-messages>
-      <input
-        class="form-control"
-        formControlName="confirmPassword"
-        id="confirmPassword"
-        name="confirmPassword"
-        placeholder="Confirmer le mot de passe"
-        required
-        type="password"
-      />
+        <div class="d-flex mb-2 col-12 position-relative">
+            <input
+                class="form-control"
+                formControlName="confirmPassword"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirmer le mot de passe"
+                required
+                [type]="showConfirmPassword ? 'text' : 'password'"
+            />
+            <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="toggleConfirmPassword()"></i>
+        </div>
       <div class="d-flex justify-content-between mt-2 col-12">
         <input
           class="d-flex align-self-end check-control col-1 mb-1"
