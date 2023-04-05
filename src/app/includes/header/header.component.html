@@ -29,6 +29,10 @@
               <i class="bi bi-people-fill"></i>
           </a>
         </li>
+          <li>
+              <a [routerLink]="['/forum/administration']" class="dropdown-item">Gestionnaire forum <i
+                  class="bi bi-people-fill"></i></a>
+          </li>
         <a (click)="logout()" *ngIf="isLogged == true" class="dropdown-item" style="cursor: pointer">Me déconnecter
           <i
             class="bi bi-box-arrow-right"></i></a>

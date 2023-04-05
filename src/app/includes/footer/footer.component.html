@@ -1,62 +1,29 @@
-<div class="container text-black">
-  <footer class="row row-cols-5 py-5 mt-5 border-top ">
-    <div class="col">
-      <a routerLink="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-        <img src="../../../assets/img/logo/logo.png" class="rounded-circle ms-3" width="35" height="35" alt="">
-      </a>
-      <p [ngClass]="router.url === '/'?'text-white':'text-black'">© Univ'Air -  {{date | date: 'YYYY'}}</p>
-    </div>
+<div class="">
+    <footer class="footer-container">
+        <div class="footer-univair">
+            <a class="" routerLink="/">
+                <img alt=""  src="../../../assets/img/logo/logo.png">
+            </a>
+            <p>© Univ'Air -  {{date | date: 'YYYY'}}</p>
+        </div>
 
-    <div class="col">
+        <div class="">
+            <ul class="">
+                <li class="">
+                    <a class=""
+                       href="#">Home</a>
+                </li>
+                <li class="">
+                    <a href="https://data.paysdelaloire.fr/pages/home/" target="_blank">data.paysdelaloire.fr</a>
+                </li>
+                <li class="">
+                    <a href="https://airpl.org/" target="_blank">airpl</a>
+                </li>
+                <li class="">
+                    <a href="https://openweathermap.org/api" target="_blank">OpenWeather</a>
+                </li>
+            </ul>
+        </div>
 
-    </div>
-
-    <div class="col">
-      <h5 [ngClass]="router.url === '/'?'text-white':'text-black'">Section</h5>
-      <ul class="nav flex-column ">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Features</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Pricing</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">FAQs</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">About</a></li>
-      </ul>
-    </div>
-
-    <div class="col">
-      <h5 [ngClass]="router.url === '/'?'text-white':'text-black'">Section</h5>
-      <ul class="nav flex-column ">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Features</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Pricing</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">FAQs</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">About</a></li>
-      </ul>
-    </div>
-
-    <div class="col">
-      <h5 [ngClass]="router.url === '/'?'text-white':'text-black'">Section</h5>
-      <ul class="nav flex-column ">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Features</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">Pricing</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">FAQs</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 "
-                                     [ngClass]="router.url === '/'?'text-white':'text-black'">About</a></li>
-      </ul>
-    </div>
-  </footer>
+    </footer>
 </div>
