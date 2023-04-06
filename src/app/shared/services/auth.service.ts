@@ -74,6 +74,7 @@ export class AuthService {
       if (res == null) {
           return;
       } else {
+          this.cookieService.delete('session');
           this.cookieService.set('session', res.value);
           let roles : String[] = this.tokenService.takeRoles();
           roles.map(role => {
