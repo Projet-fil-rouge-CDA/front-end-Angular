@@ -6,12 +6,12 @@ import {Observable} from "rxjs";
 import {NominatimResponse} from "../models/nominatim-response.model";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class WeatherService {
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
     getWeather(lat: number, lon: number, city?: NominatimResponse): Observable<Weather> {
         let url = `http://localhost:8080/api/meteo/get?latitude=${lat}&longitude=${lon}`;
@@ -35,55 +35,60 @@ export class WeatherService {
     }
 
 
-  getWeatherClass(weather: string): string {
-    switch (weather) {
-      case 'Clear':
-        return 'blue-gradient-background';
-      case 'Clouds':
-        return 'grey-gradient-background';
-      case 'Snow':
-        return 'white-gradient-background';
-      case 'Rain':
-        return 'grey-gradient-background';
-      case 'Thunderstorm':
-        return 'dark-grey-gradient-background';
-      default:
-        return 'white-gradient-background';
+    getWeatherClass(weather: string): string {
+        switch (weather) {
+            case 'Clear':
+                return 'blue-gradient-background';
+            case 'Clouds':
+                return 'grey-gradient-background';
+            case 'Snow':
+                return 'white-gradient-background';
+            case 'Rain':
+                return 'grey-gradient-background';
+            case 'Drizzle':
+                return 'grey-gradient-background';
+            case 'Thunderstorm':
+                return 'dark-grey-gradient-background';
+            default:
+                return 'white-gradient-background';
+        }
     }
-  }
-  getWeatherClassMiniCard(weather: string): string {
-    switch (weather) {
-      case 'Clear':
-        return 'blue-gradient-background-mini-card';
-      case 'Clouds':
-        return 'grey-gradient-background-mini-card';
-      case 'Snow':
-        return 'white-gradient-background-mini-card';
-      case 'Rain':
-        return 'grey-gradient-background-mini-card';
-      case 'Thunderstorm':
-        return 'dark-grey-gradient-background-mini-card';
 
-      default:
-        return 'white-gradient-background';
-    }
-  }
+    getWeatherClassMiniCard(weather: string): string {
+        switch (weather) {
+            case 'Clear':
+                return 'blue-gradient-background-mini-card';
+            case 'Clouds':
+                return 'grey-gradient-background-mini-card';
+            case 'Snow':
+                return 'white-gradient-background-mini-card';
+            case 'Rain':
+                return 'grey-gradient-background-mini-card';
+            case 'Thunderstorm':
+                return 'dark-grey-gradient-background-mini-card';
 
-  translateWeatherToFrench(weather: string): string {
-    switch (weather) {
-      case 'Clear':
-        return 'Ciel dégagé';
-      case 'Clouds':
-        return 'Nuageux';
-      case 'Snow':
-        return 'Neige';
-      case 'Rain':
-        return 'Pluvieux';
-      case 'Thunderstorm':
-        return 'Orageux';
-      default:
-        return 'Inconnu';
+            default:
+                return 'white-gradient-background';
+        }
     }
-  }
+
+    translateWeatherToFrench(weather: string): string {
+        switch (weather) {
+            case 'Clear':
+                return 'Ciel dégagé';
+            case 'Clouds':
+                return 'Nuageux';
+            case 'Snow':
+                return 'Neige';
+            case 'Rain':
+                return 'Pluvieux';
+            case 'Thunderstorm':
+                return 'Orageux';
+            case 'Drizzle':
+                return 'Bruine';
+            default:
+                return 'Inconnu';
+        }
+    }
 
 }

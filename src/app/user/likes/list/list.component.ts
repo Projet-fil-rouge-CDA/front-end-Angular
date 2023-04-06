@@ -47,7 +47,7 @@ export class ListComponent implements OnInit {
         this.likeService.getFavoritesLikes(this.tokenService.takePseudo()).subscribe(res => {
                 this.stations = res;
                 this.stations.forEach((station: any) => {
-                    console.log(station)
+
                     this.polluantService.getOnePolluantByStation(24, 24,0, new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), "horaire", station.code).subscribe(res =>{
                         this.indices = res;
                         // @ts-ignore

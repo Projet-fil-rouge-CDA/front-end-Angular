@@ -81,7 +81,7 @@ export class SettingsComponent implements OnInit {
         let isPseudoExist: boolean = false;
         this.userUpdate = this.optionForm.value;
         if (JSON.stringify(this.userInfo) === JSON.stringify(this.userUpdate)) {
-            console.log("same")
+
         } else {
             if (this.userUpdate.motDePasse == this.userUpdate.confirmPassword) {
                 if (this.userUpdate.pseudo !== this.userInfo.pseudo) {

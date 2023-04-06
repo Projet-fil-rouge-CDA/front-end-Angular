@@ -15,8 +15,7 @@
 
 
       <a *ngIf="isLogged == true && role$" [routerLink]="['/admin/user-manager']"
-         class="dropdown-item">Gestionnaire d'utilisateur <i
-        class="bi bi-box-arrow-right"></i></a>
+         class="dropdown-item">Gestionnaire d'utilisateur <i class="bi bi-people-fill"></i></a>
 
 
       <a (click)="logout()" *ngIf="isLogged === true" class="dropdown-item" style="cursor: pointer">Me déconnecter

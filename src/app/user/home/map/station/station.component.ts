@@ -84,7 +84,7 @@ export class StationComponent implements OnInit {
   onChangeMetrique() {
     this.isLoading = true;
       this.polluantService.getOnePolluantByStation(parseInt(this.typePolluant), this.itemsPerPage, this.offset, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.metrique, this.stationCode).subscribe((polluants: any) => {
-          console.log(polluants)
+
           this.polluant = polluants.content;
         this.totalItems = polluants.totalElements;
       this.maxPage = Math.ceil(this.totalItems / this.itemsPerPage);

@@ -1,33 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import { AuthService } from 'src/app/shared/services/auth.service';
+import {AuthService} from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
-  isLogged: boolean = false;
+    isLogged: boolean = false;
+    role$ = this.authService.isAdmin$.value;
+    isAdmin: boolean = false;
 
-  isAdmin : boolean = false;
-
-  constructor(
-    public router: Router,
-    private authService: AuthService
+    constructor(
+        public router: Router,
+        private authService: AuthService
     ) {
-  }
+    }
 
-  ngOnInit(): void {
-    this.authService.isAuth$.subscribe(value => {
-      this.isLogged = value
-    })
-    this.authService.isAdmin$.subscribe(value => {
-      this.isAdmin = value
-    })
-  }
-  logout() {
-    this.authService.logout();
-  }
+    ngOnInit(): void {
+        this.authService.isAuth$.subscribe(value => {
+            this.isLogged = value
+        })
+        this.authService.isAdmin$.subscribe(value => {
+            this.isAdmin = value
+        })
+    }
+
+    logout() {
+        this.authService.logout();
+    }
 }

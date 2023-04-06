@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         this.titleService.setTitle('Univ\'Air | Forum');
         this.serviceForum.getCategories().subscribe((categories: Category) => {
             this.categories = categories;
-            console.log(this.categories)
+
         })
     }
 }

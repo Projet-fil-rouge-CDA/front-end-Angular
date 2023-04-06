@@ -47,6 +47,7 @@ export class WeatherComponent implements OnInit {
                 this.weather = city;
             });
             if (this.weather) this.weatherService.getWeather(this.weather.latitude, this.weather.longitude).subscribe((data: any) => {
+
                 this.zone.run(() => {
                     this.w = data;
                     if(this.station != null && this.w != null){
