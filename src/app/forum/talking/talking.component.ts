@@ -16,9 +16,10 @@ export class TalkingComponent implements OnInit {
     idPost: string | null;
     post: any;
     talkingForm: FormGroup;
-    users: any[];
+    users: Array<any>;
 
     constructor(private route: ActivatedRoute, private titleService: Title, private serviceForum: ForumService, private formBuilder: FormBuilder, public dialog: MatDialog) {
+        this.getUserInfos();
     }
 
     ngOnInit(): void {
@@ -54,6 +55,12 @@ export class TalkingComponent implements OnInit {
         }
     }
 
+    getUserInfos(): void {
+        this.serviceForum.getUsers().subscribe((users: any) => {
+            this.users = users;
+        })
+    }
+
     onSubmit(): void {
         this.serviceForum.postComment(this.talkingForm.value).subscribe((comment: Comment) => {
             // this.comments.push(comment);
@@ -62,8 +69,8 @@ export class TalkingComponent implements OnInit {
         })
     }
 
-    onDelete(id: any): void {
-        if (confirm('Êtes vous sur de vouloir supprimer ce commentaire ?')) {
+    onDelete(id: any, fromBan = false): void {
+        if (fromBan || confirm('Êtes vous sur de vouloir supprimer ce commentaire ?')) {
             this.serviceForum.deleteComment(id).subscribe(() => {
                 this.ngOnInit();
             })
@@ -71,9 +78,16 @@ export class TalkingComponent implements OnInit {
     }
 
 
-    onBan(id: number, commentId: any): void {
-        if (confirm('Voulez-vous vraiment bannir cet utilisateur ?')) {
-            this.serviceForum.updateUser(id).subscribe(() => {
+    onBan(id: number, commentID: number): void {
+        let pseudo
+        for (const user of this.users) {
+            if (user.idUser === id) {
+                pseudo = user.pseudo
+            }
+        }
+        if (confirm('Voulez-vous vraiment bannir cet utilisateur ?') && pseudo) {
+            this.serviceForum.updateUser(pseudo, false).subscribe(() => {
+                this.onDelete(commentID, true)
                 this.ngOnInit();
             })
         }

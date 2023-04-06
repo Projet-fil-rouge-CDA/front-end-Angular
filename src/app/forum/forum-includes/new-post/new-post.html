@@ -1,17 +1,17 @@
 <ng-container *ngIf="category">
-<h2 mat-dialog-title>Créer un nouveau fil de discussion</h2>
-<mat-dialog-content class="mat-typography">
-    <form [formGroup]="newTalkForm" class="newTalkForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-            <input formControlName="titre" matInput placeholder="Objet">
-        </mat-form-field>
-        <mat-form-field>
-            <textarea formControlName="contenu" matInput placeholder="Message"></textarea>
-        </mat-form-field>
-        <button class="postModalButton">Publier</button>
-    </form>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-button mat-dialog-close="">Annuler</button>
-</mat-dialog-actions>
+    <h2 mat-dialog-title>Créer un nouveau fil de discussion</h2>
+    <mat-dialog-content class="mat-typography">
+        <form (ngSubmit)="onSubmit()" [formGroup]="newTalkForm" class="newTalkForm">
+            <mat-form-field>
+                <input formControlName="titre" matInput placeholder="Objet">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea formControlName="contenu" matInput placeholder="Message"></textarea>
+            </mat-form-field>
+            <button class="postModalButton">Publier</button>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close="">Annuler</button>
+    </mat-dialog-actions>
 </ng-container>

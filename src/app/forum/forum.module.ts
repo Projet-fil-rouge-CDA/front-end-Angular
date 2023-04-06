@@ -11,9 +11,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {NewPostComponent as ModalComponent} from './forum-includes/new-post/new-post.component';
 import {MatInputModule} from "@angular/material/input";
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
-import { ImageViewerComponent } from './forum-includes/image-viewer/image-viewer.component';
+import {ImageViewerComponent} from './forum-includes/image-viewer/image-viewer.component';
 import {MatCardModule} from "@angular/material/card";
-import { ForumAdministrationComponent } from './forum-administration/forum-administration.component';
+import {ForumAdministrationComponent} from './forum-administration/forum-administration.component';
 
 @NgModule({
     declarations: [
