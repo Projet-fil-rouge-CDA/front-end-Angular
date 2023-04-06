@@ -7,6 +7,8 @@ import {Comment} from "../../shared/models/comment";
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ImageViewerComponent} from "../forum-includes/image-viewer/image-viewer.component";
 import {MatDialog} from '@angular/material/dialog';
+import {TokenService} from "../../shared/services/token.service";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
     selector: 'app-talking', templateUrl: './talking.component.html', styleUrls: ['./talking.component.scss']
@@ -17,8 +19,10 @@ export class TalkingComponent implements OnInit {
     post: any;
     talkingForm: FormGroup;
     users: Array<any>;
+    actualUserPseudo = this.tokenService.takePseudo();
+    isAuth$ = this.authService.isAuth$;
 
-    constructor(private route: ActivatedRoute, private titleService: Title, private serviceForum: ForumService, private formBuilder: FormBuilder, public dialog: MatDialog) {
+    constructor(private route: ActivatedRoute, private titleService: Title, private serviceForum: ForumService, private formBuilder: FormBuilder, public dialog: MatDialog, private tokenService: TokenService, private authService: AuthService) {
         this.getUserInfos();
     }
 
@@ -39,8 +43,15 @@ export class TalkingComponent implements OnInit {
             date: new Date().toISOString(),
             id: 0,
             postId: Number(this.idPost),
-            pseudo: 'Admin'
+            pseudo: this.actualUserPseudo != null ? this.actualUserPseudo : 'Invité'
         });
+        this.isAuth$.subscribe((c) => {
+            if(!c){
+                this.actualUserPseudo = 'Invité';
+            } else {
+                this.actualUserPseudo = this.tokenService.takePseudo();
+            }
+        })
     }
 
     ngAfterViewInit(): void {

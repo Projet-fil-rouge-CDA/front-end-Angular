@@ -42,7 +42,7 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="talkingForm" class="talkingSub">
         <div class="talkingSubUp">
             <div>
-                <span>Admin</span>
+                <span>{{actualUserPseudo != null ? actualUserPseudo : "Invité"}}</span>
             </div>
         </div>
         <input class="hiddenForm" formControlName="postId" type="text" value={{idPost}}>
