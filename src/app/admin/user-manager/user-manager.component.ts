@@ -37,13 +37,14 @@ export class UserManagerComponent implements OnInit {
         user.editing = true;
     }
 
-    updateUser(user: UserManagerModel, isModerateur: boolean) {
+    updateUser(user: UserManagerModel) {
+        console.log(user)
         user.editing = false;
-        if(!isModerateur && user.roles.includes('MODERATEUR')){
+        if(!user.isModerateur && user.roles.includes('MODERATEUR')){
             const index = user.roles.indexOf('MODERATEUR');
             user.roles.splice(index,1);
         }
-        if(isModerateur && !user.roles.includes('MODERATEUR')){
+        if(user.isModerateur && !user.roles.includes('MODERATEUR')){
             user.roles.push('MODERATEUR');
         }
         this.adminService.updateUser(user)
