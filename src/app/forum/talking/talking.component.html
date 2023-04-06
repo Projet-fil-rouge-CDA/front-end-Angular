@@ -1,12 +1,10 @@
-<div  class="talking">
+<div class="talking">
     <ng-container *ngIf="post">
         <div class="talkingSub">
             <div class="talkingSubUp">
                 <div>
                     <h1>{{post.titre}}</h1>
-
-                    <img src="assets/img/profil1.png" alt="" class="imageProfil">
-
+                    <img alt="" class="imageProfil" src="assets/img/profil1.png">
                     <span>{{post.pseudo}}</span>
                 </div>
             </div>
@@ -16,32 +14,27 @@
             <span class="postDate">Posté le {{post.date}}</span>
         </div>
         <ng-container *ngFor="let comment of post.commentaires">
-
-                <div class="talkingSub">
-                    <div class="talkingSubUp">
-                        <div>
-
-                            <img src="assets/img/profil2.png" alt="" class="imageProfil">
-
-
-                            <span>{{comment.pseudo}}</span>
-                        </div>
-                        <div>
-                            <button (click)="onBan( comment.userId, comment.id)">
-                                <span class="iconify" data-icon="el:ban-circle"></span>
-                            </button>
-                            <button (click)="onDelete(comment.id)">
-                                <span class="iconify" data-icon="ant-design:delete-filled"></span>
-                            </button>
-                        </div>
+            <div class="talkingSub">
+                <div class="talkingSubUp">
+                    <div>
+                        <img alt="" class="imageProfil" src="assets/img/profil2.png">
+                        <span>{{comment.pseudo}}</span>
                     </div>
-                    <p>
-                        {{comment.contenu}}
-                    </p>
-                    <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
-                    <span class="postDate">Posté le {{comment.date.split('.')[0].replace("T", " ")}}</span>
+                    <div>
+                        <button (click)="onBan( comment.userId, comment.id)">
+                            <span class="iconify" data-icon="el:ban-circle"></span>
+                        </button>
+                        <button (click)="onDelete(comment.id)">
+                            <span class="iconify" data-icon="ant-design:delete-filled"></span>
+                        </button>
+                    </div>
                 </div>
-<!--            </ng-container>-->
+                <p>
+                    {{comment.contenu}}
+                </p>
+                <img (click)="openImage(comment.image)" alt="" class="uploadedImg" src="{{comment.image}}">
+                <span class="postDate">Posté le {{comment.date.split('.')[0].replace("T", " ")}}</span>
+            </div>
         </ng-container>
     </ng-container>
 </div>

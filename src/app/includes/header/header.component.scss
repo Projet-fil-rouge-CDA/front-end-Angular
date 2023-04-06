@@ -1,14 +1,16 @@
 .dropdown-menu[data-bs-popper] {
-  left: -165px;
+    left: -165px;
 }
+
 .dropdownUnloggedMenu[data-bs-popper] {
-  left: -95px;
+    left: -95px;
 }
+
 .dropdown-toggle {
-  &:hover, &:focus{
-    i {
-      filter: invert(1);
+    &:hover, &:focus {
+        i {
+            filter: invert(1);
+        }
     }
-  }
 
 }
