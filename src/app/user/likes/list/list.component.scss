@@ -146,7 +146,20 @@ $carousel-control-color: #7b277d;
   bottom: -40px;
 }
 
+.spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 9px solid #dbdcef;
+    border-right-color: #474bff;
+    animation: spinner-d3wgkg 1s infinite linear;
+}
 
+@keyframes spinner-d3wgkg {
+    to {
+        transform: rotate(1turn);
+    }
+}
 
 
 

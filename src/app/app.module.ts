@@ -9,26 +9,25 @@ import {FooterComponent} from "./includes/footer/footer.component";
 import {CookiesComponent} from "./includes/cookies/cookies.component";
 
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    CookiesComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        CookiesComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule
 
-  ],
-  providers: [],
-  exports: [
-    HttpClientModule,
-  ],
-  bootstrap: [AppComponent]
+    ],
+    providers: [],
+    exports: [
+        HttpClientModule,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

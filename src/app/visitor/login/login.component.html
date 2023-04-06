@@ -6,7 +6,9 @@
     </a>
   </div>
 
-  <section class="bg-white col-4 d-flex justify-content-center flex-column align-items-center">
+    <message-validation [textMessage]="messageError" [isError]="true" [show]="hasError"></message-validation>
+
+    <section class="bg-white col-4 d-flex justify-content-center flex-column align-items-center">
     <h2 class="pt-5 pb-2">Se connecter</h2>
     <form [formGroup]="loginForm" (submit)="login()" class="d-flex flex-column align-items-center col-8">
       <control-messages [control]="loginForm.get('email')" class="control d-flex justify-content-center col-12"></control-messages>
@@ -33,7 +35,6 @@
           <i class="bi bi-eye position-absolute" style="right: 2%; top: 20%" (click)="togglePassword()"></i>
         </div>
     <div class="col-12 mt-4 mb-4 text-center d-flex flex-column align-items-center">
-        <span>{{messageError}}</span>
         <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success col-4 border-none rounded-5 text-white mt-1">Confirmer</button>
     </div>
     </form>

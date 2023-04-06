@@ -97,5 +97,7 @@ export class AuthService {
     this.cookieService.delete('session');
     this.role$.next('user');
     this.isAuth$.next(false);
+    this.isAdmin$.next(false);
+    this.isModerator$.next(false);
   }
 }

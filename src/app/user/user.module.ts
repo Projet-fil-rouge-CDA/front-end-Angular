@@ -18,35 +18,38 @@ import {DropdownComponent} from "../shared/components/dropdown/dropdown.componen
 import {LogoComponent} from "../shared/components/logo/logo.component";
 import {CardComponent} from "../shared/components/card/card.component";
 import {ControlMessagesComponentSetting} from "../shared/components/control-messages-setting.components";
+import {MessagevalidationComponent} from "../shared/components/messagevalidation/messagevalidation.component";
 
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
-  declarations: [
-    AddComponent,
-    HomeComponent,
-    ListComponent,
-    SettingsComponent,
-    WeatherComponent,
-    StationComponent,
-    SearchComponent,
-    MapComponent,
-    DropdownComponent,
-    LogoComponent,
-    CardComponent,
-    ControlMessagesComponentSetting
-  ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    LeafletModule,
-    ReactiveFormsModule,
-
-  ],
-  exports: [],
-  providers: [SearchAddressService, {provide: LOCALE_ID, useValue: "fr-FR"}]
+    declarations: [
+        AddComponent,
+        HomeComponent,
+        ListComponent,
+        SettingsComponent,
+        WeatherComponent,
+        StationComponent,
+        SearchComponent,
+        MapComponent,
+        DropdownComponent,
+        LogoComponent,
+        CardComponent,
+        ControlMessagesComponentSetting,
+        MessagevalidationComponent,
+    ],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        LeafletModule,
+        ReactiveFormsModule,
+    ],
+    exports: [
+        MessagevalidationComponent
+    ],
+    providers: [SearchAddressService, {provide: LOCALE_ID, useValue: "fr-FR"}]
 })
 export class UserModule {
 }

@@ -1,5 +1,5 @@
 export interface UserManagerModel{
-    id:number,
+    idUser:number,
     prenom:string,
     nom:string,
     pseudo:string,
@@ -10,5 +10,6 @@ export interface UserManagerModel{
     ville:string,
     roles:string[],
     editing:boolean,
-    actif:boolean
+    actif:boolean,
+    isModerateur:boolean
 }

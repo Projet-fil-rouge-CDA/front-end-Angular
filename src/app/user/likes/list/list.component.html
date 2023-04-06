@@ -1,40 +1,40 @@
 <div class="d-flex justify-content-center text-black basic-font page-title my-5"> Mes stations météo favorites</div>
 
-<div class="d-flex justify-content-center align-items-center min-vh-100 min-vw-100" *ngIf="loader">
+<div class="d-flex justify-content-center align-items-center" *ngIf="loader">
     <div class="spinner"></div>
 </div>
 <div class="container-fluid containerCards" *ngIf="!loader">
   <div class="row">
-    <div *ngIf="weathers">
+    <div *ngIf="favorite">
       <div class="d-flex justify-content-center flex-wrap">
-        <div *ngFor="let weather of weathers; let index = index">
+        <div *ngFor="let station of favorite; let index = index">
           <div class="mb-4 cardItem me-4">
 
             <div class="accordion accordion-flush overflow-hidden cardMiniature" id="accordionFlush{{index}}">
               <div class="accordion-item  ">
                 <div class="accordion-header overflow-hidden " id="flush-heading{{index}}">
-                  <button  class="accordion-button collapsed cardMiniatureHead rounded-top " (click)="weather.clicked = !weather.clicked"
-                          [ngClass]='getWeatherClassMiniCard(weather.weather_state_name)'
+                  <button  class="accordion-button collapsed cardMiniatureHead rounded-top " (click)="station.clicked = !station.clicked"
+                          [ngClass]='getWeatherClassMiniCard(station.skyInfo)'
                           data-bs-toggle="collapse"
                           [attr.data-bs-target]="'#flush-'+index" aria-expanded="false"
                           [attr.aria-controls]="'#flush-'+index">
 
                     <img class="card-img-top img-weather" src="assets/img/sun.png" alt="Sun image"
-                         *ngIf="weather.weather_state_name === 'Clear'">
+                         *ngIf="station.skyInfo === 'Clear'">
                     <img class="card-img-top img-weather" src="assets/img/cloud.png" alt="Cloud image"
-                         *ngIf="weather.weather_state_name === 'Clouds'">
+                         *ngIf="station.skyInfo === 'Clouds'">
                     <img class="card-img-top img-weather" src="assets/img/rain.png" alt="Cloud image"
-                         *ngIf="weather.weather_state_name === 'Rain'">
+                         *ngIf="station.skyInfo === 'Rain'">
                     <img class="card-img-top img-weather" src="assets/img/thunderstorm.png"
                          style="position: absolute; top: -6px; left: 0;" alt="Cloud image"
-                         *ngIf="weather.weather_state_name === 'Thunderstorm'">
+                         *ngIf="station.skyInfo === 'Thunderstorm'">
 
-                    <div class="w-100 text-light position-absolute start-0 pt-5" id="{{index}}" *ngIf="!weather.clicked">
-                        <p class="WeatherStation m-0 text-center">{{stations[index].nom}}</p>
-                      <p class="card-title m-0 text-center ">{{weather.city}}</p>
+                    <div class="w-100 text-light position-absolute start-0 pt-5" id="{{index}}" *ngIf="!station.clicked">
+                        <p class="WeatherStation m-0 text-center">{{station.nomStation}}</p>
+                      <p class="card-title m-0 text-center ">{{station.nomVille}}</p>
                       <div class="d-flex justify-content-center mt-2">
 
-                        <p class="degree m-0 text-center me-2"> {{weather.temperature}}°C</p>
+                        <p class="degree m-0 text-center me-2"> {{station.temp}}°C</p>
                         <p class="numberAirQuality m-0 text-center"> 20µg/m³</p></div>
 
                     </div>
@@ -44,43 +44,42 @@
                      [attr.aria-labelledby]="'flush-headingOne'+index"
                      [attr.data-bs-parent]="'#accordionFlush'+index">
                   <div class="accordion-body p-0">
-                    <div class="cardAllInformations" *ngIf="weather"
-                         [ngClass]='getWeatherClass(weather.weather_state_name)'>
+                    <div class="cardAllInformations" *ngIf="station"
+                         [ngClass]='getWeatherClass(station.skyInfo)'>
                       <!--  //Image-->
                       <img class="card-img-top img-weather img-card" src="assets/img/sun.png" alt="Sun image"
-                           *ngIf="weather.weather_state_name === 'Clear'">
+                           *ngIf="station.skyInfo === 'Clear'">
                       <img class="card-img-top img-weather img-card" src="assets/img/cloud.png" alt="Cloud image"
-                           *ngIf="weather.weather_state_name === 'Clouds'">
+                           *ngIf="station.skyInfo === 'Clouds'">
                       <img class="card-img-top img-weather img-card" src="assets/img/rain.png" alt="Cloud image"
-                           *ngIf="weather.weather_state_name === 'Rain'">
+                           *ngIf="station.skyInfo === 'Rain'">
                       <img class="card-img-top img-weather img-card" src="assets/img/thunderstorm.png" alt="Cloud image"
-                           *ngIf="weather.weather_state_name === 'Thunderstorm'">
+                           *ngIf="station.skyInfo === 'Thunderstorm'">
                       <div class="card-body basic-font body-card-position text-light">
                         <!--    //Ville informations-->
                         <div class="cityInformations basic-font">
-                          <p class="card-title m-0 text-center ">{{weather.city}}</p>
-                          <p class="WeatherStation m-0 text-center ">{{stations[index].nom}}</p>
+                          <p class="card-title m-0 text-center ">{{station.nomVille}}</p>
+                          <p class="WeatherStation m-0 text-center ">{{station.nomStation}}</p>
                         </div>
                         <!--    //Météo-->
                         <div class="detailsWeather row mt-4 ">
-                          <p class="degree m-0 text-center "> {{weather.temperature}}°C</p>
+                          <p class="degree m-0 text-center "> {{station.temp | number : '0.0-0'}}°C</p>
                           <p
-                            class="degreeAppreciation m-0 text-center "> {{translateWeatherToFrench(weather.weather_state_name)}}</p>
+                            class="degreeAppreciation m-0 text-center "> {{translateWeatherToFrench(station.skyInfo)}}</p>
                         </div>
                         <!--    //Qualité de l'air-->
                         <div class="detailsAirQuality mt-4">
 
-                  <span class="airQualityAppreciation m-0 text-center"> <p class="m-0">Air</p> <p
-                    class="m-0">Correct</p></span>
-                          <p class="numberAirQuality m-0 text-center"> 20µg/m³</p>
+                  <span class="airQualityAppreciation m-0 text-center"><p class="m-0">{{station.indiceAir}}</p></span>
+                          <p class="numberAirQuality m-0 text-center">{{station.indiceValue}} {{station.indiceUnite}}</p>
+                            <p class="text-center pt-2" style="font-size: 15px; font-weight: lighter;">Relevé le {{station.indiceDate}}</p>
                         </div>
                         <div class="d-flex justify-content-center mt-4">
                           <div class="actionBtn me-4">
-                            <a [routerLink]="['/user/station']" [queryParams]="{stationName: stations[index].nom, stationCode: stations[index].code}"
+                            <a [routerLink]="['/user/station']" [queryParams]="{stationName: station.nomStation, stationCode: station.codeStation}"
                                class="btnMoreInformations btn border-1 border-light text-light m-0 ps-3 pe-3 pt-0 pb-0">Plus
                               d'informations</a></div>
-                          <span> <i class="text-red bi bi-heart-fill"
-                                    (click)="toggleFavorite(weather, stations[index].nom)"></i></span>
+                          <span> <i class="text-red bi bi-heart-fill" (click)="toggleFavorite(station.codeStation)"></i></span>
                         </div>
                       </div>
                     </div>

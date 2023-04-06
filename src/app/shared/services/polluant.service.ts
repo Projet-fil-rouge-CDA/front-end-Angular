@@ -1,25 +1,30 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PolluantService {
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  getAllPolluants(codePolluant: any, limit: number, offset: number, dateDebut: string | null, dateFin: string | null, mesure: string, codeStation: string) {
-    return this.http.get(`https://data.airpl.org/api/v1/mesure/${mesure}/`,
-      {
-        params: {
-          'count': true,
-          'limit': limit,
-          'offset': offset,
-          'code_configuration_de_mesure__code_point_de_prelevement__code_polluant': codePolluant,
-          'date_heure_tu__range': dateDebut + ',' + dateFin,
-          'code_configuration_de_mesure__code_point_de_prelevement__code_station': codeStation,
-        }
-      });
-  }
+    getOnePolluantByStation(codePolluant: any, limit: number, offset: number, dateDebut: string | null, dateFin: string | null, mesure: string, codeStation: string) {
+        return this.http.get(`http://localhost:8080/api/station/${codeStation}/${codePolluant}`,
+            {
+                params: {
+                    'dateDebut': dateDebut != null ? dateDebut : '',
+                    'dateFin': dateFin != null ? dateFin : '',
+                    'metrique': mesure,
+                    'page': offset + 1,
+                    'size': limit
+                }
+            });
+    }
+
+    getCategoryPolluant(nomStation: string): Observable<any>{
+        return this.http.get(environment.urlApi + "/polluants/" + nomStation);
+    }
 }

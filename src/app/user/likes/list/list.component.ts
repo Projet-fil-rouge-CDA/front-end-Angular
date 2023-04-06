@@ -10,6 +10,9 @@ import {TokenService} from "../../../shared/services/token.service";
 import {SearchAddressService} from "../../../shared/services/search-address.service";
 import {delay, forkJoin, from, mergeMap, Subscription, tap, toArray} from "rxjs";
 import {map} from "rxjs/operators";
+import {PolluantService} from "../../../shared/services/polluant.service";
+import {DatePipe} from "@angular/common";
+import {FavortiteStationModels} from "../../../shared/models/favortite-station.models";
 
 
 @Component({
@@ -25,9 +28,15 @@ export class ListComponent implements OnInit {
     loader: boolean = true;
     @Input() weather: NominatimAddress;
     stations: any = [];
+    favorite : FavortiteStationModels[] = [];
+
+    indices: object;
+    indiceValue: string;
+    indiceUnit: string;
 
 
-    constructor(private stationService: StationService, private searchService: SearchAddressService, private likeService: LikeService, private title: Title, private weatherService: WeatherService, private tokenService: TokenService) {
+
+    constructor(private stationService: StationService, private searchService: SearchAddressService, private likeService: LikeService, private title: Title, private weatherService: WeatherService, private tokenService: TokenService, private polluantService : PolluantService) {
     }
 
 
@@ -35,35 +44,60 @@ export class ListComponent implements OnInit {
     ngOnInit(): void {
         this.title.setTitle("Univ'Air | Favoris");
         this.loader = true;
-        this.likeService.getFavoritesLikes(this.tokenService.takePseudo()).pipe(
-            tap((res) => { this.stations = res; console.log(res) }),
-            mergeMap((res) => from(res)),
-            mergeMap((c) => {
-                return this.searchService.addressLookup(c.commune_nom).pipe(
-                    map((data) => {
-                        const displayName = data[0].displayName;
-                        const address = data[0].address;
-                        address.city = data[0].displayName.split(',')[0];
-                        const latitude = parseFloat(String(data[0].latitude));
-                        const longitude = parseFloat(String(data[0].longitude));
-                        const nominatimResponse = new NominatimResponse(latitude, longitude, displayName, address);
-                        return {
-                            weather: this.weatherService.getWeather(c.latitude, c.longitude, nominatimResponse).pipe(delay(1000)),
-                            city: nominatimResponse,
-                        };
+        this.likeService.getFavoritesLikes(this.tokenService.takePseudo()).subscribe(res => {
+                this.stations = res;
+                this.stations.forEach((station: any) => {
+                    console.log(station)
+                    this.polluantService.getOnePolluantByStation(24, 24,0, new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), new DatePipe('en-US').transform(new Date(), 'yyyy-MM-dd'), "horaire", station.code).subscribe(res =>{
+                        this.indices = res;
+                        // @ts-ignore
+                        if(this.indices.content != null){
+                            // @ts-ignore
+                            this.indices.content.some(indice => {
+                                this.weatherService.getWeather(station.latitude, station.longitude).subscribe(res => {
+                                    if(indice.valeur != null){
+                                        const date = new Date(indice.date);
+                                        const day = date.getDate().toString().padStart(2, '0');
+                                        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                                        const hour = date.getHours().toString().padStart(2, '0');
+                                        this.favorite.push({
+                                            nomStation: station.nomStation,
+                                            codeStation: station.code,
+                                            nomVille: indice.commune,
+                                            temp: res.temperature,
+                                            skyInfo:  res.weather_state_name,
+                                            indiceAir: this.getSentenceInfoAir(parseFloat(indice.valeur.toFixed(2))),
+                                            indiceValue: indice.valeur.toFixed(2),
+                                            indiceUnite: indice.unite,
+                                            indiceDate: `${day}/${month} à ${hour}h`,
+                                            clicked: false
+                                        })
+                                    } else {
+                                        this.favorite.push({
+                                            nomStation: station.nomStation,
+                                            codeStation: station.code,
+                                            nomVille: indice.commune,
+                                            temp: res.temperature,
+                                            skyInfo:  res.weather_state_name,
+                                            indiceAir: "N/A",
+                                            indiceValue: 0,
+                                            indiceUnite: "",
+                                            indiceDate: "",
+                                            clicked: false
+                                        })
+                                    }
+                                })
+                                return true;
+                            })
+                        } else{
+                            this.indiceUnit = "relevé"
+                            this.indiceValue = "Aucun"
+                        }
                     })
-                );
-            }),
-            toArray()
-        ).subscribe((results) => {
-            const weatherObservables = results.map((r) => r.weather);
-            forkJoin(weatherObservables).subscribe((weathers) => {
-                this.weathers = weathers;
-                this.weathersLength = weathers.length;
-                this.searchResults = results.map((r) => r.city);
-                this.loader = false;
-            });
-        });
+                })
+            this.loader = false;
+            }
+        )
     }
 
 
@@ -82,12 +116,25 @@ getWeatherClass(weather: string) {
         return this.weatherService.translateWeatherToFrench(weather)
     }
 
-    toggleFavorite(weatherLiked: Weather, nomStation: string) {
-        this.likeService.removeFavoritesLikes(nomStation, this.tokenService.takePseudo(), false).subscribe(c => {
-            this.weathers = this.weathers.filter((w) => w.city !== weatherLiked.city);
+    toggleFavorite(codeStation: string) {
+        this.likeService.removeFavoritesLikes(codeStation, this.tokenService.takePseudo(), false).subscribe(c => {
+            this.favorite.forEach(station => {
+                if(station.codeStation == codeStation){
+                    this.favorite.splice(this.favorite.indexOf(station), 1);
+                }
+            })
         })
     }
 
+    getSentenceInfoAir(indiceValue : number) : string{
+        if(indiceValue < 50){
+            return  "Air correct"
+        } else if (indiceValue < 80){
+            return "Air dégradé"
+        } else {
+            return "Air mauvais"
+        }
+    }
 
 }
 
