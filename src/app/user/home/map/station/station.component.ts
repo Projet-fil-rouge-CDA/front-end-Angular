@@ -124,6 +124,6 @@ export class StationComponent implements OnInit {
   }
 
     exportPdf(stationName: string, startDate: Date, endDate: Date) {
-        this.stationService.exporterPdf(this.stationCode, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.typePolluant);
+        this.stationService.exporterPdf(this.stationCode, this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), this.datePipe.transform(this.endDate, 'yyyy-MM-dd'), this.typePolluant, this.metrique);
     }
 }
