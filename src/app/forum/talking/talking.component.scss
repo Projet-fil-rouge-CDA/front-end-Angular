@@ -105,18 +105,20 @@
 
     .sendButton {
         background-color: #0d6efd;
-        border: 1px solid black;
+        border: 1px solid white;
         align-self: flex-end;
-        border-radius: 25px;
+        border-radius: 10px;
         font-weight: bold;
         font-size: 1em;
-        padding: 0.5em 5vw;
+        padding: 0.5em 2vw;
         margin: 1.8em 4vw 0;
         transition: transform .4s;
         color: white;
 
         &:hover {
-            transform: scale(1.2);
+            background-color: white;
+            border: 1px solid black;
+            color: black;
             cursor: pointer;
         }
     }
